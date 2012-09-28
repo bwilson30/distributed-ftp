@@ -1,29 +1,23 @@
 #include <iostream>
 #include <string>
+#ifdef WINDOWS
+#else
+	#include <unistd.h>
+	#define _getcwd getcwd
+#endif
+#include "system.h"
 
 using namespace std;
-#define DECLARE_COMMAND(cmd) unsigned char cmd(char* argv[],unsigned int argc)
-// List of Commands
-// General Operations
-DECLARE_COMMAND(quit);
-DECLARE_COMMAND(login);
-DECLARE_COMMAND(help);
-// Navigation Commands
-DECLARE_COMMAND(cd);
-DECLARE_COMMAND(ls);
-// Transactions on the filesystem
-DECLARE_COMMAND(mkdir);
-DECLARE_COMMAND(rmdir);
-DECLARE_COMMAND(rm);
-DECLARE_COMMAND(put);
-DECLARE_COMMAND(get);
 
 int main(char* argv[], unsigned int argc){
+
+	PROGNAME cmdline;
 	string cmd;
 	char c;
 	char** cmdargv = NULL;
 	unsigned int cmdargc = 0;
-	while(1){
+	while(1){	
+		// command line loop
 		char* t1;
 		char* t2;
 		t1 = NULL; 
@@ -44,41 +38,16 @@ int main(char* argv[], unsigned int argc){
 		for(t2 = strtok(NULL, " "); t2 != NULL;t2 = strtok(NULL, " ")){
 			cmdargc++;
 			// 1 to account for $0 and 1 to account for the added command	
-			cmdargv = reinterpret_cast<char**>(realloc(cmdargv,sizeof(char*) * (cmdargc + 1 + 1))); 
-			cmdargv[cmdargc+1] = t2;
+			cmdargv = reinterpret_cast<char**>(realloc(cmdargv,sizeof(char*) * (cmdargc + 1))); 
+			cmdargv[cmdargc] = t2;
 		}
 		cmd = "" ; cmd += cmdargv[0];
+		cmdline.runcmd(cmdargv,cmdargc);
+		if(cmdline.isExitted()) return 0;
 		// List of functions
-		if(cmd == "quit" || cmd == "exit") return quit(cmdargv,cmdargc);
-		else if(cmd == "login") login(cmdargv,cmdargc);
-		else if(cmd == "help") 	help(cmdargv,cmdargc);
-		else if(cmd == "cd") 	cd(cmdargv,cmdargc);
-		else if(cmd == "ls") 	ls(cmdargv,cmdargc);
-		else if(cmd == "mkdir") mkdir(cmdargv,cmdargc);
-		else if(cmd == "rmdir")	rmdir(cmdargv,cmdargc);
-		else if(cmd == "rm")	rm(cmdargv,cmdargc);
-		else if(cmd == "put")	put(cmdargv,cmdargc);
-		else if(cmd == "get")	get(cmdargv,cmdargc);
-		else cout << "Invalid Command\n";
 		delete[] t1;
 		delete[] cmdargv;
 	}
 	return 0;
 }
-DECLARE_COMMAND(quit){
-#ifdef __DEBUG
-	cout << argv[0] << "|" << argc << endl;
-#endif
-	return 0;
-}
-DECLARE_COMMAND(login){return 0;}
-DECLARE_COMMAND(help){return 0;}
-// Navigation Commands
-DECLARE_COMMAND(cd){return 0;}
-DECLARE_COMMAND(ls){return 0;}
-// Transactions on the filesystem
-DECLARE_COMMAND(mkdir){return 0;}
-DECLARE_COMMAND(rmdir){return 0;}
-DECLARE_COMMAND(rm){return 0;}
-DECLARE_COMMAND(put){return 0;}
-DECLARE_COMMAND(get){return 0;}
+
