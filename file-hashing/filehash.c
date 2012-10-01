@@ -37,9 +37,11 @@ int main(int argc, char **argv)
         uint64_t myhash;
         char filename[100];
 
-	if(argc < 2)
-        printf("Usage: hash \"file_name\""); 
-
+	if(argc < 2){
+        printf("Usage: ./hash \"file_name\""); 
+	   exit (-1);
+	}
+     
         handle = fopen(argv[1], "rb");
         
         if (!handle) 
