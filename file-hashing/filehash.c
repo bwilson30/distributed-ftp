@@ -1,3 +1,11 @@
+/*
+* File Hashing
+* Vinay Bharadwaj (vind.1989@gatech.edu)
+* Calculates hash as Size + 64 bit checksum of the first and          
+* last 64 bit
+*
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -23,15 +31,16 @@ uint64_t compute_hash(FILE * handle)
         return hash;
 }
 
-int main(int argc, char *argv)
+int main(int argc, char **argv)
 {
         FILE * handle;
         uint64_t myhash;
         char filename[100];
 
-	printf("Enter file path to calculate hash: ");
-	scanf("%s",filename);
-        handle = fopen(filename, "rb");
+	if(argc < 2)
+        printf("Usage: hash \"file_name\""); 
+
+        handle = fopen(argv[1], "rb");
         
         if (!handle) 
         {
