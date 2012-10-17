@@ -45,7 +45,16 @@ unsigned char PROGNAME::login(char *argv[],unsigned int argc){
 	getline(std::cin, password);
 	std::cout << password << std::endl;
 	tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+	for(int i = 0; i <= username.length();i++) state.username[i] = username[i];
+	for(int i = 0; i <= password.length();i++) state.password[i] = password[i];
+	authenticate();
 	// The Password is stored in password
+}
+void PROGNAME::clear_login(){
+	for(int i = 0; i <= MAX_USERPASSLENGTH;i++){
+		state.username[i] = '\0'; 
+		state.password[i] = '\0';
+	}
 }
 unsigned char PROGNAME::lls(char *argv[],unsigned int argc){
 	DIR *dir;
@@ -100,12 +109,12 @@ unsigned char PROGNAME::lls(char *argv[],unsigned int argc){
 		}
 
 	  }
-	std::cout << std::endl;
+	  std::cout << std::endl;
 	  closedir (dir);
 	} else {
-	  /* could not open directory */
-	  perror ("");
-	  return EXIT_FAILURE;
+		/* could not open directory */
+		perror ("");
+		return EXIT_FAILURE;
 	}
 
 }
@@ -129,7 +138,7 @@ unsigned char PROGNAME::lcd(char *argv[],unsigned int argc){
 		char * errorMessage = strerror_r( errno, buffer, 256 );
 		std::cout << errorMessage;
 	#endif
-
+	
 	return 1;
 	
 }
