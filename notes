@@ -1,0 +1,12 @@
+Ecryption requirments:
+Client Side:
+initialize(ip_addr,port,username,user_password,ca_server_ip?)
+getIPAddress() {return ip_addr from init};
+char* encrypt(const char* data,size);
+	// If encryption is not possible return an error code
+Server Side:
+encryption_class_ptr Encryption.lookup(ip_addr,port) // This locals the authentication information for a given packet 
+initialize(ip_addr,port,username,user_password,ca_server_ip?)
+getIPAddress() {return ip_addr from init};
+char* encrypt(const char* data,size);
+        // If encryption is not possible return an error code

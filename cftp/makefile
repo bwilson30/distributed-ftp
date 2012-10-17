@@ -22,6 +22,7 @@ get_header_dep=$(filter %.h,$(shell g++ $(ALL_INC) -MM $(1) 2>/dev/null | sed -n
 
 #.PHONY: test all clean release debug
 DEF= -D CMDNAME="\"$(PROGNAME)\""
+DEF+= -D TERMINATING_CHARACTER="\"^\""
 DEFDEBUG=-D __DEBUG=1
 .PHONY: all release debug clean build_main
 
@@ -45,3 +46,4 @@ build_main: $(addsuffix _class.o, $(call get_class_dep, $(SRC)/main.cpp)) $(SRC)
 	g++ $(DEF) $(ALL_INC) -c 	\
 	$(CLASSES)/$*/$*.cpp							\
 	-o $(OBJ)/$(OUTDIR)/$*.o 
+	echo "$(call get_class_dep, $(addprefix $(CLASSES)/%,%.cpp))"
