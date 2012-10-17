@@ -1,5 +1,5 @@
 #define VERBOSE 1      // turn on or off debugging output
-#include "Client.h"
+#include "client.h"
 
 Client::Client(int iPort, int iPortDatagram, const char* pStrHost,
 		bool bReverse, bool* pResult) {

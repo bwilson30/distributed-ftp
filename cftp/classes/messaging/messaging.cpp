@@ -5,7 +5,7 @@
  *      Author: bwilson30
  */
 
-#include "Messaging.h"
+#include "messaging.h"
 #include <cstdlib>
 #include <cstdio>
 #include <iostream>

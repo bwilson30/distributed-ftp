@@ -38,12 +38,12 @@ release: build_main
 debug: OUTDIR=debug
 debug: DEF:=$(DEFDEBUG) $(DEF) 
 debug: build_main
-build_main: $(addsuffix _class.o, $(call get_class_dep, $(SRC)/main.cpp)) $(SRC)/main.cpp
+build_main: $(addsuffix _class.o,$(CLASS_LIST))
 	g++ $(DEF) $(ALL_INC)							\
-	$(addprefix $(OBJ)/$(OUTDIR)/,$(addsuffix .o, $(call get_class_dep, $(SRC)/main.cpp)))	\
+	$(addprefix $(OBJ)/$(OUTDIR)/,$(CLASS_LIST))	\
 	$(SRC)/main.cpp -o $(BIN)/$(OUTDIR)/$(PROGNAME)
-%_class.o: $(call get_class_dep, $(addprefix $(CLASSES)/%,%.cpp))
+%_class.o: $(call get_class_dep, $(addprefix $(CLASSES)/%/,%.cpp))
 	g++ $(DEF) $(ALL_INC) -c 	\
 	$(CLASSES)/$*/$*.cpp							\
 	-o $(OBJ)/$(OUTDIR)/$*.o 
-	echo "$(call get_class_dep, $(addprefix $(CLASSES)/%,%.cpp))"
+	echo "$(CLASS_LIST)"
