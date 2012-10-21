@@ -1,8 +1,9 @@
 #define VERBOSE 1      // turn on or off debugging output
 #include "client.h"
 
-Client::Client(int iPort, int iPortDatagram, const char* pStrHost,
-		bool bReverse, bool* pResult) {
+Client::Client(Encryption encrypt, int iPort, int iPortDatagram, const char* pStrHost,
+		bool bReverse, bool* pResult) : m_encrypt(encrypt)
+{
 	struct hostent* he = NULL;
 
 	m_iPort = iPort;

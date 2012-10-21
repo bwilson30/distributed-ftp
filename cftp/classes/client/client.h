@@ -5,6 +5,8 @@
 #ifndef _CLIENT_H__
 #define _CLIENT_H__
 
+#include "encryption.h"
+
 // Adds in the send/recv acks after each message.
 #define DEBUG_ACK
 
@@ -35,7 +37,7 @@ static const int CLIENT_BUFF_SIZE = 64000;
 class Client
 {
 	public:
-		Client(int iPort, int iPortDatagram, const char* pStrHost, bool bReverse, bool* pResult);
+		Client(Ecryption encrypt, int iPort, int iPortDatagram, const char* pStrHost, bool bReverse, bool* pResult);
 		~Client();
 
 		bool				Close();										// Close the socket
@@ -58,6 +60,7 @@ class Client
 		int					RecvDatagram(char* pVals, int iLen);  			// Receive a datagram
 
 	protected:
+		Encryption			m_encrypt;							// Encryption class object
 		int					m_iPort;							// Port I'm listening on
 		int					m_iPortDatagram;					// Datagram port I'm listening on
 		int					m_iSock;							// Socket connection
