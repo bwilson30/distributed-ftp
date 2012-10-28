@@ -7,7 +7,7 @@
 #include "quorum.h"
 #include "filehash.h"
 #include <malloc.h>
-FILE *f1, *f2, *f3;
+
 
 QFILE::QFILE(FILE *fptr, unsigned long int tstamp, int sID)
 {
@@ -153,11 +153,10 @@ int quorum::quorum_files(QFILE **files, unsigned int server_count, const char *d
 				fseek(infile, 0, SEEK_END);
 				int size = ftell(infile);
 				rewind(infile);
-				printf("SIZE %d", size);
+				
 				char arr[size+1];
 				fgets(arr, size+1, infile);
-				printf("ARRAY contents %s", arr);
-				//num_bytes = fwrite(arr, sizeof(char), sizeof(arr), ftemp);
+						
 				num_bytes = fprintf(ftemp, "%s", arr);
 				fclose(ftemp);
 		}
@@ -168,9 +167,9 @@ return 1;
 
 int main()
 {	quorum *q1 = new quorum(3); //Actually doesn't do anything as of now. For later..
-	f1 = fopen("1.txt.txt", "rw");
-	f2 = fopen("2.txt.txt", "rw");
-	f3 = fopen("3.txt.txt", "rw");
+	FILE *f1 = fopen("1.txt.txt", "rw");
+	FILE *f2 = fopen("2.txt.txt", "rw");
+	FILE *f3 = fopen("3.txt.txt", "rw");
 	QFILE *files[3];
 	files[0] = new QFILE(f1, 1, 1);
 	files[1] = new QFILE(f2, 1, 2);
