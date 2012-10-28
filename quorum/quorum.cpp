@@ -38,30 +38,35 @@ int QFILE::getServerID()
 	return this->serverID;
 }
 
+quorum::quorum(QFILE **files, unsigned int server_count, const char *destination_path){
+	quorum_files(files, server_count, destination_path);
+}
 
-quorum::quorum(int num_servers)
+
+// THESE ARE FUNCTIONS TO START AND STOP SERVERS IN THE QUORUM. NOTHING TO DO WITH QUORUM PROTOCOL.
+quorum_server::quorum_server(int num_servers)
 {
 	this->num_servers = num_servers;
-	quorum_start();
+	quorum_server_start();
 }
 
-quorum::~quorum()
+quorum_server::~quorum_server()
 {
-	quorum_stop();
+	quorum_server_stop();
 }
 
-int quorum::quorum_start()
+int quorum_server::quorum_server_start()
 {
 	//Start the quorum of servers with the script
 	return 1; //On success
 }
 
-int quorum::quorum_stop()
+int quorum_server::quorum_server_stop()
 {
 	//Stop the quorum of servers with the script
 	return 1; // On success
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 unsigned long *tStamp::greatest_timeStamp(unsigned long int *tstamps, unsigned int server_count)
 {
@@ -166,7 +171,7 @@ return 1;
 }
 
 int main()
-{	quorum *q1 = new quorum(3); //Actually doesn't do anything as of now. For later..
+{	
 	FILE *f1 = fopen("1.txt.txt", "rw");
 	FILE *f2 = fopen("2.txt.txt", "rw");
 	FILE *f3 = fopen("3.txt.txt", "rw");
@@ -174,7 +179,7 @@ int main()
 	files[0] = new QFILE(f1, 1, 1);
 	files[1] = new QFILE(f2, 1, 2);
 	files[2] = new QFILE(f3, 1, 3);
-	q1->quorum_files(files, 3, "output.txt");
+	quorum *q1 = new quorum(files, 3, "output.txt");
 			
 return 0;
 }

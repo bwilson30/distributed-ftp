@@ -46,20 +46,29 @@ typedef class QFILE
 
 typedef class quorum
 {
-	private: int num_servers;
+	private: 
 			 unsigned long *grTimestamps;
 			 unsigned long *timeStamps;
-			 int quorum_start();
-			 int quorum_stop();
+			 
 
 	public:
-			quorum(int num_servers);
+			quorum(QFILE **,unsigned int, const char*);
 			~quorum();
 			int quorum_files(QFILE **,unsigned int, const char*);
 
 
 }quorum;
 
+
+typedef class quorum_server
+{
+	private: int num_servers;
+			 int quorum_server_start();
+             int quorum_server_stop();
+			 
+	public: quorum_server(int num_servers);
+			~quorum_server();
+}quorum_server;
 
 
 #endif
