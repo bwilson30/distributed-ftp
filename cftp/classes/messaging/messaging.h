@@ -14,7 +14,7 @@
 
 class Messaging {
 public:
-	Messaging(unsigned int port_num);
+	Messaging(unsigned int port_num, Encryption encrypt);
 	~Messaging(){};
 
 	void setPort(unsigned int port_num);
