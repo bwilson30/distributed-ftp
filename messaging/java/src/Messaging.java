@@ -4,7 +4,7 @@ public class Messaging {
 
 	private static Server server;
 
-	public static void main(String args[]) throws IOException {
+	public static void main(String [] args) throws IOException {
 		int port = 5010;
 		int dataport = -1;
 
@@ -91,17 +91,21 @@ public class Messaging {
 	}
 
 	private static int get() {
+		try {
 		String localPath = server.RecvString('^');
 
 		// May need to call verify user method here
 
-		try {
+		
 			server.SendFile(localPath);
 		} catch (IOException e) {
 			// Assume file not found exception
 			int buff[] = new int[1];
 			buff[0] = -1;
+			try{
 			server.SendInts(buff, 1);
+			}
+			catch(Exception e2){}
 		}
 
 		return 0;
@@ -162,7 +166,7 @@ public class Messaging {
 		Runtime runtime = Runtime.getRuntime();
 		Process p = runtime.exec("mkdir " + localPath); // Do I need ./ here?
 
-		int response = new int[1];
+		int [] response = new int[1];
 		response[0] = 0;
 		server.SendInts(response, 1);
 
@@ -177,7 +181,7 @@ public class Messaging {
 		Runtime runtime = Runtime.getRuntime();
 		Process p = runtime.exec("rm -rf " + localPath); // Do I need ./ here?
 
-		int response = new int[1];
+		int [] response = new int[1];
 		response[0] = 0;
 		server.SendInts(response, 1);
 
@@ -192,7 +196,7 @@ public class Messaging {
 		Runtime runtime = Runtime.getRuntime();
 		Process p = runtime.exec("rm " + localPath); // Do I need ./ here?
 
-		int response = new int[1];
+		int [] response = new int[1];
 		response[0] = 0;
 		server.SendInts(response, 1);
 
