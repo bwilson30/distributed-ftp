@@ -4,7 +4,7 @@ public class Messaging {
 
 	private static Server server;
 
-	public static void main(String [] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 		int port = 5010;
 		int dataport = -1;
 

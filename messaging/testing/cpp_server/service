@@ -11,7 +11,7 @@ start() {
         while(($i < $NUM)) 
 	do
 	j=$(($i+9090)) d=$(($i+20000))
-	$DIR/server_file_test $j $d &
+	$DIR/Messaging $j $d &
 	i=$(($i+1))	
 	done
 	echo -n "File service started."
