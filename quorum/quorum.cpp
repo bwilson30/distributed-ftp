@@ -64,6 +64,7 @@ int quorum_server::quorum_server_start()
 int quorum_server::quorum_server_stop()
 {
 	//Stop the quorum of servers with the script
+	
 	return 1; // On success
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
