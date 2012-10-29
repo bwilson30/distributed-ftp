@@ -32,6 +32,8 @@ public class Server {
 		case "rm":
 			sendTable = rm(recvTable);
 			break;
+		default:
+			sendTable.put("response", -2);
 		}
 		return sendTable;
 	}
