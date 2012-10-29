@@ -53,7 +53,27 @@ public class client{
    }	
 	// Commands
 	// Transcations
-	void login(String[] argv){};
+	void login(String[] argv){
+		System.out.println("Username: ");
+                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                try {
+                 username = br.readLine();
+                } catch (IOException ioe) {
+                 System.out.println("IO error trying to read your name!");
+                 System.exit(1);
+                } 
+		System.out.println("Password: ");
+                try {
+                 password = br.readLine();
+                } catch (IOException ioe) {
+                 System.out.println("IO error trying to read your password!");
+                 System.exit(1);
+                } 
+		System.out.println("login as:  " + username + " with: " + password);
+                //  read the username from the command-line; need to use try/catch with the
+                //  readLine() method
+
+	};
 	void get(String[] argv){};
 	void put(String[] argv){};
 	// Local Commands
