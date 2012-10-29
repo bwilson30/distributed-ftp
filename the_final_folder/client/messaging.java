@@ -14,7 +14,7 @@ public class messaging {
 	
 	private String m_ipAddress;
 	private int m_port;
-	private Boolean m_clientAuth = false;
+	private boolean m_clientAuth = false;
 	
 	public messaging(String ipAddress, int port_num) {
 		m_ipAddress = ipAddress;
@@ -23,12 +23,12 @@ public class messaging {
 		
 	}
 	
-	public Boolean clientAuth() {
+	public boolean clientAuth() {
 		return m_clientAuth;
 	}
 	
-	public Boolean clientLogin(String userhash) {
-		Boolean response = Communicate.Login(userhash);
+	public boolean clientLogin(String userhash) {
+		boolean response = Communicate.Login(userhash);
 		return response;
 	}
 	
