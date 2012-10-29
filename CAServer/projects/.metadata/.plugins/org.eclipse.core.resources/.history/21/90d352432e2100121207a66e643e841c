@@ -1,0 +1,9 @@
+package Encryption;
+
+public class EncryptData {
+
+	 String ipAddress;
+	 String username;
+	 String pwd;
+	 String serverIp;
+}

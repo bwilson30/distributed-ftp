@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Skip.java&apos; to &apos;Quorum/src/Server&apos;&#x0A;- Original project: &apos;CAServer&apos;&#x0A;- Destination element: &apos;Quorum/src/Server&apos;&#x0A;- Original element: &apos;CA.Skip.java&apos;" description="Copy compilation unit" destination="=Quorum/src&lt;Server" element1="/src&lt;CA{Skip.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1351386969465" units="1" version="1.0"/>
+</session>

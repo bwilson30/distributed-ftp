@@ -1,0 +1,64 @@
+//============================================================================
+// Name        : QuorumCode.cpp
+// Author      : Banji
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+using namespace std;
+
+//JNIEXPORT jint JNICALL
+Java_FillCStruct
+(
+   JNIEnv *env,
+   jclass obj,
+   jobject    info      // EntryInformation object instantiation
+)
+int main() {
+
+	testInfo entryInfo;
+	   jclass clazz;
+	   jfieldID fid;
+	   jmethodID mid;
+
+	   GetInfo(entryInfo);   // fills in the entryInfo
+
+	   clazz = (*env)->GetObjectClass(env, info);
+	   if (0 == clazz)
+	   {
+	      printf("GetObjectClass returned 0\n");
+	      return(-1);
+	   }
+	   fid = (*env)->GetFieldID(env,clazz,"index","I");
+
+	   // This next line is where the power is hidden. Directly change
+	   // even private fields within java objects. Nasty!
+	   (*env)->SetIntField(env,info,fid,testInfo.index);
+
+	   fid = (*env)->GetFieldID(env,clazz,"space","I");
+	   (*env)->SetIntField(env,info,fid,testInfo.space);
+
+	   fid = (*env)->GetFieldID(env,clazz,"count","I");
+	   (*env)->SetIntField(env,info,fid,testInfo.count);
+
+	   fid = (*env)->GetFieldID(env,clazz,"key","I");
+	   (*env)->SetIntField(env,info,fid,testInfo.key);
+
+	   fid = (*env)->GetFieldID(env,clazz,"nameLength","I");
+	   (*env)->SetIntField(env,info,fid,testInfo.nameLength);
+
+	   name = (*env)->NewStringUTF(env,testInfo.name);
+	   if (name == NULL)
+	   {
+	      clazz = (*env)->FindClass(env,"java/lang/OutOfMemoryError");
+	      (*env)->ThrowNew(env,clazz,NULL);
+	      return (-1);
+	   }
+	   fid = (*env)->GetFieldID(env,clazz,"name","Ljava/lang/String;");
+	   (*env)->SetObjectField(env,info,fid,name);
+
+	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	return 0;
+}

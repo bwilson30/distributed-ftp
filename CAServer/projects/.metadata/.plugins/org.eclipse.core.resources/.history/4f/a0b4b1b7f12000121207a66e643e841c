@@ -1,0 +1,26 @@
+//============================================================================
+// Name        : QuorumCode.cpp
+// Author      : Banji
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include <jni.h>
+#include "Encryption_Encrypt.h"
+using namespace std;
+
+struct info{
+      char* ipAddress;
+      char* username;
+      char* pwd;
+      char* key;
+      char* serverIp;
+}testInfo;
+
+int main() {
+
+	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	return 0;
+}

@@ -1,0 +1,116 @@
+import java.io.*;
+import java.math.BigInteger;
+import java.net.Socket;
+import java.security.*;
+import java.security.spec.*;
+import java.security.interfaces.*;
+import java.util.Hashtable;
+
+import javax.crypto.*;
+import javax.crypto.spec.*;
+import javax.crypto.interfaces.*;
+import com.sun.crypto.provider.SunJCE;
+
+/**
+ * This program executes the Diffie-Hellman key agreement protocol between 2
+ * parties: Alice and Bob.
+ * 
+ * By default, preconfigured parameters (1024-bit prime modulus and base
+ * generator used by SKIP) are used. If this program is called with the "-gen"
+ * option, a new set of parameters is created.
+ */
+
+public class DiffieHellmanTwo {
+
+	// Retrieve the prime, base, and private value for generating the key pair.
+	// If the values are encoded as in
+	// Generating a Parameter Set for the Diffie-Hellman Key Agreement
+	// Algorithm,
+	// the following code will extract the values.
+
+	private static String caAlias = "C3_ALIAS";
+	private static char[] caPassword = "ece6238".toCharArray();
+	private static String keystoreFile = "keyStoreFile.bin";
+
+	public DiffieHellmanTwo() {
+
+	}
+
+	public static String GenerateParameterSet() {
+		try {
+			// Create the parameter generator for a 1024-bit DH key pair
+			AlgorithmParameterGenerator paramGen = AlgorithmParameterGenerator
+					.getInstance("DH");
+			// paramGen.init(1024);
+			paramGen.init(1024);
+			// Generate the parameters
+			AlgorithmParameters params = paramGen.generateParameters();
+			DHParameterSpec dhSpec = (DHParameterSpec) params
+					.getParameterSpec(DHParameterSpec.class);
+
+			// Return the three values in a string
+			return "" + dhSpec.getP() + "," + dhSpec.getG() + ","
+					+ dhSpec.getL();
+		} catch (NoSuchAlgorithmException e) {
+		} catch (InvalidParameterSpecException e) {
+		}
+		return null;
+	}
+
+	public static SecretKey InitiateProcess(byte[] key, PublicKey publicKey,
+			PrivateKey privateKey) {
+
+		try {
+			// Get the generated public and private keys
+			FileInputStream input = new FileInputStream(keystoreFile);
+			KeyStore keyStore = KeyStore.getInstance("JKS");
+			keyStore.load(input, caPassword);
+
+			// PrivateKey privateKey = (PrivateKey) keyStore.getKey(caAlias,
+			// caPassword);
+			java.security.cert.Certificate caCert = keyStore
+					.getCertificate(caAlias);
+
+			// Get public key
+			publicKey = caCert.getPublicKey();
+			Hashtable<String, byte[]> response = new Hashtable<String, byte[]>();
+
+			// Retrieve the public key bytes of the other party
+			byte[] publicKeyBytes = key;
+
+			// Convert the public key bytes into a PublicKey object
+			X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(
+					publicKeyBytes);
+			// KeyFactory keyFact = KeyFactory.getInstance("DH");
+			KeyFactory keyFact = KeyFactory.getInstance("DH");
+			publicKey = keyFact.generatePublic(x509KeySpec);
+
+			// Prepare to generate the secret key with the private key and
+			// public key of the other party
+			KeyAgreement ka = KeyAgreement.getInstance("DH");
+			ka.init(privateKey);
+			ka.doPhase(publicKey, true);
+
+			// Specify the type of key to generate;
+			// see Listing All Available Symmetric Key Generators
+			String algorithm = "DES";
+
+			// Generate the secret key
+			SecretKey secretKey = ka.generateSecret(algorithm);
+			return secretKey;
+			// Use the secret key to encrypt/decrypt data;
+			// see Encrypting a String with DES
+		} catch (java.security.InvalidKeyException e) {
+			return null;
+		} catch (java.security.spec.InvalidKeySpecException e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+
+		catch (java.security.NoSuchAlgorithmException e) {
+			return null;
+		} catch (Exception evt) {
+			return null;
+		}
+	}
+}
