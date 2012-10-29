@@ -1,3 +1,4 @@
+
 import  java.io.*;
 import java.util.*;
 public class client{
@@ -6,7 +7,10 @@ public class client{
    String rwd;
    String username;
    String password;
-
+   messaging[] servers;
+   String[]       server_list;
+   int 		  port_num;
+   int 		  qur_size;
    public static void main (String[] args) {
 	client cl = new client();
 	cl.lwd =  new File(".").getAbsolutePath();
@@ -72,10 +76,28 @@ public class client{
 		System.out.println("login as:  " + username + " with: " + password);
                 //  read the username from the command-line; need to use try/catch with the
                 //  readLine() method
-
-	};
-	void get(String[] argv){};
-	void put(String[] argv){};
+		String username_hash = username + password; // TODO: CHANGE THIS TO INCLUDE VINAY's stuff	
+		servers = new messaging[qur_size];
+		for(int i = 0; i< qur_size; i++){
+			servers[i] = new messaging(server_list[i],port_num);
+			servers[i].clientLogin(username_hash);
+		}
+	}
+	void get(String[] argv){
+		// File not found is -1
+		// Incorrect command string sent -2
+		String[] local_path = new String[qur_size];// = lwd + ".temp_qurac/";
+		 for(int i = 0; i< qur_size; i++){ local_path[i] = lwd + ".temp_qurac/" + 'a'+i; }
+		 for(int i = 0; i< qur_size; i++){
+                        servers[i].get(local_path[i] + "/" + argv[0], rwd + "/" + argv[1]);
+		}
+	}
+	void put(String[] argv){
+		 String local_path;
+                 for(int i = 0; i< qur_size; i++){
+                        servers[i].put(lwd + "/" +  argv[0], rwd + "/" + argv[1]);
+                }
+	}
 	// Local Commands
 	void help(String[] argv){	
 		System.out.println(	 "This program allows for read and write to a remote file repository.");
@@ -129,8 +151,12 @@ public class client{
 		else System.out.println("Invalid path to a directory");	
 	}
 	// Remote Commands
-	void cd(String[] argv){};
-	void ls(String[] argv){};
+	void cd(String[] argv){
+		
+	}
+	void ls(String[] argv){
+
+	}
 	void pwd(String[] argv){System.out.println(rwd);};	
 	private static void list(File dir, boolean recur, boolean size, boolean hidden) {
 	    if ((dir != null) && dir.exists() && dir.isDirectory()) {
