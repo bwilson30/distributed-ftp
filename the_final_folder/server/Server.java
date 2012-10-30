@@ -13,23 +13,43 @@ public class Server {
 		String command = (String) recvTable.get("cmd");
 		Hashtable sendTable = new Hashtable();
 
-		switch (command) {
-		case "get":
+		int cmd = 0;
+		if (command.equals("get")) {
+			cmd = 1;
+		}
+		else if (command.equals("put")) {
+			cmd = 2;
+		}
+		else if (command.equals("ls")) {
+			cmd = 3;
+		}
+		else if (command.equals("mkdir")) {
+			cmd = 4;
+		}
+		else if (command.equals("rmdir")) {
+			cmd = 5;
+		}
+		else if (command.equals("rm")) {
+			cmd = 6;
+		}
+
+		switch (cmd) {
+		case 1:
 			sendTable = get(recvTable);
 			break;
-		case "put":
+		case 2:
 			sendTable = put(recvTable);
 			break;
-		case "ls":
+		case 3:
 			sendTable = ls(recvTable);
 			break;
-		case "mkdir":
+		case 4:
 			sendTable = mkdir(recvTable);
 			break;
-		case "rmdir":
+		case 5:
 			sendTable = rmdir(recvTable);
 			break;
-		case "rm":
+		case 6:
 			sendTable = rm(recvTable);
 			break;
 		default:
