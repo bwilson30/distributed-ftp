@@ -1,4 +1,4 @@
-package Server;
+
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -21,7 +21,6 @@ import javax.crypto.KeyAgreement;
 import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
 
-import Encryption.Skip;
 
 public class Start {
 
