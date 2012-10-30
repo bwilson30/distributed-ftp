@@ -1,4 +1,4 @@
-package Encryption;
+
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -28,7 +28,7 @@ import javax.crypto.KeyAgreement;
 import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.DHParameterSpec;
-import Encryption.Skip;
+
 
 public class Encrypt {
 	private static String keystoreFile = "../keyStoreFileClient.bin";
