@@ -38,7 +38,7 @@ public class messaging {
 		sendTable.put("get", remotePath);
 		
 		Hashtable recvTable = new Hashtable();
-		recvTable = Communicate.SendMsg(sendTable, m_ipAddress, m_port);
+		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
 		int response = (Integer) recvTable.get("response");
 		
 		if (response >= 0) {
@@ -95,7 +95,7 @@ public class messaging {
 			sendTable.put("timestamp", timeBuffer);
 			
 			Hashtable recvTable = new Hashtable();
-			recvTable = Communicate.SendMsg(sendTable, m_ipAddress, m_port);
+			recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
 			
 			fisFile.close();
 			bisFile.close();
@@ -116,7 +116,7 @@ public class messaging {
 		sendTable.put("ls", remotePath);
 		
 		Hashtable recvTable = new Hashtable();
-		recvTable = Communicate.SendMsg(sendTable, m_ipAddress, m_port);
+		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
 		
 		if ((Integer)recvTable.get("response") >= 0) {
 			FileOutputStream fos = new FileOutputStream(localPath);
@@ -142,7 +142,7 @@ public class messaging {
 		sendTable.put("mkdir", remotePath);
 		
 		Hashtable recvTable = new Hashtable();
-		recvTable = Communicate.SendMsg(sendTable, m_ipAddress, m_port);
+		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
 		
 		return (Integer)recvTable.get("response");
 	}
@@ -153,7 +153,7 @@ public class messaging {
 		sendTable.put("rmdir", remotePath);
 		
 		Hashtable recvTable = new Hashtable();
-		recvTable = Communicate.SendMsg(sendTable, m_ipAddress, m_port);
+		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
 		
 		return (Integer)recvTable.get("response");
 	}
@@ -164,7 +164,7 @@ public class messaging {
 		sendTable.put("rm", remotePath);
 		
 		Hashtable recvTable = new Hashtable();
-		recvTable = Communicate.SendMsg(sendTable, m_ipAddress, m_port);
+		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
 		
 		return (Integer)recvTable.get("response");
 	}
