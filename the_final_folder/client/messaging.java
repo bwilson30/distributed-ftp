@@ -14,7 +14,7 @@ public class messaging {
 	
 	private String m_ipAddress;
 	private int m_port;
-	private boolean m_clientAuth = false;
+	private Boolean m_clientAuth = false;
 	
 	public messaging(String ipAddress, int port_num) {
 		m_ipAddress = ipAddress;
@@ -23,12 +23,12 @@ public class messaging {
 		
 	}
 	
-	public boolean clientAuth() {
+	public Boolean clientAuth() {
 		return m_clientAuth;
 	}
 	
-	public boolean clientLogin(String userhash) {
-		boolean response = Communicate.Login(userhash);
+	public Boolean clientLogin(String userhash) {
+		Boolean response = Communicate.Login(userhash);
 		return response;
 	}
 	
@@ -39,8 +39,9 @@ public class messaging {
 		
 		Hashtable recvTable = new Hashtable();
 		recvTable = Communicate.SendMsg(sendTable, m_ipAddress, m_port);
+		int response = (Integer) recvTable.get("response");
 		
-		if ((int)recvTable.get("response") >= 0) {
+		if (response >= 0) {
 			FileOutputStream fosFile = new FileOutputStream(localPath);
 			BufferedOutputStream bosFile = new BufferedOutputStream(fosFile);
 			
@@ -65,7 +66,7 @@ public class messaging {
 			return 0;
 		}
 		else {
-			return (int)recvTable.get("response");
+			return (Integer)recvTable.get("response");
 		}		
 	}
 	
@@ -101,7 +102,7 @@ public class messaging {
 			fisTime.close();
 			bisTime.close();
 			
-			return (int)recvTable.get("response");
+			return (Integer)recvTable.get("response");
 		} catch (FileNotFoundException fnf) {
 			return -1;
 		} catch (IOException e) {
@@ -117,12 +118,12 @@ public class messaging {
 		Hashtable recvTable = new Hashtable();
 		recvTable = Communicate.SendMsg(sendTable, m_ipAddress, m_port);
 		
-		if ((int)recvTable.get("response") >= 0) {
+		if ((Integer)recvTable.get("response") >= 0) {
 			FileOutputStream fos = new FileOutputStream(localPath);
 			BufferedOutputStream bos = new BufferedOutputStream(fos);
 			
 			fileBuffer = (byte[])recvTable.get("file");
-			bos.write(fileBuffer, 0, (int)recvTable.get("length"));
+			bos.write(fileBuffer, 0, (Integer)recvTable.get("length"));
 			bos.flush();
 			bos.close();
 			fos.flush();
@@ -131,7 +132,7 @@ public class messaging {
 			return 0;
 		}
 		else {
-			return (int)recvTable.get("response");
+			return (Integer)recvTable.get("response");
 		}		
 	}
 	
@@ -143,7 +144,7 @@ public class messaging {
 		Hashtable recvTable = new Hashtable();
 		recvTable = Communicate.SendMsg(sendTable, m_ipAddress, m_port);
 		
-		return (int)recvTable.get("response");
+		return (Integer)recvTable.get("response");
 	}
 	
 	public int rmdir(String remotePath) {
@@ -154,7 +155,7 @@ public class messaging {
 		Hashtable recvTable = new Hashtable();
 		recvTable = Communicate.SendMsg(sendTable, m_ipAddress, m_port);
 		
-		return (int)recvTable.get("response");
+		return (Integer)recvTable.get("response");
 	}
 	
 	public int rm(String remotePath) {
@@ -165,6 +166,6 @@ public class messaging {
 		Hashtable recvTable = new Hashtable();
 		recvTable = Communicate.SendMsg(sendTable, m_ipAddress, m_port);
 		
-		return (int)recvTable.get("response");
+		return (Integer)recvTable.get("response");
 	}
 }
