@@ -1,5 +1,3 @@
-package CA;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -15,6 +13,7 @@ import java.security.KeyStore;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.SecureRandom;
 import java.security.cert.X509Certificate;
 import java.security.spec.InvalidParameterSpecException;
 import java.security.spec.X509EncodedKeySpec;
@@ -24,6 +23,8 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyAgreement;
 import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESedeKeySpec;
 import javax.crypto.spec.DHParameterSpec;
 
 import sun.security.x509.X509CertImpl;
@@ -40,7 +41,10 @@ public class Communicate {
 	private static ServerSocket serverSocket;
 	private static Socket socket;
 	private static FileOutputStream ksos = null;
-	
+	static ObjectOutputStream out = null;
+	static ObjectInputStream object = null;
+	static Cipher dcipher = null;
+	static Cipher ecipher = null;
 	public void GetKeys() throws Exception
 	{
 		FileInputStream input = new FileInputStream(keystoreFile);
@@ -51,28 +55,33 @@ public class Communicate {
 	    privKey = (PrivateKey) keyStore.getKey(caAlias, caPassword);
 	    java.security.cert.Certificate caCert = keyStore.getCertificate(caAlias);
 	    pubKey = caCert.getPublicKey();
+
 	}
 	public void listen()
 	{
 		try{
-		serverSocket = new ServerSocket(1001,20);
+		serverSocket = new ServerSocket(1001,50);
 		GetKeys();    
 		ksos = new FileOutputStream("keystoreAuthenticateFile");
 		KeyStore ks = KeyStore.getInstance("JCEKS");
 		
-		ObjectOutputStream out = null;
-		ObjectInputStream object = null;
+		
 		socket = serverSocket.accept();
 		out = new ObjectOutputStream(socket.getOutputStream());
 		object = new ObjectInputStream(socket.getInputStream());
 		X509Certificate cert = null;
-		while(object.available() <= 0 && !socket.isClosed())
+		
+		while(true)
 	    {	    	
 	    	{
 	    		synchronized(this)
 	    		{
+	    			
 	    			Hashtable request = new Hashtable();
+	    			  ecipher = null;
+	    			  dcipher = null;
 	    			  request = (Hashtable)object.readObject();
+	    			  X509Certificate c = (X509Certificate)request.get("cert");
 	    			  
 	    			if(request.containsKey("authenticate"))
 	    			  {
@@ -85,17 +94,19 @@ public class Communicate {
 	    				    PublicKey diffiePub = keypair.getPublic();
 	    				    
 	    				    byte[] clientKey = (byte[])request.get("authenticate");
-	    				    String hash = (String)request.get("key");
-	    				    X509Certificate c = CertificateAuthority.getCertificate(hash);
+	    				    //String hash = (String)request.get("key");
+	    				    //X509Certificate c = CertificateAuthority.getCertificate(hash);
 	    				    
 	    				    if(c != null)
 	    				    {
-	    			            SecretKey key = InitiateProcess(clientKey,diffiePriv,diffiePub);
-	    			            privatekeys.put(new String(c.getEncoded(), "UTF-8"), key);
+	    			            //SecretKey key = InitiateProcess(clientKey,diffiePriv,diffiePub);
+	    				    	SecretKey key = InitiateProcess(clientKey,diffiePriv,diffiePub);
+	    			            privatekeys.put(new String(c.getPublicKey().getEncoded(), "UTF-8"), key);
 	    			            Hashtable<String, byte[]> table = new Hashtable<String,byte[]>();
 	    			            table.put("authenticateResponse", diffiePub.getEncoded());
 	    			            out.writeObject(table);
 	    			            out.flush();
+
 	    			            continue;
 	    				    }
 	    			  } 
@@ -108,16 +119,16 @@ public class Communicate {
 		          	      KeyStore keyStore = KeyStore.getInstance("JCEKS");
 		          	      keyStore.load(input, caPassword);
 		          	      input.close();
-  					  
-  					  Cipher dcipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
-  					  SecretKey key = privatekeys.get(new String(cert.getPublicKey().getEncoded(),"UTF-8"));
+		          	    //Cipher dcipher = Cipher.getInstance("DiffieHellman");
+  					  dcipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
+  					  SecretKey key = privatekeys.get(new String(c.getPublicKey().getEncoded(),"UTF-8"));
   					  if(key != null)
   					  {
   			              dcipher.init(Cipher.DECRYPT_MODE, key);
   			              SealedObject so = (SealedObject)request.get("message"); 
   			              Hashtable process = new Hashtable();
   			              process = (Hashtable)so.getObject(dcipher);		              
-			          	  Cipher ecipher = Cipher.getInstance("DES");
+			          	  ecipher  = Cipher.getInstance("DES");
 	    			      ecipher.init(Cipher.ENCRYPT_MODE, key);
 	    			      
 	    			      if(process.containsKey("terminate"))
@@ -127,6 +138,8 @@ public class Communicate {
 			    			 String logoutSuccess = "1";
 			    			 byte[] enc = ecipher.doFinal(logoutSuccess.getBytes("UTF-8"));
 			    			 out.write(enc);
+			    			 out.flush();
+			    			 
 			    		  }
 	    			      else
 				        	  if(process.containsKey("queryId"))
@@ -145,6 +158,7 @@ public class Communicate {
 					            	    table.put("response", enc);
 					            	    table.put("responseId","1");
 					            	    out.writeObject(table);
+					            	    out.flush();
 					            	    break;
     			        		  case 2:
     			        			  X509Certificate clientCert = (X509Certificate)process.get("cert");
@@ -159,11 +173,16 @@ public class Communicate {
     			        			  }
     			        			  else
     			        				  table.put("responseId","99");
-					            	    out.writeObject(table);
+					            	  out.writeObject(table);
+					            	  out.flush();
 					            	    break;
     			                  }
+    			        		  
 				        	  }
-
+	    			      Thread.sleep(1500);
+	    			      socket = serverSocket.accept();
+		            		out = new ObjectOutputStream(socket.getOutputStream());
+		            		object = new ObjectInputStream(socket.getInputStream());
   					  }
   					
   				  }
@@ -174,6 +193,7 @@ public class Communicate {
 		catch(Exception ex)
 		{
 			System.out.println(ex.toString());
+			
 		}
 	}
 	
@@ -213,6 +233,13 @@ public class Communicate {
 		 
         // Get public key
         //publicKey = caCert.getPublicKey();
+        //Hashtable<String,byte[]> response = new Hashtable<String,byte[]>();
+        
+	    // Retrieve the public key bytes of the other party
+        //byte[] publicKeyBytes = key;
+
+     // Get public key
+        //publicKey = caCert.getPublicKey();
         Hashtable<String,byte[]> response = new Hashtable<String,byte[]>();
         
 	    // Retrieve the public key bytes of the other party
@@ -236,8 +263,6 @@ public class Communicate {
 	    // Generate the secret key
 	    SecretKey secretKey = ka.generateSecret(algorithm);
         return secretKey;
-	    // Use the secret key to encrypt/decrypt data;
-	    // see Encrypting a String with DES
 	} 
 	catch (java.security.InvalidKeyException e) {
 		return null;
