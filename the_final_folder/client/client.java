@@ -12,7 +12,7 @@ public class client{
    int 		  port_num;
    int 		  qur_size;
    public static void main (String[] args) {
-	client cl = new client(4,10001);
+	client cl = new client(1,10001);
 	cl.lwd =  new File(".").getAbsolutePath();
 	//lwd = System.getProperty("user.dir");
 	cl.rwd = "/";
@@ -57,11 +57,11 @@ public class client{
    }	
    client(int qs,int pn){
 	qur_size = qs;
-	port_num = qur_size;
+	port_num = pn;
 	servers = new messaging[qur_size];
 	String ip_addr = "127.0.0.1";
 	for(int i = 0;i < qur_size; i++){
-		servers[i] = new messaging(ip_addr,pn);
+		servers[i] = new messaging(ip_addr,port_num);
 	}
    }
 	// Commands
@@ -88,7 +88,7 @@ public class client{
 		String username_hash = username;//+ password; // TODO: CHANGE THIS TO INCLUDE VINAY's stuff	
 		servers = new messaging[qur_size];
 		for(int i = 0; i< qur_size; i++){
-			servers[i] = new messaging(server_list[i],port_num);
+			servers[i] = new messaging("127.0.0.1",port_num);
 			servers[i].clientLogin(username_hash);
 		}
 	}
