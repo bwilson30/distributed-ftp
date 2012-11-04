@@ -60,7 +60,7 @@ public class Communicate {
 	public void listen()
 	{
 		try{
-		serverSocket = new ServerSocket(1001,50);
+		serverSocket = new ServerSocket(2358,50);
 		GetKeys();    
 		ksos = new FileOutputStream("keystoreAuthenticateFile");
 		KeyStore ks = KeyStore.getInstance("JCEKS");

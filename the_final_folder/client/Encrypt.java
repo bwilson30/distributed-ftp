@@ -27,7 +27,6 @@ import javax.crypto.KeyAgreement;
 import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.DHParameterSpec;
-import Encryption.Skip;
 
 public class Encrypt {
 	private static String keystoreFile = "groupA.jks";
@@ -54,7 +53,7 @@ public class Encrypt {
 	public static String serverIp = "127.0.0.1";
 	public static PublicKey pubKey;
 	public static PrivateKey privKey;
-	public static void GetKeys()
+	public static void GetKeys(String hash)
 	{
 		FileInputStream input = null;
 		try{
@@ -69,7 +68,7 @@ public class Encrypt {
 		   clientCert = (X509Certificate) keyStore.getCertificate(caClientAlias);
 		   pubKey = clientCert.getPublicKey();
 		   keyStore.setCertificateEntry("team", cert);
-           cert = (X509Certificate) keyStore.getCertificate("teamA");
+           cert = (X509Certificate) keyStore.getCertificate(hash);
            
 	       
 	       dcipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
@@ -86,7 +85,7 @@ public class Encrypt {
 	public static X509Certificate Login(String hash)
 	{
 		try{
-			GetKeys();
+			GetKeys(hash);
 		Hashtable table = new Hashtable();
 		KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DH");
 	    keyGen.initialize(Skip.sDHParameterSpec);
