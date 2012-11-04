@@ -1,7 +1,6 @@
-
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
@@ -20,12 +19,13 @@ import javax.crypto.Cipher;
 import javax.crypto.KeyAgreement;
 import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
-
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESedeKeySpec;
 
 public class Start {
 
-	private static char[] serverPassword = "ece6102".toCharArray();
-	private static String keystoreFile = "../keyStoreFileServer.bin";
+	private static char[] serverPassword = "ece6102server".toCharArray();
+	private static String keystoreFile = "../server.jks";
 	private static String serverAlias = "server";
 	private static PublicKey pubKey;
 	private static PrivateKey privKey;
@@ -50,7 +50,7 @@ public class Start {
 	    keyStore.load(input, serverPassword);
 	    input.close();
 	    privKey = (PrivateKey) keyStore.getKey(serverAlias, serverPassword);
-	    java.security.cert.Certificate serverCert = keyStore.getCertificate(serverAlias);
+	    serverCert = (X509Certificate)keyStore.getCertificate(serverAlias);
 	    pubKey = serverCert.getPublicKey();
 	}
 	public void listen()
@@ -71,9 +71,11 @@ public class Start {
 	    {	    	
 	    		synchronized(this)
 	    		{
+	    			
+	    			
 	    			Hashtable request = new Hashtable();
 	    			  request = (Hashtable)in.readObject();
-	    			  
+	    			  cert = (X509Certificate)request.get("cert");
 	    			if(request.containsKey("authenticate"))
 	    			  {
 	    				byte[] clientKey = (byte[])request.get("authenticate");
@@ -85,7 +87,7 @@ public class Start {
 	    		    // Get the generated public and private keys
 	    		       PrivateKey diffiePriv = keypair.getPrivate();
 	    		       PublicKey  diffiePub = keypair.getPublic();
-	    		       caSocket = new ServerSocket(1001,20).accept();
+	    		       caSocket = new Socket("127.0.0.1",1001);
 	    		       caOut = new ObjectOutputStream(caSocket.getOutputStream());
 	    		       caIn = new ObjectInputStream(caSocket.getInputStream());
 
@@ -97,32 +99,35 @@ public class Start {
 	    				table = (Hashtable)caIn.readObject();
 	 				   if(table.containsKey("authenticateResponse"))
 	 				   {
-	 					  byte[] caKey = (byte[])request.get("authenticate");
+	 					  byte[] caKey = (byte[])table.get("authenticateResponse");
 	 					  caSecret = InitiateProcess(caKey,diffiePriv,diffiePub);
 	 					  Hashtable hsend = new Hashtable();
 							hsend.put("queryId", 2);
+							hsend.put("cert",cert);
+
 							ecipher = Cipher.getInstance("DES");
 							ecipher.init(Cipher.ENCRYPT_MODE, caSecret);
 							
 							so = new SealedObject(hsend, ecipher);
+							
 							request = new Hashtable();
 					        request.put("message", so);
 					        request.put("cert", serverCert);
-					        out.flush();
-					        out.writeObject(request);
+					        caOut.writeObject(request);
+					        caOut.flush();
+					        
 					        
 					        hsend = (Hashtable)caIn.readObject();
+					        dcipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
 					        dcipher.init(Cipher.DECRYPT_MODE, caSecret);
 					        so = (SealedObject)hsend.get("response");
 					        
 					        cert = (X509Certificate)so.getObject(dcipher);
 					        caOut.flush();
-					        caOut.close();
-					        caIn.close();
+					        //caOut.close();
+					        //caIn.close();
 					        if(cert == null)
 					        {
-					        	out.reset();
-					        	in.reset();
 					        	out.close();
 					        	in.close();
 					        }
@@ -135,10 +140,11 @@ public class Start {
 	    			      SecretKey key = InitiateProcess(clientKey,diffiePriv,diffiePub);
 	    			      privatekeys.put(new String(cert.getPublicKey().getEncoded(),"UTF-8"), key);
 	    			         table = new Hashtable<String,byte[]>();
-	    			         table.put("authenticateResponse", serverCert);
+	    			         table.put("authenticateResponse", diffiePub.getEncoded());
+	    			         table.put("cert", serverCert);
 	    			         out.writeObject(table);
 	    			         out.flush();
-	    			         
+	    			        
 	    			         continue;
 					        }
 	    			  } 
@@ -203,6 +209,13 @@ public class Start {
 		}}}
 		catch(Exception ex)
 		{
+			try {
+				caSocket.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(ex.toString());
 		}
 		
 	}
@@ -217,7 +230,7 @@ public class Start {
 	    KeyStore keyStore = KeyStore.getInstance("JKS");
 	    keyStore.load(input, serverPassword);
 
-        // Get public key
+	 // Get public key
         //publicKey = caCert.getPublicKey();
         Hashtable<String,byte[]> response = new Hashtable<String,byte[]>();
         
