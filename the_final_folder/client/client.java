@@ -12,7 +12,7 @@ public class client{
    int 		  port_num;
    int 		  qur_size;
    public static void main (String[] args) {
-	client cl = new client();
+	client cl = new client(4,10001);
 	cl.lwd =  new File(".").getAbsolutePath();
 	//lwd = System.getProperty("user.dir");
 	cl.rwd = "/";
@@ -55,6 +55,15 @@ public class client{
 		else System.out.println("Invalid Command");
 	}
    }	
+   client(int qs,int pn){
+	qur_size = qs;
+	port_num = qur_size;
+	servers = new messaging[qur_size];
+	String ip_addr = "127.0.0.1";
+	for(int i = 0;i < qur_size; i++){
+		servers[i] = new messaging(ip_addr,pn);
+	}
+   }
 	// Commands
 	// Transcations
 	void login(String[] argv){
@@ -76,7 +85,7 @@ public class client{
 		System.out.println("login as:  " + username + " with: " + password);
                 //  read the username from the command-line; need to use try/catch with the
                 //  readLine() method
-		String username_hash = username + password; // TODO: CHANGE THIS TO INCLUDE VINAY's stuff	
+		String username_hash = username;//+ password; // TODO: CHANGE THIS TO INCLUDE VINAY's stuff	
 		servers = new messaging[qur_size];
 		for(int i = 0; i< qur_size; i++){
 			servers[i] = new messaging(server_list[i],port_num);
