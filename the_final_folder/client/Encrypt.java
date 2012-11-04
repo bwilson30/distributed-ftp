@@ -1,9 +1,8 @@
-
-
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -28,12 +27,12 @@ import javax.crypto.KeyAgreement;
 import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.DHParameterSpec;
-
+import Encryption.Skip;
 
 public class Encrypt {
-	private static String keystoreFile = "../keyStoreFileClient.bin";
-	private static String clientAlias = "client";
-	private static String caClientAlias = "caClient";
+	private static String keystoreFile = "../groupA.jks";
+	//private static String clientAlias = "groupA";
+	private static String caClientAlias = "groupA";
 	private static String clientPassword = "ece6102";
 
 	private static X509Certificate clientCert;
@@ -53,23 +52,25 @@ public class Encrypt {
 	public static String username;
 	public static String pwd;
 	public static String serverIp = "127.0.0.1";
-	
+	public static PublicKey pubKey;
+	public static PrivateKey privKey;
 	public static void GetKeys()
 	{
+		FileInputStream input = null;
 		try{
 		{
 			
-	       FileInputStream input = new FileInputStream(keystoreFile);
+	       input = new FileInputStream(keystoreFile);
 	       keyStore = KeyStore.getInstance("JKS");
 	       keyStore.load(input, clientPassword.toCharArray());
 	       input.close();
-	       /*
-	       privKey = (PrivateKey) keyStore.getKey(clientAlias, clientPassword.toCharArray());
-		   clientCert = (X509Certificate) keyStore.getCertificate(clientAlias);
+	       
+	       privKey = (PrivateKey) keyStore.getKey(caClientAlias, clientPassword.toCharArray());
+		   clientCert = (X509Certificate) keyStore.getCertificate(caClientAlias);
 		   pubKey = clientCert.getPublicKey();
-	       */
-	       if(keyStore.isCertificateEntry(caClientAlias))
-	           cert = (X509Certificate) keyStore.getCertificate(caClientAlias);
+		   keyStore.setCertificateEntry("team", cert);
+           cert = (X509Certificate) keyStore.getCertificate("teamA");
+           
 	       
 	       dcipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
 		}
@@ -77,8 +78,10 @@ public class Encrypt {
 		}
 		catch(Exception ex)
 		{
+			
 			System.out.println(ex.toString());
 		}
+		
 	}
 	public static X509Certificate Login(String hash)
 	{
@@ -96,7 +99,7 @@ public class Encrypt {
 		diffiePriv = keypair.getPrivate();
 		diffiePub  = keypair.getPublic();
 		if(cert == null)
-		  {
+		  { /*
 			socket = new Socket(serverIp,1001);
 	        out = new ObjectOutputStream(socket.getOutputStream());
 	        in = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
@@ -127,9 +130,9 @@ public class Encrypt {
 	        cert = (X509Certificate)so.getObject(dcipher);
 	        keyStore.setCertificateEntry(caClientAlias, cert);
 	        out.flush();
-	        return cert;
+	        return cert; */
 		  }
-		else
+		//else
 		{
 			return cert;
 		}
@@ -170,31 +173,34 @@ public class Encrypt {
 						    table = (Hashtable)sin.readObject();
 			 				   if(table.containsKey("authenticateResponse"))
 			 				   {
-			 					  byte[] sKey = (byte[])table.get("authenticate");
+			 					  byte[] sKey = (byte[])table.get("authenticateResponse");
 				    			  cert = (X509Certificate)table.get("cert");
 				    			  if(caSecret == null || socket == null || !socket.isConnected())
 				    			  {
 									socket = new Socket(serverIp,1001);
 							        out = new ObjectOutputStream(socket.getOutputStream());
-							        in = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
+							        in = new ObjectInputStream(socket.getInputStream());
+							        
 							        table = new Hashtable();
 							        table.put("authenticate", diffiePub.getEncoded());
 									table.put("cert", clientCert);
 									out.writeObject(table);
 									out.flush();
-									byte []key = response.get("authenticateResponse");
+									Hashtable resp = (Hashtable)in.readObject();
+									byte []key = (byte[]) resp.get("authenticateResponse");
 									caSecret = InitiateProcess(key, diffiePriv, diffiePub);
 				    			  }
 							        
 							        Hashtable hsend = new Hashtable();
 									hsend.put("queryId", 2);
+									hsend.put("cert", cert);
 									ecipher = Cipher.getInstance("DES");
 									ecipher.init(Cipher.ENCRYPT_MODE, caSecret);
 									
 									so = new SealedObject(hsend, ecipher);
 									table = new Hashtable();
 									table.put("message", so);
-									table.put("cert", cert);
+									table.put("cert", clientCert);
 							        out.flush();
 							        out.writeObject(table);
 							        
@@ -372,6 +378,11 @@ public class Encrypt {
 		return null;
 	}
 	
+    }
+    public static void main(String args[])
+    {
+    	Login("team");
+    	initiate("127.0.0.1",10001);
     }
    
 }
