@@ -32,7 +32,7 @@ import sun.security.x509.X509CertImpl;
 public class Communicate {
 
 	private static char[] caPassword = "ece6102".toCharArray();
-	private static String keystoreFile = "../keyStoreFile.bin";
+	private static String keystoreFile = "keyStoreFile.bin";
 	private static String caAlias = "ca";
 	private static PublicKey pubKey;
 	private static PrivateKey privKey;

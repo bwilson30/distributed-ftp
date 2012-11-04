@@ -30,7 +30,7 @@ import javax.crypto.spec.DHParameterSpec;
 import Encryption.Skip;
 
 public class Encrypt {
-	private static String keystoreFile = "../groupA.jks";
+	private static String keystoreFile = "groupA.jks";
 	//private static String clientAlias = "groupA";
 	private static String caClientAlias = "groupA";
 	private static String clientPassword = "ece6102";
@@ -379,10 +379,10 @@ public class Encrypt {
 	}
 	
     }
-    public static void main(String args[])
+    /*public static void main(String args[])
     {
     	Login("team");
     	initiate("127.0.0.1",10001);
-    }
+    }*/
    
 }
