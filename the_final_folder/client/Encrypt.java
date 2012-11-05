@@ -178,7 +178,7 @@ public class Encrypt {
 				    			  cert = (X509Certificate)table.get("cert");
 				    			  if(caSecret == null || socket == null || !socket.isConnected())
 				    			  {
-									socket = new Socket(serverIp,1001);
+									socket = new Socket(serverIp,2358);
 							        out = new ObjectOutputStream(socket.getOutputStream());
 							        in = new ObjectInputStream(socket.getInputStream());
 							        
@@ -281,10 +281,10 @@ public class Encrypt {
 				Hashtable request = new Hashtable();
 				request.put("message", so);
 				request.put("cert", cert);
-		        out.flush();
-		        out.writeObject(table);
-		        
-		        hsend = (Hashtable)in.readObject();
+		        sout.flush();
+		        sout.writeObject(request);
+		        //sout.flush();
+		        hsend = (Hashtable)sin.readObject();
 		        dcipher.init(Cipher.DECRYPT_MODE, serverSecret);
 		        so = (SealedObject)hsend.get("response");	
 		        request = (Hashtable)so.getObject(dcipher);

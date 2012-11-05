@@ -32,7 +32,7 @@ import sun.security.x509.X509CertInfo;
 
 public class CertificateAuthority {
 
-	private static String keystoreFile = "../keyStoreFile.bin";
+	private static String keystoreFile = "keyStoreFile.bin";
 	private static String caAlias = "ca";
 	private static char[] caPassword = "ece6102".toCharArray();
 	private static FileInputStream input = null;
@@ -51,7 +51,7 @@ public class CertificateAuthority {
 	    }
 	}
 	
-	public static X509Certificate ValidateCertificate(X509Certificate trust)
+	/*public static X509Certificate ValidateCertificate(X509Certificate trust)
 	{
 		try{
 			  if(keyStore == null){
@@ -67,8 +67,8 @@ public class CertificateAuthority {
 		{
 			return null;
 		}
-	}
-	public static X509Certificate ValidateCertificate(String alias)
+	}*/
+	public static X509Certificate ValidateCertificate(X509Certificate trust)
 	{
 		try{
 			if(input == null){
@@ -77,13 +77,13 @@ public class CertificateAuthority {
 		       keyStore.load(input, caPassword);
 		       input.close();
 			}
-		    if(keyStore.containsAlias(alias))
-		    {
+		    //if(keyStore.containsAlias(alias))
+		    //{
 		CertificateFactory cf = CertificateFactory.getInstance("X.509");
 	    List<Certificate> mylist = new ArrayList<Certificate>();
 	    //FileInputStream in = new FileInputStream(certpath);
 	    //Certificate c = cf.generateCertificate(in);
-	    Certificate trust = keyStore.getCertificate(alias);
+	    //Certificate trust = keyStore.getCertificate(alias);
 	    mylist.add(trust);
         
 	    CertPath cp = cf.generateCertPath(mylist);
@@ -99,9 +99,7 @@ public class CertificateAuthority {
             X509Certificate x509cert = (X509Certificate)trust;
             return x509cert;
         }
-	        return null;
-		}
-		    else
+	       
 		    	return null;
 		}
 		catch(CertPathValidatorException cpx)
@@ -113,11 +111,11 @@ public class CertificateAuthority {
         	return null;
         }
 	}
-	
+	/*
 	public static synchronized X509Certificate getCertificate(String alias)
 	{
-		return ValidateCertificate(alias);
-	}
+		//return ValidateCertificate(alias);
+	}*/
 	public static synchronized X509CertImpl GenerateClientCertificate(X509Certificate cert)
 	{
         try{

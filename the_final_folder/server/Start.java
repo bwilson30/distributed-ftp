@@ -139,13 +139,13 @@ public class Start {
 	    				    diffiePub = keypair.getPublic();
 	    			      SecretKey key = InitiateProcess(clientKey,diffiePriv,diffiePub);
 	    			      privatekeys.put(new String(cert.getPublicKey().getEncoded(),"UTF-8"), key);
-	    			         table = new Hashtable<String,byte[]>();
+	    			         table = new Hashtable();
 	    			         table.put("authenticateResponse", diffiePub.getEncoded());
 	    			         table.put("cert", serverCert);
 	    			         out.writeObject(table);
 	    			         out.flush();
 	    			        
-	    			         continue;
+	    			       
 					        }
 	    			  } 
 	    		}
@@ -206,7 +206,15 @@ public class Start {
 	  					  }
 	     				  }
 	    			}
-		}}}
+	    			
+		}
+	    		Thread.sleep(1500);
+	  	      socket = serverSocket.accept();
+	        		out = new ObjectOutputStream(socket.getOutputStream());
+	        		in = new ObjectInputStream(socket.getInputStream());	
+	    }
+		
+		}
 		catch(Exception ex)
 		{
 			try {
