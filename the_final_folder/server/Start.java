@@ -64,14 +64,14 @@ public class Start {
 		ObjectOutputStream out = null;
 		ObjectInputStream in = null;
 		socket = serverSocket.accept();
-		out = new ObjectOutputStream(socket.getOutputStream());
-		in = new ObjectInputStream(socket.getInputStream());
+		
 		X509Certificate cert = null;
-		while(true)
+		while(socket != null)
 	    {	    	
 	    		synchronized(this)
 	    		{
-	    			
+	    			out = new ObjectOutputStream(socket.getOutputStream());
+	    			in = new ObjectInputStream(socket.getInputStream());
 	    			
 	    			Hashtable request = new Hashtable();
 	    			  request = (Hashtable)in.readObject();
@@ -87,7 +87,7 @@ public class Start {
 	    		    // Get the generated public and private keys
 	    		       PrivateKey diffiePriv = keypair.getPrivate();
 	    		       PublicKey  diffiePub = keypair.getPublic();
-	    		       caSocket = new Socket("127.0.0.1",2358);
+	    		       caSocket = new Socket("127.0.0.1",1001);
 	    		       caOut = new ObjectOutputStream(caSocket.getOutputStream());
 	    		       caIn = new ObjectInputStream(caSocket.getInputStream());
 
@@ -124,8 +124,8 @@ public class Start {
 					        
 					        cert = (X509Certificate)so.getObject(dcipher);
 					        caOut.flush();
-					        //caOut.close();
-					        //caIn.close();
+					        caOut.close();
+					        caIn.close();
 					        if(cert == null)
 					        {
 					        	out.close();
@@ -139,13 +139,12 @@ public class Start {
 	    				    diffiePub = keypair.getPublic();
 	    			      SecretKey key = InitiateProcess(clientKey,diffiePriv,diffiePub);
 	    			      privatekeys.put(new String(cert.getPublicKey().getEncoded(),"UTF-8"), key);
-	    			         table = new Hashtable();
+	    			         table = new Hashtable<String,byte[]>();
 	    			         table.put("authenticateResponse", diffiePub.getEncoded());
 	    			         table.put("cert", serverCert);
 	    			         out.writeObject(table);
 	    			         out.flush();
-	    			        
-	    			       
+
 					        }
 	    			  } 
 	    		}
@@ -187,11 +186,11 @@ public class Start {
 					        		  if(data != null)
 					        		  {
 					        		     response.put("data", data);
-					        		     response.put("responseCode", 1);
+					        		     hsend.put("responseCode", 1);
 					        		  }
 					        		  else
 					        		  {
-						        		  response.put("responseCode", 99);
+						        		  hsend.put("responseCode", 99);
 					        		  }
 					        	  }
 		    			       hsend.put("cert", serverCert);
@@ -206,15 +205,11 @@ public class Start {
 	  					  }
 	     				  }
 	    			}
-	    			
-		}
-	    		Thread.sleep(1500);
-	  	      socket = serverSocket.accept();
-	        		out = new ObjectOutputStream(socket.getOutputStream());
-	        		in = new ObjectInputStream(socket.getInputStream());	
-	    }
-		
-		}
+	    			socket.close();
+	    			socket = serverSocket.accept();
+            		//out = new ObjectOutputStream(socket.getOutputStream());
+            		//in = new ObjectInputStream(socket.getInputStream());
+		}}}
 		catch(Exception ex)
 		{
 			try {

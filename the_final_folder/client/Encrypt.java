@@ -150,6 +150,7 @@ public class Encrypt {
 				serverSocket = new Socket(ipAddress,port);
 				sout = new ObjectOutputStream(serverSocket.getOutputStream());
 		        sin = new ObjectInputStream(new BufferedInputStream(serverSocket.getInputStream()));
+		        sport = port;
 		if(true)
 		{
 			Hashtable table = new Hashtable();
@@ -168,7 +169,7 @@ public class Encrypt {
 						if(cert != null)
 						{
 						    table.put("authenticate", diffiePub.getEncoded());
-						    table.put("cert", cert);
+						    table.put("cert", clientCert);
 						    sout.writeObject(table);
 						    sout.flush();
 						    table = (Hashtable)sin.readObject();
@@ -213,9 +214,17 @@ public class Encrypt {
 							        {
 							        	serverSecret = InitiateProcess(sKey, diffiePriv, diffiePub);
 							        }
+							        out.close();
+							        in.close();
 			 				   }
 					        
 						}
+						sout.close();
+						sin.close();
+						sout = null;
+						sin = null;
+						serverSocket.close();
+						socket.close();
 					
 				   }
 				
@@ -264,10 +273,14 @@ public class Encrypt {
 	public static Hashtable sendMsg(Hashtable table)
 	{
 		try{
-		if(serverSocket != null && !serverSocket.isClosed())
+			serverSocket = new Socket(serverIp,sport);
+			sout = new ObjectOutputStream(serverSocket.getOutputStream());
+			sin = new ObjectInputStream(serverSocket.getInputStream());
+		//if(serverSocket != null && !serverSocket.isClosed())
 		{   
 			if(cert != null && serverSecret != null)
 			{
+				
 				Hashtable hsend = new Hashtable();
 				//hsend.put("queryId", 3);
 				if(table != null)
@@ -280,11 +293,23 @@ public class Encrypt {
 				so = new SealedObject(hsend, ecipher);
 				Hashtable request = new Hashtable();
 				request.put("message", so);
-				request.put("cert", cert);
-		        sout.flush();
+				request.put("cert", clientCert);
+		        
 		        sout.writeObject(request);
-		        //sout.flush();
+		        sout.flush();
+		        
+		        //sin = new ObjectInputStream(new BufferedInputStream(serverSocket.getInputStream()));
+		        
 		        hsend = (Hashtable)sin.readObject();
+		        int responseCode = (Integer)hsend.get("responseCode");
+		        sout.close();
+				sin.close();
+				sout = null;
+				sin = null;
+				serverSocket.close();
+				
+		        if( responseCode == 99)
+		        	return null;
 		        dcipher.init(Cipher.DECRYPT_MODE, serverSecret);
 		        so = (SealedObject)hsend.get("response");	
 		        request = (Hashtable)so.getObject(dcipher);
@@ -380,10 +405,12 @@ public class Encrypt {
 	}
 	
     }
-    /*public static void main(String args[])
+    public static void main(String args[])
     {
     	Login("team");
     	initiate("127.0.0.1",10001);
-    }*/
+    	Hashtable test = new Hashtable();
+    	sendMsg(test);
+    }
    
 }
