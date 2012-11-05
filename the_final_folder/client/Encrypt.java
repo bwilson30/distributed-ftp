@@ -148,7 +148,7 @@ public class Encrypt {
 	{
 		
 		try{   
-				serverSocket = new Socket(ipAddress,port);
+				serverSocket = new Socket(ipAddress,port); //TODO: Remove +10
 				sout = new ObjectOutputStream(serverSocket.getOutputStream());
 		        sin = new ObjectInputStream(new BufferedInputStream(serverSocket.getInputStream()));
 		        sport = port;
@@ -312,9 +312,9 @@ public class Encrypt {
 		        if( responseCode == 99)
 		        	return null;
 		        dcipher.init(Cipher.DECRYPT_MODE, serverSecret);
-		        so = (SealedObject)hsend.get("response");	
+		        so = (SealedObject)hsend.get("message");	
 		        request = (Hashtable)so.getObject(dcipher);
-		        if(request.contains("data"))
+		        if(request.containsKey("data"))
 		        {
 		        	return (Hashtable)request.get("data");
 		        }

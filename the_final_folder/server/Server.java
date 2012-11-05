@@ -103,8 +103,7 @@ public class Server {
 		String localPath = (String) table.get("put");
 		Hashtable sendTable = new Hashtable();
 		
-		System.out.println("Server: Attempting to put. Remote path is ");
-
+		System.out.println("Server: Attempting to put. Remote path is " + localPath);
 		try {
 			FileOutputStream fosFile = new FileOutputStream(localPath);
 			System.out.println(localPath);

@@ -106,9 +106,11 @@ public class client{
 	}
 	void put(String[] argv){
 		 String local_path;
+		 if(argv.length != 2) return;
                  for(int i = 0; i< qur_size; i++){
-                        servers[i].put(lwd + "/" +  argv[0], rwd + "/" + argv[1],"tempstamp"); //TODO: Add correct timestamp names
-                }
+                	 int opcode = servers[i].put(lwd + "/" +  argv[0], rwd + "/" + argv[1],"tempstamp"); //TODO: Add correct timestamp names
+                	 if(opcode == -1) System.out.println("Failed to communicate with the server!");
+                 }
 	}
 	// Local Commands
 	void help(String[] argv){	
