@@ -53,6 +53,7 @@ public class Encrypt {
 	public static String serverIp = "127.0.0.1";
 	public static PublicKey pubKey;
 	public static PrivateKey privKey;
+	public static int sport;
 	public static void GetKeys(String hash)
 	{
 		FileInputStream input = null;
