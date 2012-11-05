@@ -63,9 +63,12 @@ public class Server {
 	private static Hashtable get(Hashtable table) {
 		String localPath = (String) table.get("get");
 		Hashtable sendTable = new Hashtable();
+		
+		System.out.println("Server: Attempting to get. Remote path is ");
 
 		try {
 			File localFile = new File(localPath);
+			System.out.println(localPath);
 			int fileSize = (int) localFile.length();
 			FileInputStream fisFile = new FileInputStream(localFile);
 			BufferedInputStream bisFile = new BufferedInputStream(fisFile);
@@ -99,9 +102,12 @@ public class Server {
 	private static Hashtable put(Hashtable table) {
 		String localPath = (String) table.get("put");
 		Hashtable sendTable = new Hashtable();
+		
+		System.out.println("Server: Attempting to put. Remote path is ");
 
 		try {
 			FileOutputStream fosFile = new FileOutputStream(localPath);
+			System.out.println(localPath);
 			BufferedOutputStream bosFile = new BufferedOutputStream(fosFile);
 
 			byte[] fileBuffer = (byte[]) table.get("file");
