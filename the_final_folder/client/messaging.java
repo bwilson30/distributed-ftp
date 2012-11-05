@@ -75,7 +75,7 @@ public class messaging {
 		}
 	}
 
-	public int put(String localPath, String remotePath) {
+	public int put(String localPath, String remotePath, String timestamp) {
 		Hashtable sendTable = new Hashtable();
 		sendTable.put("cmd", "put");
 		sendTable.put("put", remotePath);
@@ -92,22 +92,13 @@ public class messaging {
 			bisFile.read(readBuffer, 0, fileSize);
 			sendTable.put("file", readBuffer);
 
-			File timestamp = new File(localPath + ".timestamp");
-			fileSize = (int) timestamp.length();
-			FileInputStream fisTime = new FileInputStream(timestamp);
-			BufferedInputStream bisTime = new BufferedInputStream(fisTime);
-
-			byte[] timeBuffer = new byte[fileSize];
-			bisTime.read(timeBuffer, 0, fileSize);
-			sendTable.put("timestamp", timeBuffer);
+			sendTable.put("timestamp", timestamp);
 
 			Hashtable recvTable = new Hashtable();
 			recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
 
 			fisFile.close();
 			bisFile.close();
-			fisTime.close();
-			bisTime.close();
 
 			return (Integer) recvTable.get("response");
 		} 

@@ -1,8 +1,10 @@
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Hashtable;
@@ -105,21 +107,17 @@ public class Server {
 			byte[] fileBuffer = (byte[]) table.get("file");
 			bosFile.write(fileBuffer, 0, fileBuffer.length);
 
-			FileOutputStream fosTime = new FileOutputStream(localPath
-					+ ".timestamp");
-			BufferedOutputStream bosTime = new BufferedOutputStream(fosTime);
-
-			byte[] readBuffer = (byte[]) table.get("timestamp");
-			bosTime.write(readBuffer, 0, readBuffer.length);
+			String timestamp = (String) table.get("timestamp");
+			FileWriter time = new FileWriter(localPath + ".timestamp");
+			BufferedWriter out = new BufferedWriter(time);
+			out.write(timestamp);
 
 			bosFile.flush();
 			bosFile.close();
-			bosTime.flush();
-			bosTime.close();
 			fosFile.flush();
 			fosFile.close();
-			fosTime.flush();
-			fosTime.close();
+			out.flush();
+			out.close();
 			
 			sendTable.put("response", 1);
 		} catch (IOException e) {
