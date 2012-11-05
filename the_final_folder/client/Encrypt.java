@@ -72,6 +72,7 @@ public class Encrypt {
            
 	       
 	       dcipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
+	       System.out.println(cert);
 		}
 		
 		}
@@ -84,6 +85,7 @@ public class Encrypt {
 	}
 	public static X509Certificate Login(String hash)
 	{
+		System.out.println(hash + ": lgAttempting to encrypt channel");
 		try{
 			GetKeys(hash);
 		Hashtable table = new Hashtable();

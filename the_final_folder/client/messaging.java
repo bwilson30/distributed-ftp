@@ -28,6 +28,7 @@ public class messaging {
 	}
 
 	public Boolean clientLogin(String userhash) {
+		System.out.println(userhash + "Attempting to login");
 		Boolean response = Communicate.Login(userhash);
 		return response;
 	}
@@ -78,7 +79,9 @@ public class messaging {
 		Hashtable sendTable = new Hashtable();
 		sendTable.put("cmd", "put");
 		sendTable.put("put", remotePath);
-
+		// DEBUG CODE ////////////////////
+		System.out.println(localPath + ": Attempting to put this file on : " + remotePath);
+		//////////////////////////////////
 		try {
 			File localFile = new File(localPath);
 			int fileSize = (int) localFile.length();
@@ -107,9 +110,13 @@ public class messaging {
 			bisTime.close();
 
 			return (Integer) recvTable.get("response");
-		} catch (FileNotFoundException fnf) {
+		} 
+		catch (FileNotFoundException fnf) {
+			System.out.println("This didn't work! File not Found");
 			return -1;
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
+			System.out.println("This didn't work! IO Failure");
 			return -1;
 		}
 	}

@@ -89,7 +89,10 @@ public class client{
 		servers = new messaging[qur_size];
 		for(int i = 0; i< qur_size; i++){
 			servers[i] = new messaging("127.0.0.1",port_num);
-			servers[i].clientLogin(username_hash);
+			if(!servers[i].clientLogin(username_hash)){
+				System.out.println("Login failed!");
+				return;
+			}
 		}
 	}
 	void get(String[] argv){
