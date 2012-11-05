@@ -99,7 +99,7 @@ public class client{
 		// File not found is -1
 		// Incorrect command string sent -2
 		String[] local_path = new String[qur_size];// = lwd + ".temp_qurac/";
-		 for(int i = 0; i< qur_size; i++){ local_path[i] = lwd + ".temp_qurac/" + 'a'+i; }
+		 for(int i = 0; i< qur_size; i++){ local_path[i] = lwd + "/.temp_qurac/" + 'a'+i; }
 		 for(int i = 0; i< qur_size; i++){
                         servers[i].get(local_path[i] + "/" + argv[0], rwd + "/" + argv[1]);
 		}
@@ -107,7 +107,7 @@ public class client{
 	void put(String[] argv){
 		 String local_path;
                  for(int i = 0; i< qur_size; i++){
-                        servers[i].put(lwd + "/" +  argv[0], rwd + "/" + argv[1]);
+                        servers[i].put(lwd + "/" +  argv[0], rwd + "/" + argv[1],"tempstamp"); //TODO: Add correct timestamp names
                 }
 	}
 	// Local Commands
