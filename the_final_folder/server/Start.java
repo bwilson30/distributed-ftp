@@ -87,7 +87,7 @@ public class Start {
 	    		    // Get the generated public and private keys
 	    		       PrivateKey diffiePriv = keypair.getPrivate();
 	    		       PublicKey  diffiePub = keypair.getPublic();
-	    		       caSocket = new Socket("127.0.0.1",1001);
+	    		       caSocket = new Socket("127.0.0.1",2358);
 	    		       caOut = new ObjectOutputStream(caSocket.getOutputStream());
 	    		       caIn = new ObjectInputStream(caSocket.getInputStream());
 
@@ -205,7 +205,7 @@ public class Start {
 	  					  }
 	     				  }
 	    			}
-	    			socket.close();
+	    			//socket.close();
 	    			socket = serverSocket.accept();
             		//out = new ObjectOutputStream(socket.getOutputStream());
             		//in = new ObjectInputStream(socket.getInputStream());
