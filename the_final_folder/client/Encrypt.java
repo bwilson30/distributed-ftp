@@ -405,6 +405,7 @@ public class Encrypt {
 	}
 	
     }
+/*
     public static void main(String args[])
     {
     	Login("team");
@@ -412,5 +413,5 @@ public class Encrypt {
     	Hashtable test = new Hashtable();
     	sendMsg(test);
     }
-   
+   */
 }
