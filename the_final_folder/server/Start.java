@@ -181,7 +181,9 @@ public class Start {
 		    			        
 		    			      else if(process.containsKey("data"))
 					        	  {
-					        		  Hashtable data = Server.processRequest((Hashtable)process.get("data"));
+		    			    	      Hashtable message = (Hashtable)process.get("data");
+		    			    	      message.put("group", cert.getSubjectDN());
+					        		  Hashtable data = Server.processRequest(message);
 					        		  
 					        		  if(data != null)
 					        		  {
