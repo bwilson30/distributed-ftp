@@ -5,7 +5,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
 import java.security.AlgorithmParameterGenerator;
 import java.security.AlgorithmParameters;
 import java.security.Certificate;
@@ -54,10 +57,10 @@ public class Encrypt {
 	public static PublicKey pubKey;
 	public static PrivateKey privKey;
 	public static int sport;
-	public static void GetKeys(String hash)
+	public static void GetKeys(String hash) throws Exception
 	{
 		FileInputStream input = null;
-		try{
+		//try{
 		{
 			
 	       input = new FileInputStream(keystoreFile);
@@ -76,12 +79,6 @@ public class Encrypt {
 	       System.out.println(cert);
 		}
 		
-		}
-		catch(Exception ex)
-		{
-			
-			System.out.println(ex.toString());
-		}
 		
 	}
 	public static X509Certificate Login(String hash)
@@ -144,11 +141,21 @@ public class Encrypt {
 			return null;
 		}
 	}
-	public static void initiate(String ipAddress, int port)
+	public static boolean initiate(String ipAddress, int port)
 	{
-		
+		boolean isConnected = false;
 		try{   
-				serverSocket = new Socket(ipAddress,port); //TODO: Remove +10
+			InetAddress inteAddress = InetAddress.getByName(ipAddress);
+		      SocketAddress socketAddress = new InetSocketAddress(inteAddress, port);
+		  
+		      // create a socket
+		      serverSocket = new Socket();
+		  
+		      // this method will block no more than timeout ms.
+		      int timeoutInMs = 10*1000;   // 10 seconds
+		      serverSocket.connect(socketAddress, timeoutInMs);
+		      
+				//serverSocket = new Socket(ipAddress,port); //TODO: Remove +10
 				sout = new ObjectOutputStream(serverSocket.getOutputStream());
 		        sin = new ObjectInputStream(new BufferedInputStream(serverSocket.getInputStream()));
 		        sport = port;
@@ -164,6 +171,7 @@ public class Encrypt {
 		    // Get the generated public and private keys
 			diffiePriv = keypair.getPrivate();
 			diffiePub  = keypair.getPublic();
+			
 			if(serverSocket != null && !serverSocket.isClosed())
 			{   
 				   {
@@ -180,7 +188,17 @@ public class Encrypt {
 				    			  cert = (X509Certificate)table.get("cert");
 				    			  if(caSecret == null || socket == null || !socket.isConnected())
 				    			  {
-									socket = new Socket(serverIp,2358);
+				    				  InetAddress inetAddressCA = InetAddress.getByName(serverIp);
+				    			      SocketAddress socketAddressCA = new InetSocketAddress(inetAddressCA, 2358);
+				    			  
+				    			      // create a socket
+				    			      socket = new Socket();
+				    			  
+				    			      // this method will block no more than timeout ms.
+				    			      //timeoutInMs = 10*1000;   // 10 seconds
+				    			      socket.connect(socketAddressCA, timeoutInMs);
+				    			      
+									//socket = new Socket(serverIp,2358);
 							        out = new ObjectOutputStream(socket.getOutputStream());
 							        in = new ObjectInputStream(socket.getInputStream());
 							        
@@ -214,6 +232,7 @@ public class Encrypt {
 							        if(scert != null)
 							        {
 							        	serverSecret = InitiateProcess(sKey, diffiePriv, diffiePub);
+							        	isConnected = true;
 							        }
 							        out.close();
 							        in.close();
@@ -232,10 +251,11 @@ public class Encrypt {
 			}
 			
 		}
+		return isConnected;
 		}
 		catch(Exception ex)
 		{
-			System.out.println(ex.toString());
+			return isConnected;
 		}
 	}
 	public static boolean logout()
@@ -274,7 +294,17 @@ public class Encrypt {
 	public static Hashtable sendMsg(Hashtable table)
 	{
 		try{
-			serverSocket = new Socket(serverIp,sport);
+			InetAddress inteAddress = InetAddress.getByName(serverIp);
+		      SocketAddress socketAddress = new InetSocketAddress(inteAddress, sport);
+		  
+		      // create a socket
+		      serverSocket = new Socket();
+		  
+		      // this method will block no more than timeout ms.
+		      int timeoutInMs = 10*1000;   // 10 seconds
+		      serverSocket.connect(socketAddress, timeoutInMs);
+		      
+			//serverSocket = new Socket(serverIp,sport);
 			sout = new ObjectOutputStream(serverSocket.getOutputStream());
 			sin = new ObjectInputStream(serverSocket.getInputStream());
 		//if(serverSocket != null && !serverSocket.isClosed())
