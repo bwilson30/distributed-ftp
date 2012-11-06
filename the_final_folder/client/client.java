@@ -15,7 +15,7 @@ public class client{
 	client cl = new client(1,10001);
 	cl.lwd =  new File(".").getAbsolutePath();
 	//lwd = System.getProperty("user.dir");
-	cl.rwd = "/";
+	cl.rwd = ".";
       	while(true){
 		//  prompt the user to enter their name
 		System.out.print("quarac> ");
@@ -105,7 +105,7 @@ public class client{
 		}
 	}
 	void put(String[] argv){
-		 String local_path;
+		 //String local_path;
 		 if(argv.length != 2) return;
                  for(int i = 0; i< qur_size; i++){
                 	 int opcode = servers[i].put(lwd + "/" +  argv[0], rwd + "/" + argv[1],"tempstamp"); //TODO: Add correct timestamp names
