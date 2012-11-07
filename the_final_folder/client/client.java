@@ -15,7 +15,7 @@ public class client{
 	client cl = new client(1,10001);
 	cl.lwd =  new File(".").getAbsolutePath();
 	//lwd = System.getProperty("user.dir");
-	cl.rwd = ".";
+	cl.rwd = "/";
       	while(true){
 		//  prompt the user to enter their name
 		System.out.print("quarac> ");
