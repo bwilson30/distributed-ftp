@@ -64,6 +64,8 @@ public class Server {
 		String localPath = (String) table.get("get");
 		Hashtable sendTable = new Hashtable();
 		
+		localPath = "groupA" + localPath;
+		
 		System.out.println("Server: Attempting to get. Remote path is ");
 
 		try {
@@ -102,6 +104,8 @@ public class Server {
 	private static Hashtable put(Hashtable table) {
 		String localPath = (String) table.get("put");
 		Hashtable sendTable = new Hashtable();
+		
+		localPath = "groupA" + localPath;
 		
 		System.out.println("Server: Attempting to put. Remote path is " + localPath);
 		try {
