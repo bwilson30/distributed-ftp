@@ -101,7 +101,7 @@ public class client{
 		String[] local_path = new String[qur_size];// = lwd + ".temp_qurac/";
 		 for(int i = 0; i< qur_size; i++){ local_path[i] = lwd /*+ "/.temp_qurac/"*/ + "/" + 'a'+i; }
 		 for(int i = 0; i< qur_size; i++){
-                        servers[i].get(local_path[i] + "/" + argv[0], rwd + "/" + argv[1]);
+                        servers[i].get(local_path[i] + "_" + argv[0], rwd + "/" + argv[1]);
 		}
 	}
 	void put(String[] argv){
