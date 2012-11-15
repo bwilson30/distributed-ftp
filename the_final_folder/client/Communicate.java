@@ -1,8 +1,17 @@
 
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.security.MessageDigest;
 import java.security.cert.X509Certificate;
 import java.util.Hashtable;
 
+import javax.crypto.Cipher;
+import javax.crypto.CipherInputStream;
 import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import javax.crypto.spec.PBEParameterSpec;
 
 public class Communicate {
 
@@ -21,6 +30,31 @@ public class Communicate {
 		cert = Encrypt.Login(hash);
 		return checkAuthentication();
 	}
+	
+	public static byte[] Encrypt(byte[] data)
+	{
+		try{
+        return Encrypt.EncryptData(data);
+		}
+		catch(Exception ex)
+		{
+			return null;
+		}
+	}
+
+	public static byte[] Decrypt(byte [] data)
+	{
+		try{
+        return Encrypt.Decrypt(data);
+		}
+		catch(Exception ex)
+		{
+			return null;
+		}
+	}
+	
+	
+	
 	public static boolean Logout()
 	{
 		return Encrypt.logout();

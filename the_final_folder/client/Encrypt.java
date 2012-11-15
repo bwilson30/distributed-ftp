@@ -1,8 +1,11 @@
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
@@ -16,27 +19,43 @@ import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.KeyStore;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
+import java.security.Security;
+import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
 import java.security.spec.InvalidParameterSpecException;
+import java.security.spec.KeySpec;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.RSAPrivateCrtKeySpec;
+import java.security.spec.RSAPrivateKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.Date;
 import java.util.Hashtable;
 
 import javax.crypto.Cipher;
+import javax.crypto.CipherInputStream;
 import javax.crypto.KeyAgreement;
 import javax.crypto.SealedObject;
 import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DHParameterSpec;
+import javax.crypto.spec.PBEKeySpec;
+import javax.crypto.spec.PBEParameterSpec;
+
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+
+import sun.misc.IOUtils;
+
 
 public class Encrypt {
 	private static String keystoreFile = "groupA.jks";
 	//private static String clientAlias = "groupA";
 	private static String caClientAlias = "groupA";
 	private static String clientPassword = "ece6102";
-
 	private static X509Certificate clientCert;
 	private static Socket socket;
 	private static Socket serverSocket;
@@ -55,13 +74,36 @@ public class Encrypt {
 	public static String pwd;
 	public static String serverIp = "127.0.0.1";
 	public static PublicKey pubKey;
+	public static RSAPublicKey pub_Key;
+	public static RSAPrivateKey priv_Key;
 	public static PrivateKey privKey;
 	public static int sport;
+	public static BouncyCastleProvider bcp;
 	public static void GetKeys(String hash) throws Exception
 	{
 		FileInputStream input = null;
 		//try{
 		{
+			InputStream inStream = new FileInputStream("groupA.crt"); 
+			CertificateFactory cf = CertificateFactory.getInstance("X.509");
+			X509Certificate cert =(X509Certificate)cf.generateCertificate(inStream);
+			inStream.close();
+			pub_Key = (RSAPublicKey)cert.getPublicKey();
+			
+			
+			//Cipher cipher = createCipher(Cipher.DECRYPT_MODE);
+			//applyCipher("groupA.p8.encrypt", "groupA.p8.decrypt", cipher);
+			
+			File keyFile = new File("groupA.p8");
+			DataInputStream in = new DataInputStream(new FileInputStream(keyFile));
+			byte [] fileBytes = new byte[(int) keyFile.length()];
+			in.readFully(fileBytes);
+			in.close();
+			//keyFile.delete();
+			
+			KeyFactory kf = KeyFactory.getInstance("RSA");
+			PKCS8EncodedKeySpec ks = new PKCS8EncodedKeySpec(fileBytes);
+			priv_Key = (RSAPrivateKey)kf.generatePrivate(ks);
 			
 	       input = new FileInputStream(keystoreFile);
 	       keyStore = KeyStore.getInstance("JKS");
@@ -69,13 +111,16 @@ public class Encrypt {
 	       input.close();
 	       
 	       privKey = (PrivateKey) keyStore.getKey(caClientAlias, clientPassword.toCharArray());
-		   clientCert = (X509Certificate) keyStore.getCertificate(caClientAlias);
+	       
+	       clientCert = (X509Certificate) keyStore.getCertificate(caClientAlias);
 		   pubKey = clientCert.getPublicKey();
-		   keyStore.setCertificateEntry("team", cert);
+		   //keyStore.setCertificateEntry("team", cert);
            cert = (X509Certificate) keyStore.getCertificate(hash);
            
-	       
+           
 	       dcipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
+	       bcp = new BouncyCastleProvider();
+	       Security.addProvider(bcp);
 	       System.out.println(cert);
 		}
 		
@@ -436,13 +481,86 @@ public class Encrypt {
 	}
 	
     }
-/*
+
+    public static byte[] EncryptData(byte[] data) throws Exception
+	{
+    	RSAPublicKey rsaPublicKey = (RSAPublicKey)pub_Key;
+    	
+    	Cipher encryptCipher = Cipher.getInstance("RSA", bcp);
+    	encryptCipher.init(Cipher.ENCRYPT_MODE, rsaPublicKey);
+    	byte[] messageCrypte = encryptCipher.doFinal(data);
+    	return messageCrypte;
+	}
+
+	public static byte[] Decrypt(byte [] data) throws Exception
+	{
+		RSAPrivateKey rsaPrivateKey = (RSAPrivateKey)priv_Key;
+
+		Cipher decryptCipher = Cipher.getInstance("RSA", bcp);
+		decryptCipher.init(Cipher.DECRYPT_MODE,rsaPrivateKey);
+
+		byte[] messageDecrypte = decryptCipher.doFinal(data);
+		return messageDecrypte;
+	}
+	
+	static Cipher createCipher(int mode) throws Exception {
+	    PBEKeySpec keySpec = new PBEKeySpec("ece6102groupA".toCharArray());
+	    SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("PBEWithMD5AndDES");
+	    SecretKey key = keyFactory.generateSecret(keySpec);
+	    MessageDigest md = MessageDigest.getInstance("MD5");
+	    md.update("input".getBytes());
+	    byte[] digest = md.digest();
+	    byte[] salt = new byte[8];
+	    for (int i = 0; i < 8; ++i)
+	      salt[i] = digest[i];
+	    PBEParameterSpec paramSpec = new PBEParameterSpec(salt, 20);
+	    Cipher cipher = Cipher.getInstance("PBEWithMD5AndDES");
+	    cipher.init(mode, key, paramSpec);
+	    return cipher;
+	  }
+	static void applyCipher(String inFile, String outFile, Cipher cipher) throws Exception {
+	    CipherInputStream in = new CipherInputStream(new FileInputStream(inFile), cipher);
+	    BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(outFile));
+	    int BUFFER_SIZE = 8;
+	    byte[] buffer = new byte[BUFFER_SIZE];
+	    int numRead = 0;
+	    do {
+	      numRead = in.read(buffer);
+	      if (numRead > 0)
+	        out.write(buffer, 0, numRead);
+	    } while (numRead == 8);
+	  }
+
+	 /*
+
     public static void main(String args[])
     {
-    	Login("team");
+    	
+	    
+    	Login("teamA");
     	initiate("127.0.0.1",10001);
     	Hashtable test = new Hashtable();
-    	sendMsg(test);
-    }
-   */
+    	try {
+    		
+    		//Cipher cipher = createCipher(Cipher.ENCRYPT_MODE);
+    	    //applyCipher("groupA.p8", "groupA.p8.encrypt", cipher);
+    	    
+    	    //cipher = createCipher(Cipher.DECRYPT_MODE);
+		    //applyCipher("groupA.p8.encrypt", "groupA.p8.decrypt", cipher);
+    		
+			byte[] result = EncryptData("test".getBytes());
+			byte[] t = Decrypt(result);
+			System.out.println(new String(t));
+			
+			
+
+		    //cipher = createCipher(Cipher.DECRYPT_MODE);
+		    //applyCipher("file_to_decrypt", "decrypted_file", cipher);
+		    
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	//sendMsg(test);
+    } */
 }
