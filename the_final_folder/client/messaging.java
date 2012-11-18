@@ -47,14 +47,14 @@ public class messaging {
 				FileOutputStream fosFile = new FileOutputStream(localPath);
 				BufferedOutputStream bosFile = new BufferedOutputStream(fosFile);
 
-				fileBuffer = (byte[]) recvTable.get("file");
+				fileBuffer = Communicate.Decrypt((byte[]) recvTable.get("file"));
 				bosFile.write(fileBuffer, 0, fileBuffer.length);
 
 				FileOutputStream fosTime = new FileOutputStream(localPath
 						+ ".timestamp");
 				BufferedOutputStream bosTime = new BufferedOutputStream(fosTime);
 
-				readBuffer = (byte[]) recvTable.get("timestamp");
+				readBuffer = Communicate.Decrypt((byte[]) recvTable.get("timestamp"));
 				bosTime.write(readBuffer, 0, readBuffer.length);
 
 				bosFile.flush();
@@ -90,9 +90,11 @@ public class messaging {
 
 			byte[] readBuffer = new byte[fileSize];
 			bisFile.read(readBuffer, 0, fileSize);
-			sendTable.put("file", readBuffer);
+			byte[] encryptedBuffer = Communicate.Encrypt(readBuffer);
+			sendTable.put("file", encryptedBuffer);
 
-			sendTable.put("timestamp", timestamp);
+			byte[] timeBuffer = Communicate.Encrypt(timestamp.getBytes());
+			sendTable.put("timestamp", timeBuffer);
 
 			Hashtable recvTable = new Hashtable();
 			recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);

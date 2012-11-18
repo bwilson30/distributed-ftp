@@ -10,9 +10,12 @@ import java.io.InputStream;
 import java.util.Hashtable;
 
 public class Server {
+	
+	private static String group;
 
 	public static Hashtable processRequest(Hashtable recvTable) {
 		String command = (String) recvTable.get("cmd");
+		group = readGroup((String) recvTable.get("group"));
 		Hashtable sendTable = new Hashtable();
 
 		int cmd = 0;
@@ -64,7 +67,7 @@ public class Server {
 		String localPath = (String) table.get("get");
 		Hashtable sendTable = new Hashtable();
 		
-		localPath = "groupA" + localPath;
+		localPath = group + localPath;
 		
 		System.out.println("Server: Attempting to get. Remote path is ");
 
@@ -105,7 +108,7 @@ public class Server {
 		String localPath = (String) table.get("put");
 		Hashtable sendTable = new Hashtable();
 		
-		localPath = "groupA" + localPath;
+		localPath = group + localPath;
 		
 		System.out.println("Server: Attempting to put. Remote path is " + localPath);
 		try {
@@ -116,7 +119,7 @@ public class Server {
 			byte[] fileBuffer = (byte[]) table.get("file");
 			bosFile.write(fileBuffer, 0, fileBuffer.length);
 
-			String timestamp = (String) table.get("timestamp");
+			String timestamp = new String((byte[]) table.get("timestamp"));
 			FileWriter time = new FileWriter(localPath + ".timestamp");
 			BufferedWriter out = new BufferedWriter(time);
 			out.write(timestamp);
@@ -139,6 +142,8 @@ public class Server {
 	private static Hashtable ls(Hashtable table) {
 		String localPath = (String) table.get("ls");
 		Hashtable sendTable = new Hashtable();
+		
+		localPath = group + localPath;
 		
 		Runtime runtime = Runtime.getRuntime();
 		Process p;
@@ -172,6 +177,8 @@ public class Server {
 		String localPath = (String) table.get("mkdir");
 		Hashtable sendTable = new Hashtable();
 		
+		localPath = group + localPath;
+		
 		Runtime runtime = Runtime.getRuntime();
 		try {
 			Process p = runtime.exec("mkdir " + localPath);
@@ -186,6 +193,8 @@ public class Server {
 	private static Hashtable rmdir(Hashtable table) {
 		String localPath = (String) table.get("rmdir");
 		Hashtable sendTable = new Hashtable();
+		
+		localPath = group + localPath;
 		
 		Runtime runtime = Runtime.getRuntime();
 		try {
@@ -202,6 +211,8 @@ public class Server {
 		String localPath = (String) table.get("rm");
 		Hashtable sendTable = new Hashtable();
 		
+		localPath = group + localPath;
+		
 		Runtime runtime = Runtime.getRuntime();
 		try {
 			Process p = runtime.exec("rm " + localPath);
@@ -211,5 +222,23 @@ public class Server {
 		}
 		
 		return sendTable;
+	}
+	
+	private static String readGroup(String CAgroup) {
+		int commaIndex = CAgroup.indexOf(",");
+		String ret;
+		if (commaIndex > 10) {
+			ret = "group" + CAgroup.substring(9, commaIndex - 1);
+		}
+		else {
+			ret = "group" + CAgroup.charAt(9);
+		}
+		
+		File groupDir = new File(ret);
+		if (!groupDir.isDirectory()) {
+			groupDir.mkdir();
+		}
+		
+		return ret;
 	}
 }

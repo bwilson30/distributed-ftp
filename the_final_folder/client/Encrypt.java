@@ -86,9 +86,9 @@ public class Encrypt {
 		{
 			InputStream inStream = new FileInputStream("groupA.crt"); 
 			CertificateFactory cf = CertificateFactory.getInstance("X.509");
-			X509Certificate cert =(X509Certificate)cf.generateCertificate(inStream);
+			X509Certificate certi =(X509Certificate)cf.generateCertificate(inStream);
 			inStream.close();
-			pub_Key = (RSAPublicKey)cert.getPublicKey();
+			pub_Key = (RSAPublicKey)certi.getPublicKey();
 			
 			
 			//Cipher cipher = createCipher(Cipher.DECRYPT_MODE);
@@ -114,9 +114,9 @@ public class Encrypt {
 	       
 	       clientCert = (X509Certificate) keyStore.getCertificate(caClientAlias);
 		   pubKey = clientCert.getPublicKey();
-		   //keyStore.setCertificateEntry("team", cert);
+		   //keyStore.setCertificateEntry("teamA", clientCert);
            cert = (X509Certificate) keyStore.getCertificate(hash);
-           
+           //cert = clientCert;
            
 	       dcipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
 	       bcp = new BouncyCastleProvider();
@@ -486,7 +486,7 @@ public class Encrypt {
 	{
     	RSAPublicKey rsaPublicKey = (RSAPublicKey)pub_Key;
     	
-    	Cipher encryptCipher = Cipher.getInstance("RSA", bcp);
+    	Cipher encryptCipher = Cipher.getInstance("RSA/ECB/NoPadding", bcp);
     	encryptCipher.init(Cipher.ENCRYPT_MODE, rsaPublicKey);
     	byte[] messageCrypte = encryptCipher.doFinal(data);
     	return messageCrypte;
@@ -496,7 +496,7 @@ public class Encrypt {
 	{
 		RSAPrivateKey rsaPrivateKey = (RSAPrivateKey)priv_Key;
 
-		Cipher decryptCipher = Cipher.getInstance("RSA", bcp);
+		Cipher decryptCipher = Cipher.getInstance("RSA/ECB/NoPadding", bcp);
 		decryptCipher.init(Cipher.DECRYPT_MODE,rsaPrivateKey);
 
 		byte[] messageDecrypte = decryptCipher.doFinal(data);
