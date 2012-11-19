@@ -3,17 +3,18 @@ import  java.io.*;
 import java.util.*;
 public class client{
   
-   String lwd;
-   String rwd;
-   String username;
-   String password;
-   messaging[] servers;
-   String[]       server_list;
-   int 		  port_num;
-   int 		  qur_size;
+   String 		lwd;
+   String 		rwd;
+   String		temp_folder;
+   String		config_file;
+   String 		username;
+   String 		password;
+   messaging[] 	servers;
+   String[]     server_list;
+   int 		  	port_num;
+   int 		  	qur_size;
    public static void main (String[] args) {
 	client cl = new client(1,10001);
-	cl.lwd =  new File(".").getAbsolutePath();
 	//lwd = System.getProperty("user.dir");
 	cl.rwd = "/";
       	while(true){
@@ -56,16 +57,26 @@ public class client{
 	}
    }	
    client(int qs,int pn){
+	// Initialize
 	qur_size = qs;
 	port_num = pn;
-	servers = new messaging[qur_size];
+	lwd =  new File(".").getAbsolutePath();
+	temp_folder = lwd + "/.temp_qurac";
+	config_file = lwd + "/.quarac_config";
 	String ip_addr = "127.0.0.1";
-	for(int i = 0;i < qur_size; i++){
-		servers[i] = new messaging(ip_addr,port_num);
-	}
+	server_list = new String[qur_size];
+	for(int i =0; i <qur_size;i++) server_list[i] = ip_addr;
+	File rconf = new File(config_file);
+	if(rconf.exists()) read_config(rconf);
+	File tf = new File(temp_folder);
+	if(!tf.exists()) tf.mkdirs();
+	servers = new messaging[qur_size];
+   }
+   void read_config(File config){
+	   
    }
 	// Commands
-	// Transcations
+	// Transactions
 	void login(String[] argv){
 		System.out.println("Username: ");
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -88,7 +99,7 @@ public class client{
 		String username_hash = username;//+ password; // TODO: CHANGE THIS TO INCLUDE VINAY's stuff	
 		servers = new messaging[qur_size];
 		for(int i = 0; i< qur_size; i++){
-			servers[i] = new messaging("127.0.0.1",port_num);
+			servers[i] = new messaging(server_list[i],port_num);
 			if(!servers[i].clientLogin(username_hash)){
 				System.out.println("Login failed!");
 				return;
