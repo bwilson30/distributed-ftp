@@ -1,6 +1,10 @@
 
 import  java.io.*;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.Random;
+
 public class client{
   
    String 		lwd;
@@ -18,42 +22,38 @@ public class client{
 	//lwd = System.getProperty("user.dir");
 	cl.rwd = "/";
       	while(true){
-		//  prompt the user to enter their name
-		System.out.print("quarac> ");
-		//  open up standard input
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String ccmd = null;
-		//  read the username from the command-line; need to use try/catch with the
-		//  readLine() method
-		try {
-		 ccmd = br.readLine();
-		} catch (IOException ioe) {
-		 System.out.println("IO error trying to read your name!");
-		 System.exit(1);
-		}
-		// System.out.println(ccmd);
-		StringTokenizer Tok = new StringTokenizer(ccmd);
-		if(!Tok.hasMoreElements()) continue;
-		String cmdstr = (String)Tok.nextElement();
-		int cmdargc =Tok.countTokens();
-		String[] cmdargs = new String[cmdargc];
-		for(int i = 0; i < cmdargc; i++) cmdargs[i] = (String)Tok.nextElement(); 
-		// System.out.println(cmdstr);
-		if(cmdstr.equals("quit") || cmdstr.equals("exit")) return;
-		// Transactions
-		else if(cmdstr.equals("login")) cl.login(cmdargs);
-		else if(cmdstr.equals("get")) cl.get(cmdargs);
-		else if(cmdstr.equals("put")) cl.put(cmdargs);
-		// Local Commands
-		else if(cmdstr.equals("help")) cl.help(cmdargs);
-		else if(cmdstr.equals("lls")) cl.lls(cmdargs);
-		else if(cmdstr.equals("lpwd")) cl.lpwd(cmdargs);
-		else if(cmdstr.equals("lcd")) cl.lcd(cmdargs);
-		// Remote Commands
-		else if(cmdstr.equals("cd")) cl.cd(cmdargs);
-		else if(cmdstr.equals("ls")) cl.ls(cmdargs);
-		else if(cmdstr.equals("pwd")) cl.pwd(cmdargs);
-		else System.out.println("Invalid Command");
+			System.out.print("quarac> ");
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+			String ccmd = null;
+			try {
+				ccmd = br.readLine();
+			} catch (IOException ioe) {
+				 System.out.println("IO error trying to read your name!");
+				 System.exit(1);
+			}
+			StringTokenizer Tok = new StringTokenizer(ccmd);
+			if(!Tok.hasMoreElements()) continue;
+			String cmdstr = (String)Tok.nextElement();
+			int cmdargc =Tok.countTokens();
+			String[] cmdargs = new String[cmdargc];
+			for(int i = 0; i < cmdargc; i++) cmdargs[i] = (String)Tok.nextElement(); 
+			// System.out.println(cmdstr);
+			if(cmdstr.equals("quit") || cmdstr.equals("exit")) return;
+			// Transactions
+			else if(cmdstr.equals("login")) cl.login(cmdargs);
+			else if(cmdstr.equals("get")) cl.get(cmdargs);
+			else if(cmdstr.equals("put")) cl.put(cmdargs);
+			// Local Commands
+			else if(cmdstr.equals("config")) cl.config(cmdargs);
+			else if(cmdstr.equals("help")) cl.help(cmdargs);
+			else if(cmdstr.equals("lls")) cl.lls(cmdargs);
+			else if(cmdstr.equals("lpwd")) cl.lpwd(cmdargs);
+			else if(cmdstr.equals("lcd")) cl.lcd(cmdargs);
+			// Remote Commands
+			else if(cmdstr.equals("cd")) cl.cd(cmdargs);
+			else if(cmdstr.equals("ls")) cl.ls(cmdargs);
+			else if(cmdstr.equals("pwd")) cl.pwd(cmdargs);
+			else System.out.println("Invalid Command");
 	}
    }	
    client(int qs,int pn){
@@ -72,34 +72,48 @@ public class client{
 	if(!tf.exists()) tf.mkdirs();
 	servers = new messaging[qur_size];
    }
-   void read_config(File config){
-	   
-   }
+   void config(String[] argv){
+	   System.out.println("config_file= " + config_file);
+	   System.out.println("temp_folder= " + temp_folder);
+	   System.out.println("qur_size= " + qur_size);
+	   System.out.println("port_num= " + port_num);
+	   System.out.println("[server_list]");
+	   for(int i = 0; i < server_list.length; i++) System.out.println(server_list[i]);
+	   System.out.println("[server_list]");
+   };
 	// Commands
 	// Transactions
 	void login(String[] argv){
+		String dom = "";
+		System.out.println("Domain: ");
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        try {
+         dom = br.readLine();
+         find_domain(dom);
+        } catch (IOException ioe) {
+         System.out.println("IO error trying to read your name!");
+         System.exit(1);
+        }
 		System.out.println("Username: ");
-                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-                try {
-                 username = br.readLine();
-                } catch (IOException ioe) {
-                 System.out.println("IO error trying to read your name!");
-                 System.exit(1);
-                } 
+        try {
+        	username = br.readLine();
+        } catch (IOException ioe) {
+	        System.out.println("IO error trying to read your name!");
+	        System.exit(1);
+        } 
 		System.out.println("Password: ");
-                try {
-                 password = br.readLine();
-                } catch (IOException ioe) {
-                 System.out.println("IO error trying to read your password!");
-                 System.exit(1);
-                } 
-		System.out.println("login as:  " + username + " with: " + password);
+        try {
+        	password = br.readLine();
+        } catch (IOException ioe) {
+             System.out.println("IO error trying to read your password!");
+             System.exit(1);
+        } 
+		System.out.println("login:  " + username + "@" + dom + " with: " + password);
                 //  read the username from the command-line; need to use try/catch with the
                 //  readLine() method
 		String username_hash = username;//+ password; // TODO: CHANGE THIS TO INCLUDE VINAY's stuff	
-		servers = new messaging[qur_size];
+		generate_random_connections();
 		for(int i = 0; i< qur_size; i++){
-			servers[i] = new messaging(server_list[i],port_num);
 			if(!servers[i].clientLogin(username_hash)){
 				System.out.println("Login failed!");
 				return;
@@ -107,13 +121,21 @@ public class client{
 		}
 	}
 	void get(String[] argv){
+		QFILE[] file_list = new QFILE[qur_size];
 		// File not found is -1
 		// Incorrect command string sent -2
-		String[] local_path = new String[qur_size];// = lwd + ".temp_qurac/";
-		 for(int i = 0; i< qur_size; i++){ local_path[i] = lwd /*+ "/.temp_qurac/"*/ + "/" + 'a'+i; }
+		if(argv.length < 2) System.out.println("Not enough arguments");
+		System.out.println("Attempting to retrieve file: " + rwd + "/" + argv[1]);
 		 for(int i = 0; i< qur_size; i++){
-                        servers[i].get(local_path[i] + "_" + argv[0], rwd + "/" + argv[1]);
-		}
+			 // Grab data from each remote server
+			 System.out.println("Grabbing file from a server");
+			 servers[i].get(temp_folder +"/temp_file_" + i, rwd + "/" + argv[1]);
+			 file_list[i] = new QFILE(new File(temp_folder +"/temp_file_" + i),	// Temp file directory
+					 					0,										// timestamp
+					 					i										// ServerID
+					 				);
+		 }
+		 quorum q = new quorum(file_list, qur_size,lwd + "/" + argv[0]);
 	}
 	void put(String[] argv){
 		 //String local_path;
@@ -177,12 +199,31 @@ public class client{
 	}
 	// Remote Commands
 	void cd(String[] argv){
-		
+		boolean succ = true;
+		 for(int i = 0; i< qur_size; i++){
+             int opcode = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/" + argv[1]);
+		 }
 	}
 	void ls(String[] argv){
-
+		 for(int i = 0; i< qur_size; i++){
+             int opcode = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/" + argv[1]);
+		 }
 	}
 	void pwd(String[] argv){System.out.println(rwd);};	
+	void generate_random_connections(){
+		List<Integer> pick = new ArrayList<Integer>();
+		Random randomGenerator = new Random();
+		while(pick.size() < qur_size){
+			Integer rand = randomGenerator.nextInt(server_list.length);
+			while( pick.contains(rand) ) rand = randomGenerator.nextInt(server_list.length);
+			pick.add(rand);
+		}
+		servers = new messaging[qur_size];
+		for(int i = 0; i < qur_size;i++) {
+			System.out.println("Connecting to server#" + pick.get(i) + " : " + server_list[pick.get(i)]);
+			servers[i] = new messaging(server_list[pick.get(i)],port_num);
+		}
+	}
 	private static void list(File dir, boolean recur, boolean size, boolean hidden) {
 	    if ((dir != null) && dir.exists() && dir.isDirectory()) {
 		File[] filelist = dir.listFiles();
@@ -201,4 +242,62 @@ public class client{
 		System.err.println("Error: " + dir + " is not a Directory!");
 	    }
 	}
+	void read_config(File config){
+		   BufferedReader br = null;
+		   Pattern tf = Pattern.compile("temp_folder=(.*)");
+		   try {
+			   String sCurrentLine;
+				br = new BufferedReader(new FileReader(config.getAbsolutePath()));
+				while ((sCurrentLine = br.readLine()) != null) {
+					Matcher m = tf.matcher(sCurrentLine);
+					if(m.find()) temp_folder = lwd + "/" + m.group(1);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (br != null)br.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+			}
+	   }
+	void find_domain(String domain){
+		   // Helper function to search the config file for the domain
+		   System.out.println("Locating Domain: " + domain);
+		   BufferedReader br = null;
+		   List<String> temp_list = new ArrayList<String>();
+		   boolean df = false;
+		   Pattern dom = Pattern.compile("\\[([^\\]]*)\\]");
+		   try {
+			   String sCurrentLine;
+				br = new BufferedReader(new FileReader(config_file));
+				while ((sCurrentLine = br.readLine()) != null) {
+					Matcher m = dom.matcher(sCurrentLine);
+					if(m.find()){ 
+						if(m.group(1).equals(domain)) df = !df; 
+						continue;
+					}
+					if(df) temp_list.add(sCurrentLine);
+				}
+				if(temp_list.size() != 0){
+					server_list = new String[ temp_list.size() ];
+					temp_list.toArray( server_list );
+					// CALCULATE QUORUM SIZE
+					qur_size = temp_list.size() >> 1;
+				}
+				else{
+					System.out.println("Unable to locate targeted domain: "+ domain);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (br != null)br.close();
+				} catch (IOException ex) {
+					ex.printStackTrace();
+				}
+			}
+		   
+	   }
 }
