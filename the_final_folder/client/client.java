@@ -20,7 +20,7 @@ public class client{
    public static void main (String[] args) {
 	client cl = new client(1,10001);
 	//lwd = System.getProperty("user.dir");
-	cl.rwd = "/";
+	cl.rwd = "";
       	while(true){
 			System.out.print("quarac> ");
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

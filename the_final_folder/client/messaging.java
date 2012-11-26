@@ -37,16 +37,17 @@ public class messaging {
 		Hashtable sendTable = new Hashtable();
 		sendTable.put("cmd", "get");
 		sendTable.put("get", remotePath);
-
 		Hashtable recvTable = new Hashtable();
 		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
 		int response = (Integer) recvTable.get("response");
 
 		if (response >= 0) {
 			try {
+				File file = new File(localPath);
+				if(!file.exists())file.createNewFile();
 				FileOutputStream fosFile = new FileOutputStream(localPath);
 				BufferedOutputStream bosFile = new BufferedOutputStream(fosFile);
-
+				System.out.println("Writing to: " + localPath);
 				fileBuffer = Communicate.Decrypt((byte[]) recvTable.get("file"));
 				bosFile.write(fileBuffer, 0, fileBuffer.length);
 
