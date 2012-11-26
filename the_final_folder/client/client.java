@@ -205,6 +205,7 @@ public class client{
 		 }
 	}
 	void ls(String[] argv){
+		generate_random_connections();
 		 for(int i = 0; i< qur_size; i++){
              int opcode = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/" + argv[1]);
 		 }
