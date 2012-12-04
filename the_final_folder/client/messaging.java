@@ -70,6 +70,8 @@ public class messaging {
 				return 0;
 			} catch (IOException e) {
 				return -1;
+			} catch (NullPointerException npe) {
+				return -1;
 			}
 		} else {
 			return (Integer) recvTable.get("response");
