@@ -86,8 +86,38 @@ public class quorum{
 	private long []grTimestamps;
 	private long []timeStamps;
 		 
-
-    public quorum(QFILE [] qf, int num_servers, String dest_path) {
+	//Use this static methods to directly call quorum::quorum_files_static() to quorum files.
+	public static int quorum_files_static(QFILE [] qf, int num_servers, String dest_path){
+		quorum q1 = new quorum();
+		return q1.quorum_files(qf, num_servers, dest_path);
+	}
+	
+	//Use this static methods to directly call quorum::quorum_opcodes_static() to quorum opcodes.
+	public static long quorum_opcodes_static(long [] opcodes, int num_opcodes){
+		int opcode_similarity [] = new int[num_opcodes];
+		int i, j, max_sim_opcodes=0;
+		for(i=0; i<num_opcodes; i++) opcode_similarity[i] = 0;
+		for(i=0; i<num_opcodes; i++)
+			for(j=0; j<num_opcodes; j++)
+			{
+				if( i!=j && opcodes[i] == opcodes[j]) opcode_similarity[i]++;
+			}
+		
+		for(i=0; i<num_opcodes; i++){
+			if(opcode_similarity[i] > max_sim_opcodes) max_sim_opcodes = opcode_similarity[i];
+		}
+		
+		if(max_sim_opcodes < num_opcodes/2) return -1;
+		for(i=0; i<num_opcodes; i++){
+			if(opcode_similarity[i] == max_sim_opcodes) return opcodes[i];
+		}
+			
+		return -1;
+	}
+	
+    public quorum(){}
+    
+	public quorum(QFILE [] qf, int num_servers, String dest_path) {
     	quorum_files(qf, num_servers, dest_path);
 	}
 	
@@ -225,7 +255,17 @@ public class quorum{
     	files[2]= new QFILE(f3, 1, 3);
     	files[3] = new QFILE(f4, 1, 4);
     	files[4] = new QFILE(f5, 1, 5);
-    	quorum q1 = new quorum(files, 5, "C:/Users/Vinay Bharadwaj/workspace/quorum/src/output.txt");
+    	
+    	//Example quoruming files using non-static function.
+    	//quorum q1 = new quorum(files, 5, "C:/Users/Vinay Bharadwaj/workspace/quorum/src/output.txt");
+    	
+    	//Example quoruming files using static function.
+    	quorum.quorum_files_static(files,5, "C:/Users/Vinay Bharadwaj/workspace/quorum/src/output.txt");
+    	
+    	//Eaxmple quoruming opcodes
+    	long [] opcodes = {5,4,3,5,5,5,5};
+    	long result = quorum.quorum_opcodes_static(opcodes, 7);
+    	System.out.println("Opcode quorum result is:"+ result);
     	
     }
 }
