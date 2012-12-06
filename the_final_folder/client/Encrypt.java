@@ -129,6 +129,11 @@ public class Encrypt {
 		
 		
 	}
+	public static X509Certificate Login(String hash, String caAddress)
+	{
+		serverIp = caAddress;
+		return Login(hash);
+	}
 	public static X509Certificate Login(String hash)
 	{
 		System.out.println(hash + ": lgAttempting to encrypt channel");

@@ -27,8 +27,13 @@ public class Communicate {
 	}
 	public static boolean Login(String hash)
 	{
-		cert = Encrypt.Login(hash);
-		return checkAuthentication();
+		if(hash != null && !hash.trim().equals(""))
+		{
+		    cert = Encrypt.Login(hash);
+		    return checkAuthentication();
+		}
+		else
+			return false;
 	}
 	
 	public static byte[] Encrypt(byte[] data)
@@ -53,6 +58,16 @@ public class Communicate {
 		}
 	}
 	
+	public static boolean Login(String hash, String caAddress)
+	{
+		if(caAddress != null && !caAddress.trim().equals(""))
+		{
+		   cert = Encrypt.Login(hash, caAddress);
+		   return checkAuthentication();
+		}
+		else
+			return false;
+	}
 	
 	
 	public static boolean Logout()

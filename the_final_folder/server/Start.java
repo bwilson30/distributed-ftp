@@ -27,6 +27,7 @@ public class Start {
 	private static char[] serverPassword = "ece6102server".toCharArray();
 	private static String keystoreFile = "server.jks";
 	private static String serverAlias = "server";
+	private static String caIpAddress = null;
 	private static PublicKey pubKey;
 	private static PrivateKey privKey;
 	private static Hashtable<String, SecretKey> privatekeys = new Hashtable<String,SecretKey>();
@@ -87,7 +88,7 @@ public class Start {
 	    		    // Get the generated public and private keys
 	    		       PrivateKey diffiePriv = keypair.getPrivate();
 	    		       PublicKey  diffiePub = keypair.getPublic();
-	    		       caSocket = new Socket("127.0.0.1",2358);
+	    		       caSocket = new Socket(caIpAddress,2358);
 	    		       caOut = new ObjectOutputStream(caSocket.getOutputStream());
 	    		       caIn = new ObjectInputStream(caSocket.getInputStream());
 
@@ -281,6 +282,13 @@ public class Start {
 	
 	public static void main(String args[])
 	{
-		new Start().listen();
+		String ca_ip = args[0];
+		if(ca_ip != null && !ca_ip.trim().equals(""))
+		{
+			caIpAddress = ca_ip;
+		    new Start().listen();
+		}
+		else
+			System.out.println("CA address not specified \n");
 	}
 }
