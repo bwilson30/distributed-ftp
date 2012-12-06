@@ -107,7 +107,7 @@ public class quorum{
 			if(opcode_similarity[i] > max_sim_opcodes) max_sim_opcodes = opcode_similarity[i];
 		}
 		
-		if(max_sim_opcodes < num_opcodes/2) return -1;
+		if(max_sim_opcodes +1 < (int)Math.floor(num_opcodes/2) + 1){System.out.println(max_sim_opcodes); return -1;}
 		for(i=0; i<num_opcodes; i++){
 			if(opcode_similarity[i] == max_sim_opcodes) return opcodes[i];
 		}
@@ -263,8 +263,8 @@ public class quorum{
     	quorum.quorum_files_static(files,5, "C:/Users/Vinay Bharadwaj/workspace/quorum/src/output.txt");
     	
     	//Eaxmple quoruming opcodes
-    	long [] opcodes = {5,4,3,5,5,5,5};
-    	long result = quorum.quorum_opcodes_static(opcodes, 7);
+    	long [] opcodes = {4,3,4,5,4,4};
+    	long result = quorum.quorum_opcodes_static(opcodes, 6);
     	System.out.println("Opcode quorum result is:"+ result);
     	
     }
