@@ -83,7 +83,7 @@ public class messaging {
 		sendTable.put("cmd", "put");
 		sendTable.put("put", remotePath);
 		// DEBUG CODE ////////////////////
-		System.out.println(localPath + ": Attempting to put this file on : " + remotePath);
+		System.out.println(localPath + ": Attempting to put this file on : "+m_ipAddress+"\n\t at location: "+ remotePath);
 		//////////////////////////////////
 		try {
 			File localFile = new File(localPath);
