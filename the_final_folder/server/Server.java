@@ -151,7 +151,7 @@ public class Server {
 			Runtime runtime = Runtime.getRuntime();
 			Process p;
 			try {
-				p = runtime.exec("ls -lF " + localPath);
+				p = runtime.exec("ls -F " + localPath);
 				InputStream in = p.getInputStream();
 				BufferedInputStream bis = new BufferedInputStream(in);
 
