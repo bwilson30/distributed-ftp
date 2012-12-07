@@ -18,6 +18,7 @@ public class Communicate {
 	static X509Certificate cert = null;
 	static String fserverIp = null;
 	static boolean isConnected = false;
+	static Encrypt encrypt;
 	public static boolean checkAuthentication()
 	{
 		if(cert != null)
@@ -30,7 +31,8 @@ public class Communicate {
 	{
 		if(hash != null && !hash.trim().equals(""))
 		{
-		    cert = Encrypt.Login(hash);
+			encrypt = new Encrypt();
+		    cert = new Encrypt().Login(hash);
 		    return checkAuthentication();
 		}
 		else
@@ -40,7 +42,7 @@ public class Communicate {
 	public static byte[] Encrypt(byte[] data)
 	{
 		try{
-        return Encrypt.EncryptData(data);
+        return encrypt.EncryptData(data);
 		}
 		catch(Exception ex)
 		{
@@ -51,7 +53,7 @@ public class Communicate {
 	public static byte[] Decrypt(byte [] data)
 	{
 		try{
-        return Encrypt.Decrypt(data);
+        return encrypt.Decrypt(data);
 		}
 		catch(Exception ex)
 		{
@@ -63,7 +65,9 @@ public class Communicate {
 	{
 		if(caAddress != null && !caAddress.trim().equals(""))
 		{
-		   cert = Encrypt.Login(hash, caAddress);
+			encrypt = new Encrypt();
+		   cert = encrypt.Login(hash, caAddress);
+		   
 		   return checkAuthentication();
 		}
 		else
@@ -73,14 +77,25 @@ public class Communicate {
 	
 	public static boolean Logout()
 	{
-		return Encrypt.logout();
+		return encrypt.logout();
 	}
 	public static Hashtable sendMsg(Hashtable table, String ipAddress, int port)
 	{
-		if(!isConnected || !fserverIp.equals(ipAddress)){
-			isConnected = Encrypt.initiate(ipAddress, port);
+		if(!isConnected)
+		{
+			isConnected = encrypt.initiate(ipAddress, port);
 			fserverIp = ipAddress;
 		}
-		return Encrypt.sendMsg(table);
+		else
+		if(fserverIp != null && !fserverIp.equals(ipAddress)){
+			{
+			    encrypt = new Encrypt();
+			    cert = new Encrypt().Login(null);
+			    isConnected = encrypt.initiate(ipAddress, port);
+				fserverIp = ipAddress;
+			}
+			
+		}
+		return encrypt.sendMsg(table);
 	}
 }

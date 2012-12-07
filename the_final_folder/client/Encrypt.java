@@ -55,34 +55,34 @@ import sun.misc.IOUtils;
 
 
 public class Encrypt {
-	private static String keystoreFile = "groupA.jks";
+	static private  String keystoreFile = "groupA.jks";
 	//private static String clientAlias = "groupA";
-	private static String caClientAlias = "groupA";
-	private static String clientPassword = "ece6102";
-	private static X509Certificate clientCert;
-	private static Socket socket;
-	private static Socket serverSocket;
-	private static ObjectOutputStream out;
-	private static ObjectInputStream in;
-	private static ObjectOutputStream sout = null;
-	private static ObjectInputStream sin = null;
-	private static Hashtable<String, byte[]> response;
-	private static SecretKey caSecret, serverSecret;
-	private static X509Certificate cert;
-	private static SealedObject so;
-	private static Cipher ecipher = null;
-	private static Cipher dcipher = null;
-	private static KeyStore keyStore;
-	public static String username;
-	public static String pwd;
-	public static String serverIp = "127.0.0.1";
-	public static String fserverIp = null;
-	public static PublicKey pubKey;
-	public static RSAPublicKey pub_Key;
-	public static RSAPrivateKey priv_Key;
-	public static PrivateKey privKey;
-	public static int sport;
-	public static BouncyCastleProvider bcp;
+	static private  String caClientAlias = "groupA";
+	static private  String clientPassword = "ece6102";
+	static private  X509Certificate clientCert;
+	private  Socket socket;
+	private  Socket serverSocket;
+	private  ObjectOutputStream out;
+	private  ObjectInputStream in;
+	private  ObjectOutputStream sout = null;
+	private  ObjectInputStream sin = null;
+	private  Hashtable<String, byte[]> response;
+	private  SecretKey caSecret, serverSecret;
+	static private  X509Certificate cert;
+	private  SealedObject so;
+	static private Cipher ecipher = null;
+	static private  Cipher dcipher = null;
+	static private  KeyStore keyStore;
+	public  String username;
+	public  String pwd;
+	public  String serverIp = "127.0.0.1";
+	static public  String fserverIp = null;
+	static public  PublicKey pubKey;
+	static public RSAPublicKey pub_Key;
+	static public RSAPrivateKey priv_Key;
+	static public  PrivateKey privKey;
+	static public  int sport;
+	static public  BouncyCastleProvider bcp;
 	public static void GetKeys(String hash) throws Exception
 	{
 		FileInputStream input = null;
@@ -130,16 +130,17 @@ public class Encrypt {
 		
 		
 	}
-	public static X509Certificate Login(String hash, String caAddress)
+	public  X509Certificate Login(String hash, String caAddress)
 	{
 		serverIp = caAddress;
 		return Login(hash);
 	}
-	public static X509Certificate Login(String hash)
+	public  X509Certificate Login(String hash)
 	{
 		System.out.println(hash + ": lgAttempting to encrypt channel");
 		try{
-			GetKeys(hash);
+			if(cert == null)
+			    GetKeys(hash);
 		Hashtable table = new Hashtable();
 		KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DH");
 	    keyGen.initialize(Skip.sDHParameterSpec);
@@ -195,7 +196,7 @@ public class Encrypt {
 			return null;
 		}
 	}
-	public static boolean initiate(String ipAddress, int port)
+	public boolean initiate(String ipAddress, int port)
 	{
 		boolean isConnected = false;
 		try{   
@@ -313,7 +314,7 @@ public class Encrypt {
 			return isConnected;
 		}
 	}
-	public static boolean logout()
+	public boolean logout()
 	{
 		try{
 		if(keyStore.isCertificateEntry(caClientAlias))
@@ -346,7 +347,7 @@ public class Encrypt {
 			return false;
 		}
 	}
-	public static Hashtable sendMsg(Hashtable table)
+	public  Hashtable sendMsg(Hashtable table)
 	{
 		try{
 			InetAddress inteAddress = InetAddress.getByName(fserverIp);
@@ -431,7 +432,7 @@ public class Encrypt {
 	    return null;
 	}
 	
-    public static SecretKey InitiateProcess(byte[] key, PrivateKey diffiePriv, PublicKey diffiePub)
+    public SecretKey InitiateProcess(byte[] key, PrivateKey diffiePriv, PublicKey diffiePub)
     {
     	
 	try {
@@ -492,7 +493,7 @@ public class Encrypt {
 	
     }
 
-    public static byte[] EncryptData(byte[] data) throws Exception
+    public  byte[] EncryptData(byte[] data) throws Exception
 	{
     	RSAPublicKey rsaPublicKey = (RSAPublicKey)pub_Key;
     	
@@ -504,7 +505,7 @@ public class Encrypt {
     	return messageCrypte;
 	}
 
-	public static byte[] Decrypt(byte [] data) throws Exception
+	public byte[] Decrypt(byte [] data) throws Exception
 	{
 		RSAPrivateKey rsaPrivateKey = (RSAPrivateKey)priv_Key;
 

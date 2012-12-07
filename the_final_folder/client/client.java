@@ -316,7 +316,8 @@ public class client{
 					server_list = new String[ temp_list.size() ];
 					temp_list.toArray( server_list );
 					// CALCULATE QUORUM SIZE
-					qur_size = temp_list.size() >> 1;
+					if(domain.equals("full_test")) qur_size = temp_list.size();
+					else						   qur_size = temp_list.size() >> 1;
 				}
 				else{
 					System.out.println("Unable to locate targeted domain: "+ domain);
