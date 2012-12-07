@@ -69,9 +69,11 @@ public class messaging {
 
 				return 0;
 			} catch (IOException e) {
+				System.out.println("IO exception");
 				return -1;
 			} catch (NullPointerException npe) {
-				return -1;
+				System.out.println("Null returned by server. Invalid file or server crash");
+				return -2;
 			}
 		} else {
 			return (Integer) recvTable.get("response");
@@ -116,8 +118,8 @@ public class messaging {
 			return -1;
 		}
 		catch (NullPointerException npe) {
-			System.out.println("Server returned null");
-			return -1;
+			System.out.println("Server returned null. Suspect server crash");
+			return -2;
 		}
 	}
 
@@ -129,25 +131,33 @@ public class messaging {
 		Hashtable recvTable = new Hashtable();
 		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
 
-		if ((Integer) recvTable.get("response") >= 0) {
-			try {
-				FileOutputStream fos = new FileOutputStream(localPath);
-				BufferedOutputStream bos = new BufferedOutputStream(fos);
+		try {
+			int resp = (Integer) recvTable.get("response");
+			
+			if (resp >= 0) {
+				try {
+					FileOutputStream fos = new FileOutputStream(localPath);
+					BufferedOutputStream bos = new BufferedOutputStream(fos);
 
-				fileBuffer = (byte[]) recvTable.get("file");
-				bos.write(fileBuffer, 0, (Integer) recvTable.get("length"));
-				bos.flush();
-				bos.close();
-				fos.flush();
-				fos.close();
+					fileBuffer = (byte[]) recvTable.get("file");
+					bos.write(fileBuffer, 0, (Integer) recvTable.get("length"));
+					bos.flush();
+					bos.close();
+					fos.flush();
+					fos.close();
 
-				return 0;
-			} catch (IOException e) {
-				return -1;
+					return 0;
+				} catch (IOException e) {
+					return -1;
+				}
+			} else {
+				return (Integer) recvTable.get("response");
 			}
-		} else {
-			return (Integer) recvTable.get("response");
+		} catch (NullPointerException npe) {
+			System.out.println("Server returned null. Suspect server crash");
+			return -2;
 		}
+		
 	}
 
 	public int mkdir(String remotePath) {
@@ -158,7 +168,12 @@ public class messaging {
 		Hashtable recvTable = new Hashtable();
 		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
 
-		return (Integer) recvTable.get("response");
+		try {
+			return (Integer) recvTable.get("response");
+		} catch (NullPointerException npe) {
+			System.out.println("Server returned null. Suspect server crash");
+			return -2;
+		}
 	}
 
 	public int rmdir(String remotePath) {
@@ -169,7 +184,12 @@ public class messaging {
 		Hashtable recvTable = new Hashtable();
 		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
 
-		return (Integer) recvTable.get("response");
+		try {
+			return (Integer) recvTable.get("response");
+		} catch (NullPointerException npe) {
+			System.out.println("Server returned null. Suspect server crash");
+			return -2;
+		}
 	}
 
 	public int rm(String remotePath) {
@@ -180,6 +200,11 @@ public class messaging {
 		Hashtable recvTable = new Hashtable();
 		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
 
-		return (Integer) recvTable.get("response");
+		try {
+			return (Integer) recvTable.get("response");
+		} catch (NullPointerException npe) {
+			System.out.println("Server returned null. Suspect server crash");
+			return -2;
+		}
 	}
 }
