@@ -16,6 +16,7 @@ import javax.crypto.spec.PBEParameterSpec;
 public class Communicate {
 
 	static X509Certificate cert = null;
+	static String fserverIp = null;
 	static boolean isConnected = false;
 	public static boolean checkAuthentication()
 	{
@@ -76,8 +77,10 @@ public class Communicate {
 	}
 	public static Hashtable sendMsg(Hashtable table, String ipAddress, int port)
 	{
-		if(!isConnected)
+		if(!isConnected || !fserverIp.equals(ipAddress)){
 			isConnected = Encrypt.initiate(ipAddress, port);
+			fserverIp = ipAddress;
+		}
 		return Encrypt.sendMsg(table);
 	}
 }
