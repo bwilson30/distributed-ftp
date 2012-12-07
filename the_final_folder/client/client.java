@@ -15,6 +15,7 @@ public class client{
    String 		password;
    messaging[] 	servers;
    String[]     server_list;
+   String		ca_server_ip = "127.0.0.1";
    int 		  	port_num;
    int 		  	qur_size;
    public static void main (String[] args) {
@@ -114,7 +115,7 @@ public class client{
 		String username_hash = username;//+ password; // TODO: CHANGE THIS TO INCLUDE VINAY's stuff	
 		generate_random_connections();
 		for(int i = 0; i< qur_size; i++){
-			if(!servers[i].clientLogin(username_hash)){
+			if(!servers[i].clientLogin(username_hash,ca_server_ip)){
 				System.out.println("Login failed!");
 				return;
 			}
@@ -135,7 +136,7 @@ public class client{
 					 					i										// ServerID
 					 				);
 		 }
-		 quorum q = new quorum(file_list, qur_size,lwd + "/" + argv[0]);
+		 quorum.quorum_files_static(file_list, qur_size,lwd + "/" + argv[0]);
 	}
 	void put(String[] argv){
 		 //String local_path;
@@ -206,9 +207,39 @@ public class client{
 	}
 	void ls(String[] argv){
 		generate_random_connections();
+		int opcode[] = new int[qur_size];
+		QFILE[] file_list = new QFILE[qur_size];
 		 for(int i = 0; i< qur_size; i++){
-             int opcode = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/" + argv[0]);
+			 if(argv.length  == 0)
+				 opcode[i] = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/");
+			 else if(argv.length  == 1)
+				 opcode[i] = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/" + argv[0]);
+			 else{ System.out.println("Incorrect number of inputs!");
+			 		return;
+			 }
+			 file_list[i] = new QFILE(new File(temp_folder +"/" + i +"_ls.txt"),	// Temp file directory
+	 					0,															// timestamp
+	 					i															// ServerID
+	 				);
 		 }
+		 if(quorum.quorum_files_static(file_list, qur_size, temp_folder + "/ls.txt") == -1){
+			 System.out.println("Unable to sucessfully generate ls faultly servers!"); return;
+		 }
+		 File ls_file = new File(temp_folder + "/ls.txt");
+		 System.out.println("Printing remote folder:");
+		 FileInputStream inst = null;
+			String ccmd = null;
+			try {
+				inst = new FileInputStream(ls_file); 
+				BufferedReader bis = new BufferedReader(new InputStreamReader(inst));
+				String str = "";
+				while((str = bis.readLine()) != null) System.out.println(str);
+			} catch (IOException ioe) {
+				 System.out.println("IO error trying to read ls back!");
+				 System.exit(1);
+			}
+			
+		 
 	}
 	void pwd(String[] argv){System.out.println(rwd);};	
 	void generate_random_connections(){

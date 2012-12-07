@@ -76,6 +76,7 @@ public class Encrypt {
 	public static String username;
 	public static String pwd;
 	public static String serverIp = "127.0.0.1";
+	public static String fserverIp = null;
 	public static PublicKey pubKey;
 	public static RSAPublicKey pub_Key;
 	public static RSAPrivateKey priv_Key;
@@ -199,6 +200,7 @@ public class Encrypt {
 		boolean isConnected = false;
 		try{   
 			InetAddress inteAddress = InetAddress.getByName(ipAddress);
+			fserverIp = ipAddress;
 		      SocketAddress socketAddress = new InetSocketAddress(inteAddress, port);
 		  
 		      // create a socket
@@ -347,7 +349,7 @@ public class Encrypt {
 	public static Hashtable sendMsg(Hashtable table)
 	{
 		try{
-			InetAddress inteAddress = InetAddress.getByName(serverIp);
+			InetAddress inteAddress = InetAddress.getByName(fserverIp);
 		      SocketAddress socketAddress = new InetSocketAddress(inteAddress, sport);
 		  
 		      // create a socket
