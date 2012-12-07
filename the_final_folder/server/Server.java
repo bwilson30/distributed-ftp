@@ -266,12 +266,12 @@ public class Server {
 		int commaIndex = CAgroup.indexOf(",");
 		String ret;
 		if (commaIndex > 10) {
-			ret = "data/group" + CAgroup.substring(9, commaIndex - 1);
+			ret = "group" + CAgroup.substring(9, commaIndex - 1);
 		} else {
-			ret = "data/group" + CAgroup.charAt(9);
+			ret = "group" + CAgroup.charAt(9);
 		}
 
-		File groupDir = new File(ret);
+		File groupDir = new File("data/" + ret);
 		if (!groupDir.isDirectory()) {
 			groupDir.mkdir();
 		}
