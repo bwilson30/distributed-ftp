@@ -39,23 +39,28 @@ public class messaging {
 		sendTable.put("get", remotePath);
 		Hashtable recvTable = new Hashtable();
 		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
-		int response = (Integer) recvTable.get("response");
 
-		if (response >= 0) {
-			try {
+		try {
+			int response = (Integer) recvTable.get("response");
+
+			if (response >= 0) {
+
 				File file = new File(localPath);
-				if(!file.exists())file.createNewFile();
+				if (!file.exists())
+					file.createNewFile();
 				FileOutputStream fosFile = new FileOutputStream(localPath);
 				BufferedOutputStream bosFile = new BufferedOutputStream(fosFile);
 				System.out.println("Writing to: " + localPath);
-				fileBuffer = Communicate.Decrypt((byte[]) recvTable.get("file"));
+				fileBuffer = Communicate
+						.Decrypt((byte[]) recvTable.get("file"));
 				bosFile.write(fileBuffer, 0, fileBuffer.length);
 
 				FileOutputStream fosTime = new FileOutputStream(localPath
 						+ ".timestamp");
 				BufferedOutputStream bosTime = new BufferedOutputStream(fosTime);
 
-				readBuffer = Communicate.Decrypt((byte[]) recvTable.get("timestamp"));
+				readBuffer = Communicate.Decrypt((byte[]) recvTable
+						.get("timestamp"));
 				bosTime.write(readBuffer, 0, readBuffer.length);
 
 				bosFile.flush();
@@ -68,15 +73,17 @@ public class messaging {
 				fosTime.close();
 
 				return 0;
-			} catch (IOException e) {
-				System.out.println("IO exception");
-				return -1;
-			} catch (NullPointerException npe) {
-				System.out.println("Null returned by server. Invalid file or server crash");
-				return -2;
+
+			} else {
+				return (Integer) recvTable.get("response");
 			}
-		} else {
-			return (Integer) recvTable.get("response");
+		} catch (IOException e) {
+			System.out.println("IO exception");
+			return -1;
+		} catch (NullPointerException npe) {
+			System.out
+					.println("Null returned by server. Invalid file or server crash");
+			return -2;
 		}
 	}
 
@@ -85,8 +92,9 @@ public class messaging {
 		sendTable.put("cmd", "put");
 		sendTable.put("put", remotePath);
 		// DEBUG CODE ////////////////////
-		System.out.println(localPath + ": Attempting to put this file on : "+m_ipAddress+"\n\t at location: "+ remotePath);
-		//////////////////////////////////
+		System.out.println(localPath + ": Attempting to put this file on : "
+				+ m_ipAddress + "\n\t at location: " + remotePath);
+		// ////////////////////////////////
 		try {
 			File localFile = new File(localPath);
 			int fileSize = (int) localFile.length();
@@ -108,16 +116,13 @@ public class messaging {
 			bisFile.close();
 
 			return (Integer) recvTable.get("response");
-		} 
-		catch (FileNotFoundException fnf) {
+		} catch (FileNotFoundException fnf) {
 			System.out.println("This didn't work! File not Found");
 			return -1;
-		} 
-		catch (IOException e) {
+		} catch (IOException e) {
 			System.out.println("This didn't work! IO Failure");
 			return -1;
-		}
-		catch (NullPointerException npe) {
+		} catch (NullPointerException npe) {
 			System.out.println("Server returned null. Suspect server crash");
 			return -2;
 		}
@@ -133,7 +138,7 @@ public class messaging {
 
 		try {
 			int resp = (Integer) recvTable.get("response");
-			
+
 			if (resp >= 0) {
 				try {
 					FileOutputStream fos = new FileOutputStream(localPath);
@@ -157,7 +162,7 @@ public class messaging {
 			System.out.println("Server returned null. Suspect server crash");
 			return -2;
 		}
-		
+
 	}
 
 	public int mkdir(String remotePath) {
