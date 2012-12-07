@@ -67,7 +67,7 @@ public class Server {
 		System.out.println("Server: Attempting to get. Remote path is ");
 
 		try {
-			File localFile = new File(localPath);
+			File localFile = new File("data/" + localPath);
 			System.out.println(localPath);
 			int fileSize = (int) localFile.length();
 			FileInputStream fisFile = new FileInputStream(localFile);
@@ -77,7 +77,7 @@ public class Server {
 			bisFile.read(readBuffer, 0, fileSize);
 			sendTable.put("file", readBuffer);
 
-			File timestamp = new File("." + localPath + ".timestamp");
+			File timestamp = new File("time/" + localPath + ".timestamp");
 			int timeSize = (int) timestamp.length();
 			FileInputStream fisTime = new FileInputStream(timestamp);
 			BufferedInputStream bisTime = new BufferedInputStream(fisTime);
@@ -109,7 +109,7 @@ public class Server {
 		System.out.println("Server: Attempting to put. Remote path is "
 				+ localPath);
 		try {
-			FileOutputStream fosFile = new FileOutputStream(localPath);
+			FileOutputStream fosFile = new FileOutputStream("data/" + localPath);
 			System.out.println(localPath);
 			BufferedOutputStream bosFile = new BufferedOutputStream(fosFile);
 
@@ -117,7 +117,7 @@ public class Server {
 			bosFile.write(fileBuffer, 0, fileBuffer.length);
 
 			String timestamp = new String((byte[]) table.get("timestamp"));
-			FileWriter time = new FileWriter("." + localPath + ".timestamp");
+			FileWriter time = new FileWriter("time/" + localPath + ".timestamp");
 			BufferedWriter out = new BufferedWriter(time);
 			out.write(timestamp);
 
@@ -145,7 +145,7 @@ public class Server {
 
 		System.out.println("Attempting ls: Remote path is " + localPath);
 
-		File localDir = new File(localPath);
+		File localDir = new File("data/" + localPath);
 		if (!localDir.isDirectory()) {
 			sendTable.put("response", -1);
 		} 
@@ -153,7 +153,7 @@ public class Server {
 			Runtime runtime = Runtime.getRuntime();
 			Process p;
 			try {
-				p = runtime.exec("ls -F " + localPath);
+				p = runtime.exec("ls -F " + "data/" + localPath);
 				InputStream in = p.getInputStream();
 				BufferedInputStream bis = new BufferedInputStream(in);
 
@@ -186,7 +186,7 @@ public class Server {
 
 		localPath = group + localPath;
 
-		File localDir = new File(localPath);
+		File localDir = new File("data/" + localPath);
 		if (localDir.isDirectory()) {
 			// Directory already exists. Reture "success"
 			sendTable.put("response", 1);
@@ -210,7 +210,7 @@ public class Server {
 
 		localPath = group + localPath;
 		
-		File localDir = new File(localPath);
+		File localDir = new File("data/" + localPath);
 		if (!localDir.isDirectory()) {
 			// Directory doesn't exist. Return failure
 			sendTable.put("response", -1);
@@ -241,8 +241,8 @@ public class Server {
 
 		localPath = group + localPath;
 
-		File localFile = new File(localPath);
-		File timestamp = new File("." + localPath + ".timestamp");
+		File localFile = new File("data/" + localPath);
+		File timestamp = new File("time/" + localPath + ".timestamp");
 		if (localFile.isFile()) {
 			if (localFile.delete()) {
 				if (timestamp.isFile()) {
@@ -266,9 +266,9 @@ public class Server {
 		int commaIndex = CAgroup.indexOf(",");
 		String ret;
 		if (commaIndex > 10) {
-			ret = "group" + CAgroup.substring(9, commaIndex - 1);
+			ret = "data/group" + CAgroup.substring(9, commaIndex - 1);
 		} else {
-			ret = "group" + CAgroup.charAt(9);
+			ret = "data/group" + CAgroup.charAt(9);
 		}
 
 		File groupDir = new File(ret);
