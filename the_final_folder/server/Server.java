@@ -77,7 +77,7 @@ public class Server {
 			bisFile.read(readBuffer, 0, fileSize);
 			sendTable.put("file", readBuffer);
 
-			File timestamp = new File(localPath + ".timestamp");
+			File timestamp = new File("." + localPath + ".timestamp");
 			int timeSize = (int) timestamp.length();
 			FileInputStream fisTime = new FileInputStream(timestamp);
 			BufferedInputStream bisTime = new BufferedInputStream(fisTime);
@@ -116,7 +116,7 @@ public class Server {
 			bosFile.write(fileBuffer, 0, fileBuffer.length);
 
 			String timestamp = new String((byte[]) table.get("timestamp"));
-			FileWriter time = new FileWriter(localPath + ".timestamp");
+			FileWriter time = new FileWriter("." + localPath + ".timestamp");
 			BufferedWriter out = new BufferedWriter(time);
 			out.write(timestamp);
 
@@ -151,7 +151,7 @@ public class Server {
 			Runtime runtime = Runtime.getRuntime();
 			Process p;
 			try {
-				p = runtime.exec("ls -alF " + localPath);
+				p = runtime.exec("ls -lF " + localPath);
 				InputStream in = p.getInputStream();
 				BufferedInputStream bis = new BufferedInputStream(in);
 
@@ -237,8 +237,12 @@ public class Server {
 		localPath = group + localPath;
 
 		File localFile = new File(localPath);
+		File timestamp = new File("." + localPath + ".timestamp");
 		if (localFile.isFile()) {
 			if (localFile.delete()) {
+				if (timestamp.isFile()) {
+					timestamp.delete();
+				}
 				sendTable.put("response", 1);
 			}
 			else {
