@@ -115,6 +115,10 @@ public class messaging {
 			System.out.println("This didn't work! IO Failure");
 			return -1;
 		}
+		catch (NullPointerException npe) {
+			System.out.println("Server returned null");
+			return -1;
+		}
 	}
 
 	public int ls(String localPath, String remotePath) {
