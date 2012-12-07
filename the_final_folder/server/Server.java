@@ -93,6 +93,7 @@ public class Server {
 			fisTime.close();
 			bisTime.close();
 		} catch (IOException e) {
+			System.out.println("Server encountered IOException");
 			sendTable.put("response", -1);
 		}
 
@@ -129,6 +130,7 @@ public class Server {
 
 			sendTable.put("response", 1);
 		} catch (IOException e) {
+			System.out.println("Server encountered IOException");
 			sendTable.put("response", -1);
 		}
 
@@ -170,6 +172,7 @@ public class Server {
 				sendTable.put("file", lsBuffer);
 				sendTable.put("response", 1);
 			} catch (IOException e) {
+				System.out.println("Server encountered IOException");
 				sendTable.put("response", -1);
 			} // Do I need ./ here?
 		}
@@ -193,6 +196,7 @@ public class Server {
 				sendTable.put("response", 1);
 			}
 			else {
+				System.out.println("Server encountered IOException");
 				sendTable.put("response", -1);
 			}
 		}
@@ -218,6 +222,7 @@ public class Server {
 					sendTable.put("response", 1);
 				}
 				else {
+					System.out.println("Server encountered IOException");
 					sendTable.put("response", -1);
 				}
 			}
@@ -246,6 +251,7 @@ public class Server {
 				sendTable.put("response", 1);
 			}
 			else {
+				System.out.println("Server encountered IOException");
 				sendTable.put("response", -1);
 			}
 		}
