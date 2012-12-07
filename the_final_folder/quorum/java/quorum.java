@@ -187,11 +187,11 @@ public class quorum{
 
     	//Compare hashes and update similarity index for each file.
     	for(i=0; i<server_count; i++){
-    		System.out.println("grTimestamps["+i+"]="+grTimestamps[i]);
+    		//System.out.println("grTimestamps["+i+"]="+grTimestamps[i]);
     		if(grTimestamps[i] == 1)
     		for(int j=0; j<server_count; j++)
     		{
-    			System.out.println("grTimestamps["+j+"]="+ grTimestamps[j]+ "grTimestampsarry["+i+"]=" + grTimestampsarry[i] + "grTimestampsarry["+j+"]=" + grTimestampsarry[j]);
+    			//System.out.println("grTimestamps["+j+"]="+ grTimestamps[j]+ "grTimestampsarry["+i+"]=" + grTimestampsarry[i] + "grTimestampsarry["+j+"]=" + grTimestampsarry[j]);
     			if(grTimestamps[j] == 1  && grTimestampsarry[i].equals(grTimestampsarry[j])) files[i].similarityIndex++;
     		}
     	}
