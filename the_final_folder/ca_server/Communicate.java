@@ -76,7 +76,7 @@ public class Communicate {
 	    	{
 	    		synchronized(this)
 	    		{
-	    			
+	    			try{
 	    			Hashtable request = new Hashtable();
 	    			  ecipher = null;
 	    			  dcipher = null;
@@ -186,14 +186,19 @@ public class Communicate {
   					  }
   					
   				  }
-	    		}
+	    		}}
+	    			catch(Exception ex)
+	    			{
+	    				socket = serverSocket.accept();
+	            		out = new ObjectOutputStream(socket.getOutputStream());
+	            		object = new ObjectInputStream(socket.getInputStream());
+	    			}
 	    	}
 	    }}
 		}
 		catch(Exception ex)
 		{
 			System.out.println(ex.toString());
-			
 		}
 	}
 	

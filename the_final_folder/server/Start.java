@@ -88,6 +88,9 @@ public class Start {
 	    		    // Get the generated public and private keys
 	    		       PrivateKey diffiePriv = keypair.getPrivate();
 	    		       PublicKey  diffiePub = keypair.getPublic();
+	    		       
+	    		       
+	    		       
 	    		       caSocket = new Socket(caIpAddress,2358);
 	    		       caOut = new ObjectOutputStream(caSocket.getOutputStream());
 	    		       caIn = new ObjectInputStream(caSocket.getInputStream());
@@ -216,7 +219,10 @@ public class Start {
 		catch(Exception ex)
 		{
 			try {
+				System.out.println("CA server was unreachable");
 				caSocket.close();
+				socket.close();
+    			socket = serverSocket.accept();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

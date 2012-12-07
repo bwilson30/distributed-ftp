@@ -137,7 +137,7 @@ public class Encrypt {
 	}
 	public  X509Certificate Login(String hash)
 	{
-		System.out.println(hash + ": lgAttempting to encrypt channel");
+		//System.out.println(hash + ": lgAttempting to encrypt channel");
 		try{
 			if(cert == null)
 			    GetKeys(hash);
