@@ -39,6 +39,13 @@ public class Communicate {
 			return false;
 	}
 	
+	public static boolean addUser(String hash)
+	{
+		if(encrypt != null)
+		   return encrypt.AddUser(hash);
+		else
+			return false;
+	}
 	public static byte[] Encrypt(byte[] data)
 	{
 		try{
