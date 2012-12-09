@@ -83,6 +83,40 @@ public class Encrypt {
 	static public  PrivateKey privKey;
 	static public  int sport;
 	static public  BouncyCastleProvider bcp;
+	
+	public static boolean AddUser(String hash)
+	{
+		try
+		{
+			if(cert != null){
+		File keyFile = new File(keystoreFile);
+	    // Load the keystore contents
+	    FileInputStream in = new FileInputStream(keyFile);
+	    KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
+	    keystore.load(in, clientPassword.toCharArray());
+	    
+	    //keystore.load(in, password);
+	    in.close();
+
+	    // Add the certificate
+	    keystore.setCertificateEntry(hash, cert);
+
+	    // Save the new keystore contents
+	    FileOutputStream out = new FileOutputStream(keystoreFile);
+	    keystore.store(out, clientPassword.toCharArray());
+	    out.close();
+	    
+	    return true;
+			}
+			else
+				return false;
+	    }
+		catch(Exception ex)
+		{
+			System.out.println(ex.toString());
+			return false;
+		}
+	}
 	public static void GetKeys(String hash) throws Exception
 	{
 		FileInputStream input = null;

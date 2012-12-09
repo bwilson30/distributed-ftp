@@ -63,6 +63,8 @@ public class Communicate {
 	
 	public static boolean Login(String hash, String caAddress)
 	{
+		if(isConnected)
+			return true;
 		if(caAddress != null && !caAddress.trim().equals(""))
 		{
 			encrypt = new Encrypt();

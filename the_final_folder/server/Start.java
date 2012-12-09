@@ -219,7 +219,7 @@ public class Start {
 		catch(Exception ex)
 		{
 			try {
-				System.out.println("CA server was unreachable");
+				System.out.println(ex.toString());
 				caSocket.close();
 				socket.close();
     			socket = serverSocket.accept();
