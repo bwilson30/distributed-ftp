@@ -18,6 +18,7 @@ public class client{
    String		ca_server_ip = "127.0.0.1";
    int 		  	port_num;
    int 		  	qur_size;
+   int			fault_count;
    public static void main (String[] args) {
 	client cl = new client(1,10001);
 	//lwd = System.getProperty("user.dir");
@@ -57,8 +58,9 @@ public class client{
 			else System.out.println("Invalid Command");
 	}
    }	
-   client(int qs,int pn){
+   public client(int qs,int pn){
 	// Initialize
+	fault_count = 1;
 	qur_size = qs;
 	port_num = pn;
 	lwd =  new File(".").getAbsolutePath();
@@ -73,6 +75,12 @@ public class client{
 	if(!tf.exists()) tf.mkdirs();
 	servers = new messaging[qur_size];
    }
+   String getUserhash(){
+	   return username;
+   }
+   public static String generate_userhash(String username,String password){
+	   return username;
+   }
    void config(String[] argv){
 	   System.out.println("config_file= " + config_file);
 	   System.out.println("temp_folder= " + temp_folder);
@@ -84,7 +92,29 @@ public class client{
    };
 	// Commands
 	// Transactions
-	void login(String[] argv){
+   public void set_domain(String[] dom_list){
+	   server_list = new String[dom_list.length];
+	   for(int i = 0; i <dom_list.length;i++) server_list[i] = dom_list[i];
+	   if(server_list.length == 1) qur_size = 1;
+	   else qur_size = (server_list.length + 2*fault_count + 1) + 1  >> 1;
+   }
+   public void login(String un,String ps){
+    	username = un; password = ps;
+        //  read the username from the command-line; need to use try/catch with the
+        //  readLine() method
+    	System.out.println("Login attempted with: " +un +" and pass " + ps);
+		String username_hash = getUserhash();//+ password; // TODO: CHANGE THIS TO INCLUDE VINAY's stuff	
+		generate_random_connections();
+		boolean opcode[] = new boolean[qur_size];
+		int tot = 0;
+		for(int i = 0; i< qur_size; i++){
+			System.out.println("Login to : " + i);
+			opcode[i] = servers[i].clientLogin(username_hash,ca_server_ip);
+			if(!opcode[i]) tot++;
+		}
+		if(tot > 0) System.out.println("Login failed!");
+    }
+   public void login(String[] argv){
 		String dom = "";
 		System.out.println("Domain: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -109,20 +139,12 @@ public class client{
              System.out.println("IO error trying to read your password!");
              System.exit(1);
         } 
-		System.out.println("login:  " + username + "@" + dom + " with: " + password);
-                //  read the username from the command-line; need to use try/catch with the
-                //  readLine() method
-		String username_hash = username;//+ password; // TODO: CHANGE THIS TO INCLUDE VINAY's stuff	
-		generate_random_connections();
-		for(int i = 0; i< qur_size; i++){
-			if(!servers[i].clientLogin(username_hash,ca_server_ip)){
-				System.out.println("Login failed!");
-				return;
-			}
-		}
+        System.out.println("login:  " + username + "@" + dom + " with: " + password);
+        login(username,password);
 	}
 	void get(String[] argv){
 		QFILE[] file_list = new QFILE[qur_size];
+		long opcode[] = new long[qur_size];
 		// File not found is -1
 		// Incorrect command string sent -2
 		if(argv.length < 2) System.out.println("Not enough arguments");
@@ -130,12 +152,15 @@ public class client{
 		 for(int i = 0; i< qur_size; i++){
 			 // Grab data from each remote server
 			 System.out.println("Grabbing file from a server");
-			 servers[i].get(temp_folder +"/temp_file_" + i, rwd + "/" + argv[1]);
+			 File fi = new File(temp_folder +"/temp_file_" + i);
+			 if(fi.exists()) fi.delete();
+			 opcode[i] = (long) servers[i].get(temp_folder +"/temp_file_" + i, rwd + "/" + argv[1]);
 			 file_list[i] = new QFILE(new File(temp_folder +"/temp_file_" + i),	// Temp file directory
 					 					0,										// timestamp
 					 					i										// ServerID
 					 				);
 		 }
+		 if(quorum.quorum_opcodes_static(opcode,qur_size) < 0) System.out.println("Systematic failure on get!");
 		 quorum.quorum_files_static(file_list, qur_size,lwd + "/" + argv[0]);
 	}
 	void put(String[] argv){
@@ -210,6 +235,8 @@ public class client{
 		int opcode[] = new int[qur_size];
 		QFILE[] file_list = new QFILE[qur_size];
 		 for(int i = 0; i< qur_size; i++){
+			 File fi = new File(temp_folder +"/" + i +"_ls.txt");
+			 if(fi.exists()) fi.delete();
 			 if(argv.length  == 0)
 				 opcode[i] = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/");
 			 else if(argv.length  == 1)
@@ -317,7 +344,7 @@ public class client{
 					temp_list.toArray( server_list );
 					// CALCULATE QUORUM SIZE
 					if(domain.equals("full_test")) qur_size = temp_list.size();
-					else						   qur_size = temp_list.size() >> 1;
+					else						   qur_size = (temp_list.size() + 2*fault_count + 1) + 1  >> 1;
 				}
 				else{
 					System.out.println("Unable to locate targeted domain: "+ domain);
