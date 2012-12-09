@@ -28,7 +28,7 @@ public class messaging {
 	}
 
 	public Boolean clientLogin(String userhash, String caIPaddress) {
-		System.out.println(userhash + "Attempting to login");
+		System.out.println(userhash + " Attempting to login");
 		Boolean response = Communicate.Login(userhash, caIPaddress);
 		return response;
 	}

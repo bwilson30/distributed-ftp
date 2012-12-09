@@ -8,8 +8,8 @@ import java.util.Random;
 public class client{
   
    String 		lwd;
-   String 		rwd;
-   String		temp_folder;
+   public String 		rwd;
+   public String		temp_folder;
    String		config_file;
    String 		username;
    String 		password;
@@ -17,7 +17,7 @@ public class client{
    String[]     server_list;
    String		ca_server_ip = "127.0.0.1";
    int 		  	port_num;
-   int 		  	qur_size;
+   public int  	qur_size;
    int			fault_count;
    public static void main (String[] args) {
 	client cl = new client(1,10001);
@@ -102,7 +102,7 @@ public class client{
     	username = un; password = ps;
         //  read the username from the command-line; need to use try/catch with the
         //  readLine() method
-    	System.out.println("Login attempted with: " +un +" and pass " + ps);
+    	System.out.println("Login attempted with: " + un +" and pass " + ps);
 		String username_hash = getUserhash();//+ password; // TODO: CHANGE THIS TO INCLUDE VINAY's stuff	
 		generate_random_connections();
 		boolean opcode[] = new boolean[qur_size];
@@ -110,11 +110,12 @@ public class client{
 		for(int i = 0; i< qur_size; i++){
 			System.out.println("Login to : " + i);
 			opcode[i] = servers[i].clientLogin(username_hash,ca_server_ip);
-			if(!opcode[i]) tot++;
+			if(opcode[i]) tot++;
+			else System.out.println("Login failed!");
 		}
-		if(tot > 0) System.out.println("Login failed!");
+		if(tot == 0) System.out.println(">> Overall Login failed!");
     }
-   public void login(String[] argv){
+   void login(String[] argv){
 		String dom = "";
 		System.out.println("Domain: ");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -142,7 +143,7 @@ public class client{
         System.out.println("login:  " + username + "@" + dom + " with: " + password);
         login(username,password);
 	}
-	void get(String[] argv){
+   public void get(String[] argv){
 		QFILE[] file_list = new QFILE[qur_size];
 		long opcode[] = new long[qur_size];
 		// File not found is -1
@@ -163,7 +164,7 @@ public class client{
 		 if(quorum.quorum_opcodes_static(opcode,qur_size) < 0) System.out.println("Systematic failure on get!");
 		 quorum.quorum_files_static(file_list, qur_size,lwd + "/" + argv[0]);
 	}
-	void put(String[] argv){
+   public void put(String[] argv){
 		 //String local_path;
 		 if(argv.length != 2) return;
                  for(int i = 0; i< qur_size; i++){
@@ -224,7 +225,7 @@ public class client{
 		else System.out.println("Invalid path to a directory");	
 	}
 	// Remote Commands
-	void cd(String[] argv){
+	public void cd(String[] argv){
 		boolean succ = true;
 		 for(int i = 0; i< qur_size; i++){
              int opcode = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/" + argv[1]);
@@ -234,13 +235,16 @@ public class client{
 		generate_random_connections();
 		int opcode[] = new int[qur_size];
 		QFILE[] file_list = new QFILE[qur_size];
+		String tdir = "";
+		if(argv.length > 0) tdir = argv[0];
+		System.out.println(">Attempting to ls into the directory " + rwd + "/" + tdir.toString());
 		 for(int i = 0; i< qur_size; i++){
 			 File fi = new File(temp_folder +"/" + i +"_ls.txt");
 			 if(fi.exists()) fi.delete();
 			 if(argv.length  == 0)
 				 opcode[i] = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/");
 			 else if(argv.length  == 1)
-				 opcode[i] = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/" + argv[0]);
+				 opcode[i] = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/" + tdir.toString());
 			 else{ System.out.println("Incorrect number of inputs!");
 			 		return;
 			 }
@@ -360,4 +364,7 @@ public class client{
 			}
 		   
 	   }
+	public String ls_file_path(){
+		return temp_folder + "/ls.txt";
+	}
 }

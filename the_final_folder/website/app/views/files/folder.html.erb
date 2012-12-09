@@ -1,0 +1,5 @@
+Directory: <%= '/' + @the_current_directory %>
+</br>
+  <% @files_in_directory.each do |file| %>
+    <%= link_to(file,"/get?id=" + file) %>  </br>
+  <% end %>
