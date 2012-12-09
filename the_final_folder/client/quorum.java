@@ -85,6 +85,7 @@ public class quorum{
 	
 	private long []grTimestamps;
 	private long []timeStamps;
+	private boolean qflag = false;
 		 
 	//Use this static methods to directly call quorum::quorum_files_static() to quorum files.
 	public static int quorum_files_static(QFILE [] qf, int num_servers, String dest_path){
@@ -140,7 +141,8 @@ public class quorum{
     	for(i=0; i<server_count; i++)
     		if(grTimestamps[i] == 1) count++;
     	
-    	if(count == 1){
+    	
+    	if(count == 1 && qflag){
     		int num_bytes=0;
     		for(i=0; i<server_count; i++){
     			if(grTimestamps[i] == 1){/*Write the contents of file files[i]->fileptr into destination path*/
@@ -148,7 +150,7 @@ public class quorum{
     				File ftemp;
     				FileOutputStream ostream = null; 
     				File infile = files[i].getfile();
-    				System.out.println(infile.toString());
+    				//System.out.println(infile.toString());
     				FileInputStream instream = null;
     				try{
     				instream = new FileInputStream(infile);	
@@ -172,7 +174,7 @@ public class quorum{
     		
     		return 1; //If writing into dest_path was successful.
     	}
-
+    	
     	//Else if there are multiple files with same time stamps, we need to compare the file hashes. If all the files hashes
     	//are equal, then we just write a random file out of the lot into dest_path. Else, we need to have a MAJORITY of the
     	//files whose hashes are equal. If we don't have a majority, we return an error code.
@@ -201,13 +203,14 @@ public class quorum{
 
     	for(i=0; i<server_count; i++){System.out.println("MAX SIMILARITY ="+maxSimilarity+"; files["+i+"] similarity = "+files[i].similarityIndex);}
     	
-    	int majority = (int)Math.floor(server_count/2) + 1;
+    	int majority = (int)Math.floor(server_count/2);
     	int num_similar_responses=0;
     	for(i=0; i<server_count; i++){
     		if(grTimestamps[i] == 1 && files[i].similarityIndex == maxSimilarity) num_similar_responses++;
     	}
     	
-    	if(num_similar_responses < majority || maxSimilarity == 1){System.err.println("No consensus! Not writing output file."); return -1;}
+    	if(qflag && num_similar_responses < majority + 1 || maxSimilarity == 1){System.err.println("No consensus! Not writing output file."); return -1;}
+		if(!qflag && num_similar_responses < majority || maxSimilarity == 1){System.err.println("No consensus! Not writing output file."); return -1;}
     		
     	int num_bytes=0;
     	for(i=0; i<server_count; i++){
@@ -249,18 +252,18 @@ public class quorum{
     	File f3 = new File("C:/Users/Vinay Bharadwaj/workspace/quorum/src/3.txt.txt");
     	File f4 = new File("C:/Users/Vinay Bharadwaj/workspace/quorum/src/4.txt.txt");
     	File f5 = new File("C:/Users/Vinay Bharadwaj/workspace/quorum/src/5.txt.txt");
-    	QFILE [] files = new QFILE[5];
+    	QFILE [] files = new QFILE[4];
     	files[0]= new QFILE(f1, 1 ,1);
     	files[1]= new QFILE(f2, 1, 2);
     	files[2]= new QFILE(f3, 1, 3);
     	files[3] = new QFILE(f4, 1, 4);
-    	files[4] = new QFILE(f5, 1, 5);
+    	//files[4] = new QFILE(f5, 1, 5);
     	
     	//Example quoruming files using non-static function.
     	//quorum q1 = new quorum(files, 5, "C:/Users/Vinay Bharadwaj/workspace/quorum/src/output.txt");
     	
     	//Example quoruming files using static function.
-    	quorum.quorum_files_static(files,5, "C:/Users/Vinay Bharadwaj/workspace/quorum/src/output.txt");
+    	quorum.quorum_files_static(files,4, "C:/Users/Vinay Bharadwaj/workspace/quorum/src/output.txt");
     	
     	//Eaxmple quoruming opcodes
     	long [] opcodes = {4,3,4,5,4,4};
