@@ -15,7 +15,7 @@ public class messaging {
 	private String m_userhash;
 	private String m_ipAddress;
 	private int m_port;
-	private Boolean m_clientAuth = false;
+	private boolean m_clientAuth = false;
 
 	public messaging(String ipAddress, int port_num) {
 		m_ipAddress = ipAddress;
@@ -24,11 +24,11 @@ public class messaging {
 
 	}
 
-	public Boolean clientAuth() {
+	public boolean clientAuth() {
 		return m_clientAuth;
 	}
 
-	public Boolean clientLogin(String userhash, String caIPaddress) {
+	public boolean clientLogin(String userhash, String caIPaddress) {
 		m_userhash = userhash;
 		System.out.println(userhash + " Attempting to login");
 		Boolean response = Communicate.Login(m_userhash, caIPaddress);
@@ -39,6 +39,11 @@ public class messaging {
 		return m_userhash;
 	}
 	
+	public boolean isLogin() {
+		m_clientAuth = Communicate.checkAuthentication();
+		return m_clientAuth;
+	}
+	
 	public boolean clientLogout() {
 		if (Communicate.Logout()) {
 			m_userhash = "";
@@ -47,7 +52,7 @@ public class messaging {
 		return false;
 	}
 	
-	public boolean addUser(String userhash) {
+	public static boolean addUser(String userhash) {
 		return Communicate.addUser(userhash);
 	}
 
