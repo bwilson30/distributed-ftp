@@ -12,6 +12,7 @@ public class messaging {
 	private byte fileBuffer[];
 	private byte readBuffer[];
 
+	private String m_userhash;
 	private String m_ipAddress;
 	private int m_port;
 	private Boolean m_clientAuth = false;
@@ -28,9 +29,22 @@ public class messaging {
 	}
 
 	public Boolean clientLogin(String userhash, String caIPaddress) {
+		m_userhash = userhash;
 		System.out.println(userhash + " Attempting to login");
-		Boolean response = Communicate.Login(userhash, caIPaddress);
+		Boolean response = Communicate.Login(m_userhash, caIPaddress);
 		return response;
+	}
+	
+	public String getUserhash() {
+		return m_userhash;
+	}
+	
+	public boolean clientLogout() {
+		if (Communicate.Logout()) {
+			m_userhash = "";
+			return true;
+		}
+		return false;
 	}
 
 	public int get(String localPath, String remotePath) {
