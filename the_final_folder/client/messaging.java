@@ -46,6 +46,10 @@ public class messaging {
 		}
 		return false;
 	}
+	
+	public boolean addUser(String userhash) {
+		return Communicate.addUser(userhash);
+	}
 
 	public int get(String localPath, String remotePath) {
 		Hashtable sendTable = new Hashtable();

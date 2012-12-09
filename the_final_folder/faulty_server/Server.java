@@ -275,10 +275,6 @@ public class Server {
 		if (!groupDir.isDirectory()) {
 			groupDir.mkdir();
 		}
-		File timeDir = new File("time/" + ret);
-		if (!timeDir.isDirectory()) {
-			timeDir.mkdir();
-		}
 
 		return ret;
 	}
