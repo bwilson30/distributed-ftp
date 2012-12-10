@@ -368,6 +368,7 @@ public class Server {
 	private static int generateFaultCode() {
 		Random randGen = new Random();
 		int rand = randGen.nextInt(10);
+		System.out.println("Fault Code is: " + rand);
 		if (rand == 0) {
 			infiniteLoop();
 		}
