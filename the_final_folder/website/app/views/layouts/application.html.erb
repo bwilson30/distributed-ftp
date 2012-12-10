@@ -7,8 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<% @user = User.find_by_remember_token(cookies[:remember_token]) %>
+<% unless @user.nil? %>
+<%= @user.name %>
+<%= form_tag "/signout", :method => :delete do %>
+<% submit_tag "Sign out"%>
+<% end %>
+<% else %>
+<%= link_to 'signin',"/signin"%>
+<% end %>
+<div class="main">
 <%= yield %>
-
+<div class="main">
 </body>
 </html>

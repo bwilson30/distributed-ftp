@@ -80,13 +80,14 @@ class FilesController < ApplicationController
 		$client.login(user.name,user.password);
 		$client.config([])
 		$client.temp_folder= "data/temp"
-		$client.rwd = cookies[:directory]
+		$client.rwd = "/" + cookies[:directory]
 		$client.get([ "data/output/" + params[:id], params[:id] ])
 		return
 	end
 	def download_file
-		if(Pathname.new(Dir.pwd + '/data/output' + params[:id]).exist?)
-			send_file Dir.pwd + '/data/output' + params[:id]
+		file_path = Dir.pwd + '/data/output/' + File.basename(params[:id])
+		if(Pathname.new(file_path).exist?)
+			send_file file_path
 		else
 			render :text => "Unable to locate output file possible get failure"
 		end

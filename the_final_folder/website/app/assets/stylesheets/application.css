@@ -11,3 +11,25 @@
  *= require_self
  *= require_tree .
  */
+html {
+	margin: 0;
+	padding: 0;
+	background: #99FFCC;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #99FFCC;
+	background-color:#DDDDDD;
+}
+body
+{
+  margin: 0 auto 0 auto; 
+  display: table; 
+  height: 100%;  
+  left: 1%;
+  padding-left: 10px;
+  padding-top:  10px;
+  position: absolute;  
+  overflow: hidden; 
+  background: #252F33 url(background.png) repeat-y;
+  width: 730px;
+}

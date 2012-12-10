@@ -1,6 +1,7 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value"Â{"
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value"e
+{"
 class"ProcessedAsset"logical_path"application.css"pathname"1$root/app/assets/stylesheets/application.css"content_type"text/css"
-mtime"2012-12-07T13:14:30-05:00"lengthi"digest"%3c4adf3d5d950259ea2f3ec8d2b6164d"source"/*
+mtime"2012-12-10T03:52:22-05:00"lengthi¤"digest"%7c7c55228d5b631722b1b1999013d319"source"¤/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -14,12 +15,34 @@ mtime"2012-12-07T13:14:30-05:00"lengthi"digest"%3c4adf3d5d950259ea2f3ec8d2
 
  */
 
-"dependency_digest"%f4414da4295c45138d47f8af27d0cf59"required_paths["1$root/app/assets/stylesheets/application.css"2$root/app/assets/stylesheets/domains.css.scss"0$root/app/assets/stylesheets/files.css.scss"4$root/app/assets/stylesheets/scaffolds.css.scss"2$root/app/assets/stylesheets/servers.css.scss"3$root/app/assets/stylesheets/sessions.css.scss"0$root/app/assets/stylesheets/users.css.scss"dependency_paths[{"	path"!$root/app/assets/stylesheets"
-mtime"2012-12-09T17:36:06-05:00"digest"%d8d747da9efba7c0aaecd78e2e20466e{"	path"1$root/app/assets/stylesheets/application.css"
-mtime"2012-12-07T13:14:30-05:00"digest"%ed5d6698b58969688a1c9ac23c0927eb{"	path"2$root/app/assets/stylesheets/domains.css.scss"
+html {
+	margin: 0;
+	padding: 0;
+	background: #99FFCC;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: #99FFCC;
+	background-color:#DDDDDD;
+}
+body
+{
+  margin: 0 auto 0 auto; 
+  display: table; 
+  height: 100%;  
+  left: 1%;
+  padding-left: 10px;
+  padding-top:  10px;
+  position: absolute;  
+  overflow: hidden; 
+  background: #252F33 url(background.png) repeat-y;
+  width: 730px;
+}
+"dependency_digest"%dfcec1df05a853d68cd8d3d829d2996b"required_paths["1$root/app/assets/stylesheets/application.css"2$root/app/assets/stylesheets/domains.css.scss"0$root/app/assets/stylesheets/files.css.scss"4$root/app/assets/stylesheets/scaffolds.css.scss"2$root/app/assets/stylesheets/servers.css.scss"3$root/app/assets/stylesheets/sessions.css.scss"0$root/app/assets/stylesheets/users.css.scss"dependency_paths[{"	path"!$root/app/assets/stylesheets"
+mtime"2012-12-10T03:52:22-05:00"digest"%d8d747da9efba7c0aaecd78e2e20466e{"	path"1$root/app/assets/stylesheets/application.css"
+mtime"2012-12-10T03:52:22-05:00"digest"%b7185fd0761040790f2db3a249ee7f7d{"	path"2$root/app/assets/stylesheets/domains.css.scss"
 mtime"2012-12-09T17:35:11-05:00"digest"%eba7d59b6f5d5d0d58b1c233f662dcc2{"	path"0$root/app/assets/stylesheets/files.css.scss"
 mtime"2012-12-08T20:48:08-05:00"digest"%e44c6f6bd44541dc5f8b49161542403d{"	path"4$root/app/assets/stylesheets/scaffolds.css.scss"
 mtime"2012-12-07T13:19:47-05:00"digest"%fe1bcab33e932f6b551d36d28c559c36{"	path"2$root/app/assets/stylesheets/servers.css.scss"
 mtime"2012-12-09T17:36:06-05:00"digest"%d4fe0438473cc08cf17b972a92a53f1b{"	path"3$root/app/assets/stylesheets/sessions.css.scss"
 mtime"2012-12-07T13:31:27-05:00"digest"%6b231833d4b7e27fd9c1bf7a09d916a9{"	path"0$root/app/assets/stylesheets/users.css.scss"
-mtime"2012-12-07T13:19:47-05:00"digest"%d660980631db12144cc69e7d1aa8d113"_version"%6776f581a4329e299531e1d52aa59832:@created_atf1355092943.617
+mtime"2012-12-07T13:19:47-05:00"digest"%d660980631db12144cc69e7d1aa8d113"_version"%6776f581a4329e299531e1d52aa59832:@created_atf1355129544.634

@@ -2,7 +2,7 @@ Website::Application.routes.draw do
   resources :servers
   resources :domains
   resources :users
-
+  root 	:to => 'files#show'
   match '/signin'  => 'sessions#new'     , :via => :get
   match '/signin'  => 'sessions#create'  , :via => :post
   match '/signout' => 'sessions#destroy' , :via => :delete
