@@ -51,6 +51,8 @@ public class client{
 			else if(cmdstr.equals("lls")) cl.lls(cmdargs);
 			else if(cmdstr.equals("lpwd")) cl.lpwd(cmdargs);
 			else if(cmdstr.equals("lcd")) cl.lcd(cmdargs);
+			else if(cmdstr.equals("logout")) cl.logout(cmdargs);
+			else if(cmdstr.equals("add_user")) cl.add_user(cmdargs);
 			// Remote Commands
 			else if(cmdstr.equals("cd")) cl.cd(cmdargs);
 			else if(cmdstr.equals("ls")) cl.ls(cmdargs);
@@ -77,6 +79,19 @@ public class client{
    }
    String getUserhash(){
 	   return username;
+   }
+   public void logout(String[] args){
+	   for(int i= 0;i <qur_size;i++){
+		   servers[i].clientLogout();
+		   System.out.println("LOGOUT");
+	   }
+   }
+   public void add_user(String[] argv){
+	   if(argv.length != 2){ 
+		System.out.println("Incorrect number of inputs");
+	   	return;
+	   }
+	   for(int i= 0;i <qur_size;i++) messaging.addUser(generate_userhash(argv[0],argv[1]));
    }
    public static String generate_userhash(String username,String password){
 	   return username;
@@ -114,6 +129,7 @@ public class client{
 			else System.out.println("Login failed!");
 		}
 		if(tot == 0) System.out.println(">> Overall Login failed!");
+		else System.out.println("LOGIN");
     }
    void login(String[] argv){
 		String dom = "";
@@ -283,7 +299,7 @@ public class client{
 		}
 		servers = new messaging[qur_size];
 		for(int i = 0; i < qur_size;i++) {
-			System.out.println("Connecting to server#" + pick.get(i) + " : " + server_list[pick.get(i)]);
+			System.out.println("WILCO>" + server_list[pick.get(i)]);
 			servers[i] = new messaging(server_list[pick.get(i)],port_num);
 		}
 	}
