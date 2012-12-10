@@ -152,10 +152,10 @@ public class messaging {
 	}
 
 	public int ls(String localPath, String remotePath) {
+		System.out.println("> ls query on  " + m_ipAddress + " at "+ remotePath);
 		Hashtable sendTable = new Hashtable();
 		sendTable.put("cmd", "ls");
 		sendTable.put("ls", remotePath);
-
 		Hashtable recvTable = new Hashtable();
 		recvTable = comm.sendMsg(sendTable, m_ipAddress, m_port);
 

@@ -65,10 +65,14 @@ class QFILE{
     
     public QFILE(File fileptr, File tfile, int sID){
     	this.fileptr = fileptr;
+    	Long num = (long)0;
     	if(tfile != null){
-    		String tstr = toString(tfile.getAbsolutePath());
-    		fileTStamp = new tStamp(Long.parseLong(tstr));
-    	}else fileTStamp = new tStamp(0);
+    		try{ 
+	    		String tstr = toString(tfile.getAbsolutePath());
+	    		num  = Long.parseLong(tstr);
+	    	} catch(Exception e){System.err.println(e.toString()); num = (long)0;}	
+    	}
+    	fileTStamp = new tStamp(num);
     	serverID = sID;
     	similarityIndex = 0;
     }
