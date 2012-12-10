@@ -45,6 +45,8 @@ public class client{
 			else if(cmdstr.equals("login")) cl.login(cmdargs);
 			else if(cmdstr.equals("get")) cl.get(cmdargs);
 			else if(cmdstr.equals("put")) cl.put(cmdargs);
+			else if(cmdstr.equals("rm")) cl.rm(cmdargs);
+			else if(cmdstr.equals("mkdir")) cl.mkdir(cmdargs);
 			// Local Commands
 			else if(cmdstr.equals("config")) cl.config(cmdargs);
 			else if(cmdstr.equals("help")) cl.help(cmdargs);
@@ -203,7 +205,9 @@ public class client{
          if(quorum.quorum_opcodes_static(opcode,qur_size) < 0) System.out.println("SYSFL: Systematic failure on put!");
          else System.out.println("SYSSUCCESS");
 	}
-	// Local Commands
+	public void rm(String[] argv){}
+	public void mkdir(String[] argv){}
+   // Local Commands
 	void help(String[] argv){	
 		System.out.println(	 "This program allows for read and write to a remote file repository.");
 		System.out.println(	 "List of Commands: ");

@@ -124,128 +124,69 @@ public class quorum{
 	
     public int quorum_files(QFILE [] files, int server_count, String dest_path){
     	if(!(server_count > 0)) return -1;
-    	System.out.println("Attempting to output to : " + dest_path);
-    	int maxSimilarity = 1;
-    	int i, count=0;
-    	//long grTimestampsarry[] = new long[server_count];
-    	String [] grTimestampsarry = new String[server_count];
+    	System.out.println("Attempting to quorum and output to : " + dest_path);
+    	String [] file_data = new String[server_count];
+    	int selected_file;
     	timeStamps = new long[server_count];
-
-    	for(i=0; i<server_count; i++){
-    		timeStamps[i] = files[i].gettStamp().getTimestamp();
-    		grTimestampsarry[i] = "0";
-    	}
-
-    	grTimestamps = tStamp.greatest_timeStamp(timeStamps, server_count);
-
-    	for(i=0; i<server_count; i++)
-    		if(grTimestamps[i] == 1) count++;
-    	
-    	
-    	if(count == 1 && qflag){
-    		int num_bytes=0;
-    		for(i=0; i<server_count; i++){
-    			if(grTimestamps[i] == 1){/*Write the contents of file files[i]->fileptr into destination path*/
-    				
-    				File ftemp;
-    				FileOutputStream ostream = null; 
-    				File infile = files[i].getfile();
-    				//System.out.println(infile.toString());
-    				FileInputStream instream = null;
-    				try{
-    				instream = new FileInputStream(infile);	
-    				ftemp = new File(dest_path); 
-    				ostream = new FileOutputStream(ftemp);
-    				}
-    				catch(Exception e){System.err.println(e.toString());}
-    				
-    				long size = infile.length();
-    				byte [] arr = new byte[(int)size];
-    				try{
-    				instream.read(arr);
-    				ostream.write(arr);
-    				instream.close();
-    				ostream.close();
-    				}
-    				catch(Exception e){System.err.println(e.toString());}
-    				break;
-    			}
-    		}
-    		
-    		return 1; //If writing into dest_path was successful.
-    	}
-    	
-    	//Else if there are multiple files with same time stamps, we need to compare the file hashes. If all the files hashes
-    	//are equal, then we just write a random file out of the lot into dest_path. Else, we need to have a MAJORITY of the
-    	//files whose hashes are equal. If we don't have a majority, we return an error code.
     	try{
-    	for(i=0; i<server_count; i++)
-    		if(grTimestamps[i] == 1) grTimestampsarry[i] = //files[i].toString();
-    		filehash.computeHash(files[i].getfile());
-    		else grTimestampsarry[i] = "-1";
+    		//files[i].toString();
+			for(int i=0; i<server_count; i++){ 
+				file_data[i] =  filehash.computeHash(files[i].getfile());
+				timeStamps[i] = files[i].gettStamp().getTimestamp();
+			}
+    		//else grTimestampsarry[i] = "-1";
     	}
-    	catch(Exception e){return -1;}
-    	//Now we have an array that indicates which files have the largest (same) timestamps. All we need to do now is
-    	//to compare the files with the greatest timestamps and choose a random file out of the correct ones.
-
-    	//Compare hashes and update similarity index for each file.
-    	for(i=0; i<server_count; i++){
-    		//System.out.println("grTimestamps["+i+"]="+grTimestamps[i]);
-    		if(grTimestamps[i] == 1)
-    		for(int j=0; j<server_count; j++)
-    		{
-    			//System.out.println("grTimestamps["+j+"]="+ grTimestamps[j]+ "grTimestampsarry["+i+"]=" + grTimestampsarry[i] + "grTimestampsarry["+j+"]=" + grTimestampsarry[j]);
-    			if(grTimestamps[j] == 1  && grTimestampsarry[i].equals(grTimestampsarry[j])) files[i].similarityIndex++;
-    		}
-    	}
-
-    	for(i=0; i<server_count; i++)
-    		if(grTimestamps[i] == 1 && files[i].similarityIndex > maxSimilarity) maxSimilarity = files[i].similarityIndex;
-
-    	for(i=0; i<server_count; i++){System.out.println("MAX SIMILARITY ="+maxSimilarity+"; files["+i+"] similarity = "+files[i].similarityIndex);}
-    	
-    	int majority = (int)Math.floor(server_count/2);
-    	int num_similar_responses=0;
-    	for(i=0; i<server_count; i++){
-    		if(grTimestamps[i] == 1 && files[i].similarityIndex == maxSimilarity) num_similar_responses++;
-    	}
-    	
-    	if(qflag && num_similar_responses < majority + 1 || maxSimilarity == 1){System.err.println("No consensus! Not writing output file."); return -1;}
-		if(!qflag && num_similar_responses < majority || maxSimilarity == 1){System.err.println("No consensus! Not writing output file."); return -1;}
+    	catch(Exception e){System.err.println(e.toString()); return -1;}
+    	Hashtable<String,Integer> entries = new Hashtable<String,Integer>();
+    	for(int i = 0; i < server_count ;i++){
+    		String ele = file_data[i];
+  			if(entries.containsKey(ele)) entries.put(ele, (Integer) entries.get(ele) + 1);
+			else 						 entries.put(ele,1);	
     		
-    	int num_bytes=0;
-    	for(i=0; i<server_count; i++){
-    		if(files[i].similarityIndex == maxSimilarity)/*Write files[i]->fileptr to dest path. */
-    		{
-    			File ftemp;
-				FileOutputStream ostream = null; 
-				File infile = files[i].getfile();
-				FileInputStream instream = null;
-				
-				try{
-				instream = new FileInputStream(infile);	
-				ftemp = new File(dest_path); 
-				ostream = new FileOutputStream(ftemp);
-				}
-				catch(Exception e){System.err.println(e.toString());}
-				
-				long size = infile.length();
-				byte [] arr = new byte[(int)size];
-				try{
-				instream.read(arr);
-				ostream.write(arr);
-				instream.close();
-				ostream.close();
-				}
-				catch(Exception e){System.err.println(e.toString());}
-				break;
-    		}
     	}
-     	
+    	selected_file = -1;
+    	for(int i = 0; i < server_count ;i++){
+    		String ele = file_data[i];
+    		int occurances = entries.get(ele);
+    		System.out.println("File "+ i + " generated hash " + file_data[i] +": Has [" + occurances +"] copies");
+    		System.out.println("\tTIMESTAMP: " + timeStamps[i]);
+    		if(occurances > 1)
+    			if(selected_file < 0 || timeStamps[selected_file] < timeStamps[i])
+    				selected_file = i;
+    	}
+    	if(selected_file < 0) {System.err.println("No consensus! Not writing output file."); return -1;}
+    	else System.out.println("File#" +selected_file + " MAX SIMILARITY = " + entries.get(file_data[selected_file]));
     	
+    	if(copy_to_output(files[selected_file],dest_path) < 0){ 
+    		System.err.println("Unable to print selected_file to " + dest_path);
+    		return -1;
+    	}
 		return 1;
 	}
-    
+    public static int copy_to_output(QFILE file,String dest_path){
+    	int num_bytes=0;
+		File ftemp;
+		FileOutputStream ostream = null; 
+		File infile = file.getfile();
+		FileInputStream instream = null;
+		try{
+			instream = new FileInputStream(infile);	
+			ftemp = new File(dest_path); 
+			ostream = new FileOutputStream(ftemp);
+		}
+		catch(Exception e){System.err.println(e.toString()); return -1;}
+			long size = infile.length();
+			byte [] arr = new byte[(int)size];
+			try{
+			instream.read(arr);
+			ostream.write(arr);
+			instream.close();
+			ostream.close();
+		}
+		catch(Exception e){System.err.println(e.toString()); return -1;}
+		return 0;
+    	
+    }
     public static String quorum_ls_files_static(QFILE [] files, int server_count, String dest_path,int qur_size){
     	int exists = 0;
     	String output = "";
