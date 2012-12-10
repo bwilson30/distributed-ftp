@@ -217,7 +217,7 @@ public class Encrypt {
 		      // this method will block no more than timeout ms.
 		      int timeoutInMs = 10*1000;   // 10 seconds
 		      serverSocket.connect(socketAddress, timeoutInMs);
-		      
+		      serverSocket.setSoTimeout(timeoutInMs);
 				//serverSocket = new Socket(ipAddress,port); //TODO: Remove +10
 				sout = new ObjectOutputStream(serverSocket.getOutputStream());
 		        sin = new ObjectInputStream(new BufferedInputStream(serverSocket.getInputStream()));
@@ -260,7 +260,7 @@ public class Encrypt {
 				    			      // this method will block no more than timeout ms.
 				    			      //timeoutInMs = 10*1000;   // 10 seconds
 				    			      socket.connect(socketAddressCA, timeoutInMs);
-				    			      
+				    			      socket.setSoTimeout(timeoutInMs);
 									//socket = new Socket(serverIp,2358);
 							        out = new ObjectOutputStream(socket.getOutputStream());
 							        in = new ObjectInputStream(socket.getInputStream());
@@ -367,7 +367,7 @@ public class Encrypt {
 		      // this method will block no more than timeout ms.
 		      int timeoutInMs = 10*1000;   // 10 seconds
 		      serverSocket.connect(socketAddress, timeoutInMs);
-		      
+		      serverSocket.setSoTimeout(timeoutInMs);
 			//serverSocket = new Socket(serverIp,sport);
 			sout = new ObjectOutputStream(serverSocket.getOutputStream());
 			sin = new ObjectInputStream(serverSocket.getInputStream());
