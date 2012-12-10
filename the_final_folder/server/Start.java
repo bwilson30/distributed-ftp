@@ -221,7 +221,7 @@ public class Start {
 	    		{
 	    			try {
 	    				System.out.println(exc.toString());
-	    				caSocket.close();
+	    				caSocket = null;
 	    				socket.close();
 	        			socket = serverSocket.accept();
 	    			} catch (IOException e) {
@@ -235,7 +235,7 @@ public class Start {
 		{
 			try {
 				System.out.println(ex.toString());
-				caSocket.close();
+				caSocket = null;
 				socket.close();
     			socket = serverSocket.accept();
 			} catch (IOException e) {
