@@ -1,5 +1,5 @@
 #!/usr/bin/expect
-#./test | perl -ne 'print if $_ =~ /(LOGIN|WILCO|LOGOUT)/'
+#./test | perl -ne 'print if $_ =~ /(LOGIN|WILCO|LOGOUT|SYS|LS|GET|PUT)/'
 #log_user 0
 spawn java -jar client.jar
 expect "quarac>"

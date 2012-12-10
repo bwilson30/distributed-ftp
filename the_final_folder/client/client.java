@@ -15,7 +15,7 @@ public class client{
    String 		password;
    messaging[] 	servers;
    String[]     server_list;
-   String		ca_server_ip = "127.0.0.1";
+   public String		ca_server_ip = "127.0.0.1";
    int 		  	port_num;
    public int  	qur_size;
    int			fault_count;
@@ -333,12 +333,15 @@ public class client{
 	void read_config(File config){
 		   BufferedReader br = null;
 		   Pattern tf = Pattern.compile("temp_folder=(.*)");
+		   Pattern ca = Pattern.compile("ca_server_ip=(.*)");
 		   try {
 			   String sCurrentLine;
 				br = new BufferedReader(new FileReader(config.getAbsolutePath()));
 				while ((sCurrentLine = br.readLine()) != null) {
 					Matcher m = tf.matcher(sCurrentLine);
 					if(m.find()) temp_folder = lwd + "/" + m.group(1);
+					m = ca.matcher(sCurrentLine);
+					if(m.find()) ca_server_ip = m.group(1);
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
