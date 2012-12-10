@@ -1,3 +1,0 @@
-project4.pdf
-robert_frost.txt
-testDir/

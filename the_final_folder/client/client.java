@@ -195,8 +195,10 @@ public class client{
 		 if(argv.length != 2) return;
 		 System.out.println("PUT");
 	     //generate_random_connections();
+		 Date date = new Date();
+		 Long utc_code = date.getTime();
          for(int i = 0; i< qur_size; i++){
-        	 opcode[i] = (long)servers[i].put(lwd + "/" +  argv[0], rwd + "/" + argv[1],"tempstamp"); //TODO: Add correct timestamp names
+        	 opcode[i] = (long)servers[i].put(lwd + "/" +  argv[0], rwd + "/" + argv[1], utc_code.toString()); //TODO: Add correct timestamp names
          }
          if(quorum.quorum_opcodes_static(opcode,qur_size) < 0) System.out.println("SYSFL: Systematic failure on put!");
          else System.out.println("SYSSUCCESS");

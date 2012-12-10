@@ -529,8 +529,8 @@ public class Encrypt {
 	{
 		RSAPrivateKey rsaPrivateKey = (RSAPrivateKey)priv_Key;
 		
-		Cipher decryptCipher = Cipher.getInstance("RSA", bcp);
-		//Cipher decryptCipher = Cipher.getInstance("RSA/NONE/NoPadding",bcp);
+		//Cipher decryptCipher = Cipher.getInstance("RSA", bcp);
+		Cipher decryptCipher = Cipher.getInstance("RSA/NONE/NoPadding",bcp);
 		decryptCipher.init(Cipher.DECRYPT_MODE,rsaPrivateKey);
 		//byte[] bts = Hex.decodeHex(encrypted.toCharArray());
 

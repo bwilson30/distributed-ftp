@@ -1,5 +1,6 @@
-homer_odyssey.txt
-project4.pdf
-proposal.pdf
-robert_frost.txt
+chord_test.pdf
+heart_test.pdf
+hearts_man.txt
+road_test.txt
+scarlet_test.txt
 testDir/
