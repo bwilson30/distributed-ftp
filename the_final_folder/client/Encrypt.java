@@ -55,7 +55,9 @@ import sun.misc.IOUtils;
 
 
 public class Encrypt {
-	static private  String keystoreFile = "groupA.jks";
+	private  String keystoreFile = "groupA.jks";
+	private String certFile = "groupA.crt";
+	private String confFile = "groupA.p8";
 	//private static String clientAlias = "groupA";
 	static private  String caClientAlias = "groupA";
 	static private  String clientPassword = "ece6102";
@@ -68,7 +70,7 @@ public class Encrypt {
 	private  ObjectInputStream sin = null;
 	private  Hashtable<String, byte[]> response;
 	private  SecretKey caSecret, serverSecret;
-	static private  X509Certificate cert;
+	private  X509Certificate cert;
 	private  SealedObject so;
 	static private Cipher ecipher = null;
 	static private  Cipher dcipher = null;
@@ -77,14 +79,14 @@ public class Encrypt {
 	public  String pwd;
 	public  String serverIp = "127.0.0.1";
 	static public  String fserverIp = null;
-	static public  PublicKey pubKey;
-	static public RSAPublicKey pub_Key;
-	static public RSAPrivateKey priv_Key;
-	static public  PrivateKey privKey;
-	static public  int sport;
-	static public  BouncyCastleProvider bcp;
+	public  PublicKey pubKey;
+	public RSAPublicKey pub_Key;
+	public RSAPrivateKey priv_Key;
+	public  PrivateKey privKey;
+	public  int sport;
+	public  BouncyCastleProvider bcp;
 	
-	public static boolean AddUser(String hash)
+	public boolean AddUser(String hash)
 	{
 		try
 		{
@@ -117,12 +119,12 @@ public class Encrypt {
 			return false;
 		}
 	}
-	public static void GetKeys(String hash) throws Exception
+	public void GetKeys(String hash) throws Exception
 	{
 		FileInputStream input = null;
 		//try{
 		{
-			InputStream inStream = new FileInputStream("groupA.crt"); 
+			InputStream inStream = new FileInputStream(certFile); 
 			CertificateFactory cf = CertificateFactory.getInstance("X.509");
 			X509Certificate certi =(X509Certificate)cf.generateCertificate(inStream);
 			inStream.close();
@@ -132,7 +134,7 @@ public class Encrypt {
 			//Cipher cipher = createCipher(Cipher.DECRYPT_MODE);
 			//applyCipher("groupA.p8.encrypt", "groupA.p8.decrypt", cipher);
 			
-			File keyFile = new File("groupA.p8");
+			File keyFile = new File(confFile);
 			DataInputStream in = new DataInputStream(new FileInputStream(keyFile));
 			byte [] fileBytes = new byte[(int) keyFile.length()];
 			in.readFully(fileBytes);
@@ -154,6 +156,13 @@ public class Encrypt {
 		   pubKey = clientCert.getPublicKey();
 		   //keyStore.setCertificateEntry("teamA", clientCert);
            cert = (X509Certificate) keyStore.getCertificate(hash);
+           if(cert == null)
+           {
+        	   confFile = "groupB.p8";
+        	   certFile = "groupB.crt";
+        	   keystoreFile = "groupB.jks";
+        	   GetKeys(hash);
+           }
            //cert = clientCert;
            
 	       dcipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
@@ -372,6 +381,7 @@ public class Encrypt {
 		   if(serverSocket != null)
 		     serverSocket.close();
 		   keyStore = null;
+		   cert = null;
 		   return true;
 		}
 		return false;
