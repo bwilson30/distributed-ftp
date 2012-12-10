@@ -185,6 +185,7 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
+		System.out.println("Attempting to make (mkdir) directory " + localPath);
 
 		File localDir = new File("data/" + localPath);
 		File timeDir = new File("time/" + localPath);
@@ -213,6 +214,7 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
+		System.out.println("Attempting to remove (rmdir) directory " + localPath);
 		
 		File localDir = new File("data/" + localPath);
 		File timeDir = new File("time/" + localPath);
@@ -248,6 +250,7 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
+		System.out.println("Attempting to remove (rm) file " + localPath);
 
 		File localFile = new File("data/" + localPath);
 		File timestamp = new File("time/" + localPath + ".timestamp");
