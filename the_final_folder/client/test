@@ -1,0 +1,17 @@
+#!/usr/bin/expect
+#./test | perl -ne 'print if $_ =~ /(LOGIN|WILCO|LOGOUT)/'
+#log_user 0
+spawn java -jar client.jar
+expect "quarac>"
+send "login\n"
+expect "Domain:"
+send "localhost\n"
+expect "Username:"
+send "teamA\n"
+expect "Password"
+send "teamA\n"
+#expect "LOGIN" { echo "LOGIN" }
+set timeout 60 
+expect "quarac>" { send "ls\n" }
+expect "quarac>" { send "get homer_odyssey.txt homer_odyssesy.txt\n" }
+expect "quarac>" { send "exit\n"}
