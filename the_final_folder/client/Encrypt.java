@@ -156,7 +156,7 @@ public class Encrypt {
 		   pubKey = clientCert.getPublicKey();
 		   //keyStore.setCertificateEntry("teamA", clientCert);
            cert = (X509Certificate) keyStore.getCertificate(hash);
-           if(cert == null)
+           if(cert == null && !confFile.equals("groupB.p8"))
            {
         	   confFile = "groupB.p8";
         	   certFile = "groupB.crt";

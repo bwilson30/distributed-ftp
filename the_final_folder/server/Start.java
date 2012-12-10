@@ -214,8 +214,6 @@ public class Start {
 	    			}
 	    			socket.close();
 	    			socket = serverSocket.accept();
-            		//out = new ObjectOutputStream(socket.getOutputStream());
-            		//in = new ObjectInputStream(socket.getInputStream());
 		}
 	    		catch(Exception exc)
 	    		{
