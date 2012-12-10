@@ -181,7 +181,7 @@ public class client{
 			 if(fi.exists()) fi.delete();
 			 opcode[i] = (long) servers[i].get(temp_folder +"/temp_file_" + i, rwd + "/" + argv[1]);
 			 file_list[i] = new QFILE(new File(temp_folder +"/temp_file_" + i),	// Temp file directory
-					 					0,										// timestamp
+					 				  new File(temp_folder +"/temp_file_" + i + ".timestamp"),	// timestamp
 					 					i										// ServerID
 					 				);
 		 }
@@ -288,7 +288,7 @@ public class client{
 			 		return null;
 			 }
 			 file_list[i] = new QFILE(new File(temp_folder +"/" + i +"_ls.txt"),	// Temp file directory
-	 					0,															// timestamp
+	 					null,															// timestamp
 	 					i															// ServerID
 	 				);
 		 }

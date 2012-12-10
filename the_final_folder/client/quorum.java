@@ -42,30 +42,33 @@ class QFILE{
     public int getServerID(){
     	return this.serverID;
     }
-    
-    public String toString(){
+    public String toString(){return toString(fileptr.getPath());}
+    public static String toString(String path){
     	FileInputStream stream = null;
     	MappedByteBuffer bb = null;
-    try{
-    	try {
-    		stream = new FileInputStream(new File(fileptr.getPath()));
-    	    FileChannel fc = stream.getChannel();
-    	    bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
-    	    /* Instead of using default, pass in a decoder. */
-    	    
-    	  }
-    	  
-    	  finally {
-    	    stream.close();
-    	  }
-    }
-    catch (Exception e){}
-    return Charset.defaultCharset().decode(bb).toString();	  
+	    try{
+	    	try {
+	    		stream = new FileInputStream(new File(path));
+	    	    FileChannel fc = stream.getChannel();
+	    	    bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
+	    	    /* Instead of using default, pass in a decoder. */
+	    	    
+	    	  }
+	    	  
+	    	  finally {
+	    	    stream.close();
+	    	  }
+	    }
+	    catch (Exception e){System.err.println(e.toString());}
+	    return Charset.defaultCharset().decode(bb).toString();	  
     }
     
-    public QFILE(File fileptr, long tstamp, int sID){
+    public QFILE(File fileptr, File tfile, int sID){
     	this.fileptr = fileptr;
-    	fileTStamp = new tStamp(tstamp);
+    	if(tfile != null){
+    		String tstr = toString(tfile.getAbsolutePath());
+    		fileTStamp = new tStamp(Long.parseLong(tstr));
+    	}else fileTStamp = new tStamp(0);
     	serverID = sID;
     	similarityIndex = 0;
     }
@@ -223,10 +226,10 @@ public class quorum{
     	File f4 = new File("C:/Users/Vinay Bharadwaj/workspace/quorum/src/4.txt.txt");
     	File f5 = new File("C:/Users/Vinay Bharadwaj/workspace/quorum/src/5.txt.txt");
     	QFILE [] files = new QFILE[4];
-    	files[0]= new QFILE(f1, 1 ,1);
-    	files[1]= new QFILE(f2, 1, 2);
-    	files[2]= new QFILE(f3, 1, 3);
-    	files[3] = new QFILE(f4, 1, 4);
+    	files[0]= new QFILE(f1, null ,1);
+    	files[1]= new QFILE(f2, null, 2);
+    	files[2]= new QFILE(f3, null, 3);
+    	files[3] = new QFILE(f4, null, 4);
     	//files[4] = new QFILE(f5, 1, 5);
     	
     	//Example quoruming files using non-static function.
