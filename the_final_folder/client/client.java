@@ -167,7 +167,7 @@ public class client{
 		QFILE[] file_list = new QFILE[qur_size];
 		long opcode[] = new long[qur_size];
 		System.out.println("GET");
-		generate_random_connections();
+		//generate_random_connections();
 		// File not found is -1
 		// Incorrect command string sent -2
 		if(argv.length < 2) System.out.println("Not enough arguments");
@@ -192,7 +192,7 @@ public class client{
 		 //String local_path;
 		 if(argv.length != 2) return;
 		 System.out.println("PUT");
-	     generate_random_connections();
+	     //generate_random_connections();
          for(int i = 0; i< qur_size; i++){
         	 opcode[i] = (long)servers[i].put(lwd + "/" +  argv[0], rwd + "/" + argv[1],"tempstamp"); //TODO: Add correct timestamp names
          }
