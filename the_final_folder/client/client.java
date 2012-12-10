@@ -200,12 +200,21 @@ public class client{
 		 Date date = new Date();
 		 Long utc_code = date.getTime();
          for(int i = 0; i< qur_size; i++){
-        	 opcode[i] = (long)servers[i].put(lwd + "/" +  argv[0], rwd + "/" + argv[1], utc_code.toString()); //TODO: Add correct timestamp names
+        	 opcode[i] = (long)servers[i].put(lwd + "/" +  argv[0], rwd + "/" + argv[1], utc_code.toString());
          }
          if(quorum.quorum_opcodes_static(opcode,qur_size) < 0) System.out.println("SYSFL: Systematic failure on put!");
          else System.out.println("SYSSUCCESS");
 	}
-	public void rm(String[] argv){}
+	public void rm(String[] argv){
+		long opcode[] = new long[qur_size];
+		if(argv.length != 1) return;
+		System.out.println("RM");
+	    for(int i = 0; i< qur_size; i++){
+	   	 opcode[i] = (long)servers[i].rm( rwd + "/" + argv[0]);
+	    }
+	    if(quorum.quorum_opcodes_static(opcode,qur_size) < 0) System.out.println("SYSFL: Systematic failure on rm!");
+	    else System.out.println("SYSSUCCESS");
+	}
 	public void mkdir(String[] argv){}
    // Local Commands
 	void help(String[] argv){	

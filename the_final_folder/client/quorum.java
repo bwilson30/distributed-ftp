@@ -115,11 +115,14 @@ public class quorum{
 			if(opcode_similarity[i] > max_sim_opcodes) max_sim_opcodes = opcode_similarity[i];
 		}
 		
-		if(max_sim_opcodes +1 < (int)Math.floor(num_opcodes/2) + 1){System.out.println(max_sim_opcodes); return -1;}
+		if(max_sim_opcodes +1 < (int)Math.floor(num_opcodes/2) + 1){System.out.println("Insufficient server agreement: "+max_sim_opcodes); return -1;}
+		for(i=0; i<num_opcodes; i++){	// If there are 2 maxes favor success
+			if(opcode_similarity[i] == max_sim_opcodes && opcode_similarity[i] >= 0) return opcodes[i];
+		}
 		for(i=0; i<num_opcodes; i++){
 			if(opcode_similarity[i] == max_sim_opcodes) return opcodes[i];
 		}
-			
+		System.out.println("Uable to find valid opcode");
 		return -1;
 	}
 	
@@ -135,13 +138,12 @@ public class quorum{
     	String [] file_data = new String[server_count];
     	int selected_file;
     	timeStamps = new long[server_count];
+    	if(server_count == 1) return copy_to_output(files[0],dest_path); // Nothing to quorum
     	try{
-    		//files[i].toString();
 			for(int i=0; i<server_count; i++){ 
 				file_data[i] =  filehash.computeHash(files[i].getfile());
 				timeStamps[i] = files[i].gettStamp().getTimestamp();
 			}
-    		//else grTimestampsarry[i] = "-1";
     	}
     	catch(Exception e){System.err.println(e.toString()); return -1;}
     	Hashtable<String,Integer> entries = new Hashtable<String,Integer>();
