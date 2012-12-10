@@ -1,7 +1,10 @@
-<h1> Directory: <%= '/' + @the_current_directory %> </h1>
+<h1> Directory: <%=  @the_current_directory %> </h1>
 </br>
+<%= link_to("../","/files/"+ @domain_name + "?cd=up") %>  </br>
 <% @files_in_directory.each do |file| %>
-	<%= link_to(file,"/get/"+ @domain_name + "?id=" + file) %>  </br>
+		<%= link_to(file,"/get/"+ @domain_name + "?id=" + file ) unless file.include? '/' %>  
+		<%= link_to(file,"/files/"+ @domain_name + "?cd=down&id=" + file ) if file.include? '/' %>
+<br />
 <% end %>
 <h1>File Upload</h1>
 <%= form_tag({:action => :put_file},:method => :put, :multipart => true) do %>

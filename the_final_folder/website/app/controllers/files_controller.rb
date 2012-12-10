@@ -1,3 +1,4 @@
+require 'pathname'
 unless defined?(Client) == 'constant' && Client.class == Class 
 	require Dir.pwd + '/../client/client.jar'
 	Client = JavaUtilities.get_proxy_class('client')
@@ -12,9 +13,22 @@ class FilesController < ApplicationController
 		domain = Domain.find_by_name(params[:domain])
 		user = User.find_by_remember_token(cookies[:remember_token]);
 		redirect_to '/signin' and return if user.nil?
+		puts ">>>>>>>>>>>>>Contains cd: #{params[:cd]} and is #{params[:cd]} : #{params[:cd] == "down"}"
+		if(params[:cd] == "up" || params[:cd] == "down")
+			cdir = cookies[:directory]
+			cdir = Pathname.new(cdir + "/").parent.to_str if params[:cd] == "up"
+			cdir = (Pathname.new(cdir) + params[:id]).to_str if params[:cd] == "down"
+			cookies.permanent[:directory] = cdir
+			redirect_to "/files/" + domain.name
+			return
+		end
 		@domain_name = domain.name
 		target_directory = cookies[:directory];		
-		target_directory = "" if target_directory.nil? || target_directory == 'null' || target_directory.empty?
+		if target_directory.nil? || target_directory == 'null' || target_directory.empty?
+			target_directory = "/" 
+		else
+			target_directory = "/" + target_directory
+		end
 		puts "================== Initializing Client: #{user.name} :: #{target_directory.inspect} =========================="
 		server_list = []
 		domain.servers.each do |serv|
@@ -31,16 +45,17 @@ class FilesController < ApplicationController
 		$client.temp_folder= "data/temp"
 		$client.config([])
 		puts "================== Attempting To LS Into Directory: #{target_directory} =========================="
-		$client.ls([])
+		out = $client.ls([])
 		if($client.qur_size == 1)
 			outdir = Dir.pwd + "/data/temp/0_ls.txt"	
+			fi = File.new(outdir, "r")
+			@files_in_directory = []
+			while (line = fi.gets)
+			      @files_in_directory.push "#{line}"
+			end
 		else
-			outdir = $client.ls_file_path()
-		end
-		fi= File.new(outdir, "r")
-		@files_in_directory = []
-		while (line = fi.gets)
-		      @files_in_directory.push "#{line}"
+			@files_in_directory = []
+			@files_in_directory = out.split() unless out.nil? 
 		end
 		@the_current_directory = target_directory
 		render 'folder'
@@ -98,7 +113,7 @@ class FilesController < ApplicationController
 		$client.login(user.name,user.password);
 		$client.config([])
 		$client.temp_folder= "data/upload"
-		$client.rwd = cookies[:directory]
+		$client.rwd = "/" + cookies[:directory]
 		$client.put([ path, name ])
 		
 	end

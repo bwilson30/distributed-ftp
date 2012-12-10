@@ -1,1 +1,4 @@
+homer_odyssey.txt
 project4.pdf
+proposal.pdf
+testDir/

@@ -263,7 +263,7 @@ public class client{
              int opcode = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/" + argv[1]);
 		 }
 	}
-	void ls(String[] argv){
+	String ls(String[] argv){
 		System.out.println("LS");
 		//generate_random_connections();
 		int opcode[] = new int[qur_size];
@@ -279,30 +279,33 @@ public class client{
 			 else if(argv.length  == 1)
 				 opcode[i] = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/" + tdir);
 			 else{ System.out.println("Incorrect number of inputs!");
-			 		return;
+			 		return null;
 			 }
 			 file_list[i] = new QFILE(new File(temp_folder +"/" + i +"_ls.txt"),	// Temp file directory
 	 					0,															// timestamp
 	 					i															// ServerID
 	 				);
 		 }
-		 if(quorum.quorum_files_static(file_list, qur_size, temp_folder + "/ls.txt") == -1){
-			 System.out.println("SYSFL: Unable to sucessfully generate ls faultly servers!"); return;
+		 String output = quorum.quorum_ls_files_static(file_list, server_list.length, temp_folder + "/ls.txt",qur_size);
+		 if( output == null){
+			 System.out.println("SYSFL: Unable to sucessfully generate ls faultly servers!"); return null;
 		 }
 		 else System.out.println("SYSSUCCESS");
-		 File ls_file = new File(temp_folder + "/ls.txt");
+//		 File ls_file = new File(temp_folder + "/ls.txt");
 		 System.out.println("Printing remote folder:");
-		 FileInputStream inst = null;
-			String ccmd = null;
-			try {
-				inst = new FileInputStream(ls_file); 
-				BufferedReader bis = new BufferedReader(new InputStreamReader(inst));
-				String str = "";
-				while((str = bis.readLine()) != null) System.out.println(str);
-			} catch (IOException ioe) {
-				 System.out.println("IO error trying to read ls back!");
-				 System.exit(1);
-			}
+		 System.out.println(output);
+		 return output;
+//		 FileInputStream inst = null;
+//			String ccmd = null;
+//			try {
+//				inst = new FileInputStream(ls_file); 
+//				BufferedReader bis = new BufferedReader(new InputStreamReader(inst));
+//				String str = "";
+//				while((str = bis.readLine()) != null) System.out.println(str);
+//			} catch (IOException ioe) {
+//				 System.out.println("IO error trying to read ls back!");
+//				 System.exit(1);
+//			}
 			
 		 
 	}

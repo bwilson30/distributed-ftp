@@ -17622,3 +17622,3486 @@ Processing by FilesController#download_file as HTML
   Parameters: {"id"=>"/homer_odyssey.txt"}
 Sent file /Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/data/output/homer_odyssey.txt (1.0ms)
 Completed 200 OK in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:07 -0500 2012
+Connecting to database specified by database.yml
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (59.0ms)
+Completed 200 OK in 682ms (Views: 679.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:10 -0500 2012
+Served asset /application.css - 304 Not Modified (79ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:10 -0500 2012
+Served asset /files.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:10 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:10 -0500 2012
+Served asset /domains.css - 304 Not Modified (29ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:10 -0500 2012
+Served asset /sessions.css - 304 Not Modified (119ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:11 -0500 2012
+Served asset /servers.css - 304 Not Modified (29ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:11 -0500 2012
+Served asset /users.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:11 -0500 2012
+Served asset /jquery.js - 304 Not Modified (17ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:11 -0500 2012
+Served asset /files.js - 304 Not Modified (13ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:11 -0500 2012
+Served asset /servers.js - 304 Not Modified (13ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:11 -0500 2012
+Served asset /sessions.js - 304 Not Modified (14ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:11 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (14ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:11 -0500 2012
+Served asset /domains.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:11 -0500 2012
+Served asset /users.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:11 -0500 2012
+Served asset /application.js - 304 Not Modified (121ms)
+
+
+Started POST "/signin" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:40 -0500 2012
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Qt9Amfwzmr7XfzvPb+lG1gk584pkjNWtqhfNaP+D/oQ=", "session"=>{"name"=>"teamA", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (7.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" = 'teamA' LIMIT 1[0m
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 320ms (ActiveRecord: 52.0ms)
+
+
+Started GET "/users/6" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:40 -0500 2012
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mUser Load (7.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  Rendered users/show.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 157ms (Views: 134.0ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /domains.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /domains.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /servers.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:41 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Processing by FilesController#show as HTML
+Redirected to http://localhost:3000/domains
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/domains" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Processing by DomainsController#index as HTML
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" [0m
+  Rendered domains/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 110ms (Views: 66.0ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Served asset /domains.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:45 -0500 2012
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:46 -0500 2012
+Served asset /servers.css - 304 Not Modified (1ms)
+
+
+Started GET "/domains/1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:48 -0500 2012
+Processing by DomainsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."id" = 1 LIMIT 1
+  [1m[36mServer Load (7.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered domains/show.html.erb within layouts/application (129.0ms)
+Completed 200 OK in 202ms (Views: 173.0ms | ActiveRecord: 23.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:48 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:48 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:48 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:48 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:48 -0500 2012
+Served asset /users.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:49 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:49 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:49 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:49 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:49 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:49 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:49 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:49 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:49 -0500 2012
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:49 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/domains" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Processing by DomainsController#index as HTML
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" 
+  Rendered domains/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 57ms (Views: 49.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /domains.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:52 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:50:53 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (6.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (8.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (34.0ms)
+Completed 200 OK in 12203ms (Views: 89.0ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:05 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started PUT "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:46 -0500 2012
+Processing by FilesController#put_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Qt9Amfwzmr7XfzvPb+lG1gk584pkjNWtqhfNaP+D/oQ=", "upload"=>#<ActionDispatch::Http::UploadedFile:0x5a8ca43d @original_filename="road_not_taken.txt", @headers="Content-Disposition: form-data; name=\"upload\"; filename=\"road_not_taken.txt\"\r\nContent-Type: text/plain\r\n", @tempfile=#<File:/var/folders/5t/qmqbmywj18zcdc1jtj0z053m0000gn/T/RackMultipart.4262.29398>, @content_type="text/plain">, "name"=>"robert_frost.txt", "commit"=>"Upload", "domain"=>"localhost"}
+  [1m[35mDomain Load (5.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Redirected to http://localhost:3000/files/localhost
+  [1m[35mServer Load (6.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+Completed 302 Found in 11467ms (ActiveRecord: 16.0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:51:57 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (6.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (6.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 12596ms (Views: 150.0ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:52:10 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:46 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (5.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (8.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 11521ms (Views: 48.0ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:54:58 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/get/localhost?id=robert_frost.txt" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:04 -0500 2012
+Processing by FilesController#get_file as HTML
+  Parameters: {"id"=>"robert_frost.txt", "domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (7.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (8.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/download.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 11256ms (Views: 40.0ms | ActiveRecord: 19.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /domains.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:55:15 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/download?id=/robert_frost.txt" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:56:14 -0500 2012
+Processing by FilesController#download_file as HTML
+  Parameters: {"id"=>"/robert_frost.txt"}
+  Rendered text template (0.0ms)
+Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/get/localhost?id=robert_frost.txt" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:46 -0500 2012
+Processing by FilesController#get_file as HTML
+  Parameters: {"id"=>"robert_frost.txt", "domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (7.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/download.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 11147ms (Views: 37.0ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /files.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /domains.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:57:57 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/download?id=/robert_frost.txt" for 0:0:0:0:0:0:0:1 at Mon Dec 10 00:58:02 -0500 2012
+Processing by FilesController#download_file as HTML
+  Parameters: {"id"=>"/robert_frost.txt"}
+  Rendered text template (0.0ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:38 -0500 2012
+Connecting to database specified by database.yml
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (74.0ms)
+Completed 200 OK in 724ms (Views: 720.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:42 -0500 2012
+Served asset /application.css - 304 Not Modified (62ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:42 -0500 2012
+Served asset /domains.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:42 -0500 2012
+Served asset /files.css - 304 Not Modified (21ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:42 -0500 2012
+Served asset /users.css - 304 Not Modified (23ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:42 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (99ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:42 -0500 2012
+Served asset /sessions.css - 304 Not Modified (26ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:42 -0500 2012
+Served asset /jquery.js - 304 Not Modified (21ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:42 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (16ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:42 -0500 2012
+Served asset /domains.js - 304 Not Modified (13ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:42 -0500 2012
+Served asset /servers.js - 304 Not Modified (24ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:43 -0500 2012
+Served asset /application.js - 304 Not Modified (102ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:43 -0500 2012
+Served asset /sessions.js - 304 Not Modified (11ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:43 -0500 2012
+Served asset /files.js - 304 Not Modified (10ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:43 -0500 2012
+Served asset /users.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:05:43 -0500 2012
+Served asset /servers.css - 304 Not Modified (36ms)
+
+
+Started POST "/signin" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:52 -0500 2012
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mkuj6is1MjBAK3swNwXsa2+o1u/cJlUaaujf8zBZtcE=", "session"=>{"name"=>"teamA", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (6.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."name" = 'teamA' LIMIT 1[0m
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 300ms (ActiveRecord: 48.0ms)
+
+
+Started GET "/users/6" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:52 -0500 2012
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mUser Load (6.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1
+  Rendered users/show.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 184ms (Views: 150.0ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /application.css - 304 Not Modified (28ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /domains.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /domains.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:09:53 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Processing by FilesController#show as HTML
+Redirected to http://localhost:3000/domains
+Completed 302 Found in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/domains" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Processing by DomainsController#index as HTML
+  [1m[36mDomain Load (5.0ms)[0m  [1mSELECT "domains".* FROM "domains" [0m
+  Rendered domains/index.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 116ms (Views: 69.0ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /servers.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:02 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:10:04 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (6.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (6.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+ERROR: compiling _app_views_files_folder_html_erb__338790331_2040 RAISED /Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/app/views/files/folder.html.erb:6: syntax error, unexpected tUPLUS
+
+		+ ((file[-1] == '/')?:"&cd=down":"")
+  ^
+Function body:           def _app_views_files_folder_html_erb__338790331_2040(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "files/folder";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h1> Directory: ');@output_buffer.append= ( '/' + @the_current_directory );@output_buffer.safe_concat(' </h1>
+</br>
+');@output_buffer.append= ( link_to(file,"/get/"+ @domain_name + "?cd=up") );@output_buffer.safe_concat('  </br>
+'); @files_in_directory.each do |file| 
+@output_buffer.safe_concat('	');@output_buffer.append= ( link_to(file,"/get/"+ @domain_name + "?id=" + file
+		+ ((file[-1] == '/')?:"&cd=down":"")
+		) if !file.empty? );@output_buffer.safe_concat('  </br>
+'); end 
+@output_buffer.safe_concat('<h1>File Upload</h1>
+');@output_buffer.append=  form_tag({:action => :put_file},:method => :put, :multipart => true) do @output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( file_field_tag 'upload' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( text_field_tag 'name' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( submit_tag     'Upload' );@output_buffer.safe_concat('
+'); end 
+@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: org/jruby/RubyModule.java:2289:in `module_eval'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:297:in `compile'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:244:in `compile!'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:232:in `compile!'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:144:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:125:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:143:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:46:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:18:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/renderer.rb:17:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:110:in `_render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:88:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rendering.rb:16:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/app/controllers/files_controller.rb:47:in `ls'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/base.rb:167:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/callbacks.rb:18:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:417:in `_run__195385207__process_action__733662731__callbacks'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:390:in `_run_process_action_callbacks'
+org/jruby/RubyKernel.java:2080:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/base.rb:121:in `process'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:45:in `process'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal.rb:203:in `dispatch'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal.rb:246:in `action'
+org/jruby/RubyProc.java:270:in `call'
+org/jruby/RubyProc.java:220:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/routing/route_set.rb:36:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/journey-1.0.4/lib/journey/router.rb:68:in `call'
+org/jruby/RubyArray.java:1615:in `each'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/journey-1.0.4/lib/journey/router.rb:56:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/routing/route_set.rb:601:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/cookies.rb:341:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/query_cache.rb:64:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:408:in `_run__2085964262__call__147502717__callbacks'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:390:in `_run_call_callbacks'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/logger.rb:32:in `call_app'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/logger.rb:16:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/tagged_logging.rb:22:in `tagged'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/logger.rb:16:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/static.rb:62:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/engine.rb:479:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/application.rb:223:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/log_tailer.rb:17:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+org/jruby/RubyProc.java:270:in `call'
+org/jruby/RubyProc.java:224:in `call'
+  Rendered files/folder.html.erb within layouts/application (43.0ms)
+Completed 500 Internal Server Error in 11475ms
+
+ActionView::Template::Error (/Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/app/views/files/folder.html.erb:6: syntax error, unexpected tUPLUS
+
+		+ ((file[-1] == '/')?:"&cd=down":"")
+  ^):
+    3: <%= link_to(file,"/get/"+ @domain_name + "?cd=up") %>  </br>
+    4: <% @files_in_directory.each do |file| %>
+    5: 	<%= link_to(file,"/get/"+ @domain_name + "?id=" + file
+    6: 		+ ((file[-1] == '/')?:"&cd=down":"")
+    7: 		) if !file.empty? %>  </br>
+    8: <% end %>
+    9: <h1>File Upload</h1>
+  app/controllers/files_controller.rb:47:in `ls'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (13.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (15.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (51.0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:12:04 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (6.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (8.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+ERROR: compiling _app_views_files_folder_html_erb__338790331_2052 RAISED /Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/app/views/files/folder.html.erb:6: syntax error, unexpected tUPLUS
+
+		+ ((file[-1] == '/')?"&cd=down":"")
+  ^
+Function body:           def _app_views_files_folder_html_erb__338790331_2052(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "files/folder";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h1> Directory: ');@output_buffer.append= ( '/' + @the_current_directory );@output_buffer.safe_concat(' </h1>
+</br>
+');@output_buffer.append= ( link_to(file,"/get/"+ @domain_name + "?cd=up") );@output_buffer.safe_concat('  </br>
+'); @files_in_directory.each do |file| 
+@output_buffer.safe_concat('	');@output_buffer.append= ( link_to(file,"/get/"+ @domain_name + "?id=" + file
+		+ ((file[-1] == '/')?"&cd=down":"")
+		) if !file.empty? );@output_buffer.safe_concat('  </br>
+'); end 
+@output_buffer.safe_concat('<h1>File Upload</h1>
+');@output_buffer.append=  form_tag({:action => :put_file},:method => :put, :multipart => true) do @output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( file_field_tag 'upload' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( text_field_tag 'name' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( submit_tag     'Upload' );@output_buffer.safe_concat('
+'); end 
+@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: org/jruby/RubyModule.java:2289:in `module_eval'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:297:in `compile'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:244:in `compile!'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:232:in `compile!'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:144:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:125:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:143:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:46:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:18:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/renderer.rb:17:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:110:in `_render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:88:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rendering.rb:16:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/app/controllers/files_controller.rb:47:in `ls'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/base.rb:167:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/callbacks.rb:18:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:417:in `_run__195385207__process_action__733662731__callbacks'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:390:in `_run_process_action_callbacks'
+org/jruby/RubyKernel.java:2080:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/base.rb:121:in `process'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:45:in `process'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal.rb:203:in `dispatch'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal.rb:246:in `action'
+org/jruby/RubyProc.java:270:in `call'
+org/jruby/RubyProc.java:220:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/routing/route_set.rb:36:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/journey-1.0.4/lib/journey/router.rb:68:in `call'
+org/jruby/RubyArray.java:1615:in `each'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/journey-1.0.4/lib/journey/router.rb:56:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/routing/route_set.rb:601:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/cookies.rb:341:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/query_cache.rb:64:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:408:in `_run__2085964262__call__147502717__callbacks'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:390:in `_run_call_callbacks'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/logger.rb:32:in `call_app'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/logger.rb:16:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/tagged_logging.rb:22:in `tagged'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/logger.rb:16:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/static.rb:62:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/engine.rb:479:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/application.rb:223:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/log_tailer.rb:17:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+org/jruby/RubyProc.java:270:in `call'
+org/jruby/RubyProc.java:224:in `call'
+  Rendered files/folder.html.erb within layouts/application (10.0ms)
+Completed 500 Internal Server Error in 10943ms
+
+ActionView::Template::Error (/Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/app/views/files/folder.html.erb:6: syntax error, unexpected tUPLUS
+
+		+ ((file[-1] == '/')?"&cd=down":"")
+  ^):
+    3: <%= link_to(file,"/get/"+ @domain_name + "?cd=up") %>  </br>
+    4: <% @files_in_directory.each do |file| %>
+    5: 	<%= link_to(file,"/get/"+ @domain_name + "?id=" + file
+    6: 		+ ((file[-1] == '/')?"&cd=down":"")
+    7: 		) if !file.empty? %>  </br>
+    8: <% end %>
+    9: <h1>File Upload</h1>
+  app/controllers/files_controller.rb:47:in `ls'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (19.0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:12:55 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (6.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (59.0ms)
+Completed 500 Internal Server Error in 10986ms
+
+ActionView::Template::Error (undefined local variable or method `file' for #<#<Class:0x4e64b4c4>:0x3597d811>):
+    1: <h1> Directory: <%= '/' + @the_current_directory %> </h1>
+    2: </br>
+    3: <%= link_to(file,"/get/"+ @domain_name + "?cd=up") %>  </br>
+    4: <% @files_in_directory.each do |file| %>
+    5: 	<%= link_to(file,"/get/"+ @domain_name + "?id=" + file + ((file[-1] == '/')?"&cd=down":"") ) if !file.empty? %>  </br>
+    6: <% end %>
+  app/views/files/folder.html.erb:3:in `_app_views_files_folder_html_erb__338790331_2064'
+  app/controllers/files_controller.rb:47:in `ls'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (8.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (36.0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:01 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (6.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (6.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 11012ms (Views: 70.0ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /domains.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:12 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:23 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (5.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (7.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (7.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 11120ms (Views: 50.0ms | ActiveRecord: 19.0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:14:34 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:04 -0500 2012
+Connecting to database specified by database.yml
+
+SyntaxError (/Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/app/controllers/files_controller.rb:19: syntax error, unexpected tRPAREN
+
+			cdir = (Pathname.new(cdir + "/") + params[:id])).to_str if params[:cd] == "down"
+                                                  ^):
+  app/controllers/files_controller.rb:469:in `load_file'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (13.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (49.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (124.0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:42 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (6.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (6.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (53.0ms)
+Completed 200 OK in 12386ms (Views: 640.0ms | ActiveRecord: 79.0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:54 -0500 2012
+Served asset /domains.css - 304 Not Modified (16ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:54 -0500 2012
+Served asset /application.css - 304 Not Modified (92ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:54 -0500 2012
+Served asset /users.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:54 -0500 2012
+Served asset /files.css - 304 Not Modified (47ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:55 -0500 2012
+Served asset /sessions.css - 304 Not Modified (131ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:55 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (33ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:55 -0500 2012
+Served asset /jquery.js - 304 Not Modified (21ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:55 -0500 2012
+Served asset /domains.js - 304 Not Modified (14ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:55 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (15ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:55 -0500 2012
+Served asset /servers.js - 304 Not Modified (16ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:55 -0500 2012
+Served asset /files.js - 304 Not Modified (9ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:55 -0500 2012
+Served asset /sessions.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:55 -0500 2012
+Served asset /users.js - 304 Not Modified (8ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:55 -0500 2012
+Served asset /application.js - 304 Not Modified (88ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:30:55 -0500 2012
+Served asset /servers.css - 304 Not Modified (31ms)
+
+
+Started GET "/get/localhost?id=testDir/" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:08 -0500 2012
+Processing by FilesController#get_file as HTML
+  Parameters: {"id"=>"testDir/", "domain"=>"localhost"}
+  [1m[35mDomain Load (5.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (7.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (8.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/download.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 11007ms (Views: 87.0ms | ActiveRecord: 20.0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /domains.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /files.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /application.js - 304 Not Modified (5ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:31:19 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:47 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (5.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (6.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (30.0ms)
+Completed 200 OK in 11319ms (Views: 105.0ms | ActiveRecord: 52.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /application.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:33:58 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/get/localhost?id=testDir/&cd=down" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:14 -0500 2012
+Processing by FilesController#get_file as HTML
+  Parameters: {"id"=>"testDir/", "cd"=>"down", "domain"=>"localhost"}
+  [1m[35mDomain Load (3.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (6.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (7.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/download.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 11047ms (Views: 71.0ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /files.css - 304 Not Modified (29ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 02:34:26 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:35:31 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (7.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 500 Internal Server Error in 204ms
+
+TypeError (can't convert nil into String):
+  app/controllers/files_controller.rb:16:in `ls'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (12.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (28.0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:36:13 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (6.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (7.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 11282ms (Views: 61.0ms | ActiveRecord: 48.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /files.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:36:24 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/get/localhost?id=testDir/&cd=down" for 127.0.0.1 at Mon Dec 10 02:36:31 -0500 2012
+Processing by FilesController#get_file as HTML
+  Parameters: {"id"=>"testDir/", "cd"=>"down", "domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (7.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/download.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 20895ms (Views: 35.0ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:36:52 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:39:37 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (6.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (5.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+ERROR: compiling _app_views_files_folder_html_erb__1065316467_2074 RAISED /Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/app/views/files/folder.html.erb:5: syntax error, unexpected tRPAREN
+
+@output_buffer.safe_concat('	');@output_buffer.append= ( if file.include?('/') );@output_buffer.safe_concat(' 
+                                                                               ^
+Function body:           def _app_views_files_folder_html_erb__1065316467_2074(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "files/folder";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h1> Directory: ');@output_buffer.append= ( '/' + @the_current_directory );@output_buffer.safe_concat(' </h1>
+</br>
+');@output_buffer.append= ( link_to("../","/get/"+ @domain_name + "?cd=up") );@output_buffer.safe_concat('  </br>
+'); @files_in_directory.each do |file| 
+@output_buffer.safe_concat('	');@output_buffer.append= ( if file.include?('/') );@output_buffer.safe_concat(' 
+');@output_buffer.safe_concat('		');@output_buffer.append= ( link_to(file,"/get/"+ @domain_name + "?id=" + file ) if !file.empty? );@output_buffer.safe_concat('  </br>
+');	 else 
+@output_buffer.safe_concat('		');@output_buffer.append= ( link_to(file,"/files/"+ @domain_name + "?cd=down&id=" + file ) if !file.empty? );@output_buffer.safe_concat('  </br>
+');	 end 
+ end 
+@output_buffer.safe_concat('<h1>File Upload</h1>
+');@output_buffer.append=  form_tag({:action => :put_file},:method => :put, :multipart => true) do @output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( file_field_tag 'upload' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( text_field_tag 'name' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( submit_tag     'Upload' );@output_buffer.safe_concat('
+'); end 
+@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: org/jruby/RubyModule.java:2289:in `module_eval'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:297:in `compile'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:244:in `compile!'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:232:in `compile!'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:144:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:125:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:143:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications/instrumenter.rb:19:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:46:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:18:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/renderer.rb:17:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:110:in `_render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:88:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rendering.rb:16:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/app/controllers/files_controller.rb:57:in `ls'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/base.rb:167:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/callbacks.rb:18:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:417:in `_run__1964407288__process_action__1050806775__callbacks'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:390:in `_run_process_action_callbacks'
+org/jruby/RubyKernel.java:2080:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications/instrumenter.rb:19:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/base.rb:121:in `process'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:45:in `process'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal.rb:203:in `dispatch'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal.rb:246:in `action'
+org/jruby/RubyProc.java:270:in `call'
+org/jruby/RubyProc.java:220:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/routing/route_set.rb:36:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/journey-1.0.4/lib/journey/router.rb:68:in `call'
+org/jruby/RubyArray.java:1615:in `each'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/journey-1.0.4/lib/journey/router.rb:56:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/routing/route_set.rb:601:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/cookies.rb:341:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/query_cache.rb:64:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:408:in `_run__1359780805__call__1067349139__callbacks'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:390:in `_run_call_callbacks'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/logger.rb:32:in `call_app'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/logger.rb:16:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/tagged_logging.rb:22:in `tagged'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/logger.rb:16:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/static.rb:62:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/engine.rb:479:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/application.rb:223:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/log_tailer.rb:17:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+org/jruby/RubyProc.java:270:in `call'
+org/jruby/RubyProc.java:224:in `call'
+  Rendered files/folder.html.erb within layouts/application (25.0ms)
+Completed 500 Internal Server Error in 18212ms
+
+ActionView::Template::Error (/Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/app/views/files/folder.html.erb:5: syntax error, unexpected tRPAREN
+
+@output_buffer.safe_concat('	');@output_buffer.append= ( if file.include?('/') );@output_buffer.safe_concat(' 
+                                                                               ^):
+    2: </br>
+    3: <%= link_to("../","/get/"+ @domain_name + "?cd=up") %>  </br>
+    4: <% @files_in_directory.each do |file| %>
+    5: 	<%= if file.include?('/') %> 
+    6: 		<%= link_to(file,"/get/"+ @domain_name + "?id=" + file ) if !file.empty? %>  </br>
+    7: 	<% else %>
+    8: 		<%= link_to(file,"/files/"+ @domain_name + "?cd=down&id=" + file ) if !file.empty? %>  </br>
+  app/controllers/files_controller.rb:57:in `ls'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (26.0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:40:39 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (3.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (6.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+ERROR: compiling _app_views_files_folder_html_erb__1065316467_2086 RAISED /Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/app/views/files/folder.html.erb:5: syntax error, unexpected tRPAREN
+
+@output_buffer.safe_concat('	');@output_buffer.append= ( if file.include? '/' );@output_buffer.safe_concat(' 
+                                                                              ^
+Function body:           def _app_views_files_folder_html_erb__1065316467_2086(local_assigns, output_buffer)
+            _old_virtual_path, @virtual_path = @virtual_path, "files/folder";_old_output_buffer = @output_buffer;;@output_buffer = output_buffer || ActionView::OutputBuffer.new;@output_buffer.safe_concat('<h1> Directory: ');@output_buffer.append= ( '/' + @the_current_directory );@output_buffer.safe_concat(' </h1>
+</br>
+');@output_buffer.append= ( link_to("../","/get/"+ @domain_name + "?cd=up") );@output_buffer.safe_concat('  </br>
+'); @files_in_directory.each do |file| 
+@output_buffer.safe_concat('	');@output_buffer.append= ( if file.include? '/' );@output_buffer.safe_concat(' 
+');@output_buffer.safe_concat('		');@output_buffer.append= ( link_to(file,"/get/"+ @domain_name + "?id=" + file ) if !file.empty? );@output_buffer.safe_concat('  </br>
+');	 else 
+@output_buffer.safe_concat('		');@output_buffer.append= ( link_to(file,"/files/"+ @domain_name + "?cd=down&id=" + file ) if !file.empty? );@output_buffer.safe_concat('  </br>
+');	 end 
+ end 
+@output_buffer.safe_concat('<h1>File Upload</h1>
+');@output_buffer.append=  form_tag({:action => :put_file},:method => :put, :multipart => true) do @output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( file_field_tag 'upload' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( text_field_tag 'name' );@output_buffer.safe_concat('
+');@output_buffer.safe_concat('  ');@output_buffer.append= ( submit_tag     'Upload' );@output_buffer.safe_concat('
+'); end 
+@output_buffer.to_s
+          ensure
+            @virtual_path, @output_buffer = _old_virtual_path, _old_output_buffer
+          end
+
+Backtrace: org/jruby/RubyModule.java:2289:in `module_eval'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:297:in `compile'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:244:in `compile!'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:232:in `compile!'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:144:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:125:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/template.rb:143:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:47:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications/instrumenter.rb:19:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/abstract_renderer.rb:38:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:46:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:54:in `render_with_layout'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:45:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/template_renderer.rb:18:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/renderer.rb:36:in `render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_view/renderer/renderer.rb:17:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:110:in `_render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/streaming.rb:225:in `_render_template'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:103:in `render_to_body'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/renderers.rb:28:in `render_to_body'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/compatibility.rb:50:in `render_to_body'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:88:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rendering.rb:16:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/core_ext/benchmark.rb:5:in `ms'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:40:in `render'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:83:in `cleanup_view_runtime'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/railties/controller_runtime.rb:24:in `cleanup_view_runtime'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:39:in `render'
+/Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/app/controllers/files_controller.rb:57:in `ls'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/base.rb:167:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rendering.rb:10:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/callbacks.rb:18:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:417:in `_run__1964407288__process_action__1050806775__callbacks'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:390:in `_run_process_action_callbacks'
+org/jruby/RubyKernel.java:2080:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/callbacks.rb:17:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rescue.rb:29:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications/instrumenter.rb:19:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/notifications.rb:123:in `instrument'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/params_wrapper.rb:207:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/base.rb:121:in `process'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/abstract_controller/rendering.rb:45:in `process'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal.rb:203:in `dispatch'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_controller/metal.rb:246:in `action'
+org/jruby/RubyProc.java:270:in `call'
+org/jruby/RubyProc.java:220:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/routing/route_set.rb:36:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/journey-1.0.4/lib/journey/router.rb:68:in `call'
+org/jruby/RubyArray.java:1615:in `each'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/journey-1.0.4/lib/journey/router.rb:56:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/routing/route_set.rb:601:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/head.rb:14:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/flash.rb:242:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/cookies.rb:341:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/query_cache.rb:64:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activerecord-3.2.9/lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/callbacks.rb:28:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:408:in `_run__1359780805__call__1067349139__callbacks'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:405:in `__run_callback'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:390:in `_run_call_callbacks'
+org/jruby/RubyKernel.java:2076:in `send'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/callbacks.rb:81:in `run_callbacks'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/logger.rb:32:in `call_app'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/logger.rb:16:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/tagged_logging.rb:22:in `tagged'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/logger.rb:16:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/activesupport-3.2.9/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/static.rb:62:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/engine.rb:479:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/application.rb:223:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/railties-3.2.9/lib/rails/rack/log_tailer.rb:17:in `call'
+/Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/rack-1.4.1/lib/rack/handler/webrick.rb:59:in `service'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+org/jruby/RubyProc.java:270:in `call'
+org/jruby/RubyProc.java:224:in `call'
+  Rendered files/folder.html.erb within layouts/application (7.0ms)
+Completed 500 Internal Server Error in 17874ms
+
+ActionView::Template::Error (/Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/app/views/files/folder.html.erb:5: syntax error, unexpected tRPAREN
+
+@output_buffer.safe_concat('	');@output_buffer.append= ( if file.include? '/' );@output_buffer.safe_concat(' 
+                                                                              ^):
+    2: </br>
+    3: <%= link_to("../","/get/"+ @domain_name + "?cd=up") %>  </br>
+    4: <% @files_in_directory.each do |file| %>
+    5: 	<%= if file.include? '/' %> 
+    6: 		<%= link_to(file,"/get/"+ @domain_name + "?id=" + file ) if !file.empty? %>  </br>
+    7: 	<% else %>
+    8: 		<%= link_to(file,"/files/"+ @domain_name + "?cd=down&id=" + file ) if !file.empty? %>  </br>
+  app/controllers/files_controller.rb:57:in `ls'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (5.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (22.0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:42:06 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (5.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 11024ms (Views: 61.0ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /servers.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:42:17 -0500 2012
+Served asset /servers.css - 304 Not Modified (1ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:42:54 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (5.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 10937ms (Views: 58.0ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /domains.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:43:05 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost?cd=down&id=testDir/" for 127.0.0.1 at Mon Dec 10 02:43:10 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"cd"=>"down", "id"=>"testDir/", "domain"=>"localhost"}
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (4.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Redirected to http://localhost:3000/files/localhost
+Completed 302 Found in 47ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:43:10 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (4.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (6.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 10968ms (Views: 46.0ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /domains.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:43:21 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/get/localhost?cd=up" for 127.0.0.1 at Mon Dec 10 02:45:15 -0500 2012
+Processing by FilesController#get_file as HTML
+  Parameters: {"cd"=>"up", "domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 500 Internal Server Error in 128ms
+
+TypeError (can't convert nil into String):
+  app/controllers/files_controller.rb:67:in `get_file'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (4.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (30.0ms)
+
+
+Started GET "/signin" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (41.0ms)
+Completed 200 OK in 79ms (Views: 77.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /domains.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/signin" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Processing by SessionsController#new as HTML
+  Rendered sessions/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 40ms (Views: 37.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:43 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /files.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:44 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started POST "/signin" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tuOih9jcQ5x7NxOZkdc34LBBL7ZgsbkxPR/H1i0xsH4=", "session"=>{"name"=>"teamA", "password"=>"[FILTERED]"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (4.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."name" = 'teamA' LIMIT 1
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 122ms (ActiveRecord: 16.0ms)
+
+
+Started GET "/users/6" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 6 LIMIT 1[0m
+  Rendered users/show.html.erb within layouts/application (27.0ms)
+Completed 200 OK in 106ms (Views: 94.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:50 -0500 2012
+Served asset /files.js - 304 Not Modified (1ms)
+
+
+Started GET "/files" for 127.0.0.1 at Mon Dec 10 02:45:54 -0500 2012
+Processing by FilesController#show as HTML
+Redirected to http://localhost:3000/domains
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/domains" for 127.0.0.1 at Mon Dec 10 02:45:54 -0500 2012
+Processing by DomainsController#index as HTML
+  [1m[35mDomain Load (3.0ms)[0m  SELECT "domains".* FROM "domains" 
+  Rendered domains/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 88ms (Views: 57.0ms | ActiveRecord: 10.0ms)
+
+
+Started GET "/files" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Processing by FilesController#show as HTML
+Redirected to http://localhost:3000/domains
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/domains" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Processing by DomainsController#index as HTML
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" [0m
+  Rendered domains/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 41ms (Views: 36.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:45:55 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:45:57 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (3.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (5.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 11011ms (Views: 45.0ms | ActiveRecord: 23.0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /servers.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:08 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost?cd=down&id=testDir/" for 127.0.0.1 at Mon Dec 10 02:46:11 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"cd"=>"down", "id"=>"testDir/", "domain"=>"localhost"}
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (4.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Redirected to http://localhost:3000/files/localhost
+Completed 302 Found in 18ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:46:12 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (9.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (5.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 11163ms (Views: 51.0ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /sessions.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:46:23 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/get/localhost?cd=up" for 127.0.0.1 at Mon Dec 10 02:47:07 -0500 2012
+Processing by FilesController#get_file as HTML
+  Parameters: {"cd"=>"up", "domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 500 Internal Server Error in 134ms
+
+TypeError (can't convert nil into String):
+  app/controllers/files_controller.rb:67:in `get_file'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.0ms)
+
+
+Started GET "/get/localhost?cd=up" for 127.0.0.1 at Mon Dec 10 02:47:38 -0500 2012
+Processing by FilesController#get_file as HTML
+  Parameters: {"cd"=>"up", "domain"=>"localhost"}
+  [1m[35mDomain Load (3.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 500 Internal Server Error in 17ms
+
+TypeError (can't convert nil into String):
+  app/controllers/files_controller.rb:67:in `get_file'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.0ms)
+
+
+Started GET "/files/localhost?cd=up" for 127.0.0.1 at Mon Dec 10 02:47:43 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"cd"=>"up", "domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Redirected to http://localhost:3000/files/localhost
+Completed 302 Found in 34ms (ActiveRecord: 8.0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:47:44 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (3.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (5.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 10998ms (Views: 72.0ms | ActiveRecord: 22.0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /domains.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /files.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:47:55 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost?cd=down&id=testDir/" for 127.0.0.1 at Mon Dec 10 02:48:29 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"cd"=>"down", "id"=>"testDir/", "domain"=>"localhost"}
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (4.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Redirected to http://localhost:3000/files/localhost
+Completed 302 Found in 29ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:48:29 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (8.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (14.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 10957ms (Views: 48.0ms | ActiveRecord: 26.0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /domains.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:40 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost?cd=up" for 127.0.0.1 at Mon Dec 10 02:48:43 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"cd"=>"up", "domain"=>"localhost"}
+  [1m[35mDomain Load (3.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (3.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Redirected to http://localhost:3000/files/localhost
+Completed 302 Found in 38ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:48:43 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (3.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (6.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 10954ms (Views: 33.0ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /jquery.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:48:54 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost?cd=down&id=testDir/" for 127.0.0.1 at Mon Dec 10 02:48:56 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"cd"=>"down", "id"=>"testDir/", "domain"=>"localhost"}
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (4.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Redirected to http://localhost:3000/files/localhost
+Completed 302 Found in 21ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:48:56 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (3.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (5.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 10932ms (Views: 46.0ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /domains.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /servers.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /application.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /domains.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:49:07 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started PUT "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:49:39 -0500 2012
+Processing by FilesController#put_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tuOih9jcQ5x7NxOZkdc34LBBL7ZgsbkxPR/H1i0xsH4=", "upload"=>#<ActionDispatch::Http::UploadedFile:0x6c928c55 @original_filename="heart_of_darkness.txt", @headers="Content-Disposition: form-data; name=\"upload\"; filename=\"heart_of_darkness.txt\"\r\nContent-Type: text/plain\r\n", @tempfile=#<File:/var/folders/5t/qmqbmywj18zcdc1jtj0z053m0000gn/T/RackMultipart.2273.65157>, @content_type="text/plain">, "name"=>"heart_of_darkness.txt", "commit"=>"Upload", "domain"=>"localhost"}
+  [1m[35mDomain Load (3.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Redirected to http://localhost:3000/files/localhost
+  [1m[35mServer Load (4.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+Completed 302 Found in 11618ms (ActiveRecord: 11.0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:49:51 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (5.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 12257ms (Views: 38.0ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /users.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:50:03 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)
+
+
+Started PUT "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:51:00 -0500 2012
+Processing by FilesController#put_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tuOih9jcQ5x7NxOZkdc34LBBL7ZgsbkxPR/H1i0xsH4=", "upload"=>#<ActionDispatch::Http::UploadedFile:0x7e6dbc7f @original_filename="heart_of_darkness.txt", @headers="Content-Disposition: form-data; name=\"upload\"; filename=\"heart_of_darkness.txt\"\r\nContent-Type: text/plain\r\n", @tempfile=#<File:/var/folders/5t/qmqbmywj18zcdc1jtj0z053m0000gn/T/RackMultipart.2273.65158>, @content_type="text/plain">, "name"=>"heart_of_darkness.txt", "commit"=>"Upload", "domain"=>"localhost"}
+  [1m[35mDomain Load (2.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Redirected to http://localhost:3000/files/localhost
+  [1m[35mServer Load (6.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+Completed 302 Found in 11770ms (ActiveRecord: 37.0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:51:12 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (3.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (4.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 12196ms (Views: 46.0ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:51:24 -0500 2012
+Served asset /files.js - 304 Not Modified (1ms)
+
+
+Started GET "/files/localhost?cd=up" for 127.0.0.1 at Mon Dec 10 02:51:52 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"cd"=>"up", "domain"=>"localhost"}
+  [1m[35mDomain Load (3.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Redirected to http://localhost:3000/files/localhost
+Completed 302 Found in 23ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 02:51:52 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (5.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 10885ms (Views: 41.0ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/assets/servers.js?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /servers.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /users.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /sessions.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /domains.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /jquery_ujs.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.js?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /domains.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.js?body=1" for 127.0.0.1 at Mon Dec 10 02:52:03 -0500 2012
+Served asset /files.js - 304 Not Modified (0ms)

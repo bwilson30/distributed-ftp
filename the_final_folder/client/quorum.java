@@ -246,7 +246,35 @@ public class quorum{
 		return 1;
 	}
     
-    
+    public static String quorum_ls_files_static(QFILE [] files, int server_count, String dest_path,int qur_size){
+    	int exists = 0;
+    	String output = "";
+    	for(int i = 0; i < qur_size;i++) if(files[i].getfile().exists()) exists++;
+    	if(exists < qur_size - 1) return null;
+    	Hashtable<String,Integer> entries = new Hashtable<String,Integer>();
+    	for(int i = 0; i < qur_size; i++){
+    		if(!files[i].getfile().exists()) continue;
+    		String cls = files[i].toString();
+    		StringTokenizer tok = new StringTokenizer(cls);
+    		while(tok.hasMoreElements()){
+    			String ele = (String) tok.nextElement();
+    			System.out.println("Encountered an instance of file: " + ele);
+    			if(entries.containsKey(ele)) entries.put(ele, (Integer) entries.get(ele) + 1);
+    			else 						 entries.put(ele,1);
+    		}
+		}
+		Enumeration<String> enumKey = entries.keys();
+		while(enumKey.hasMoreElements()) {
+		    String key = enumKey.nextElement();
+		    Integer val = entries.get(key);
+		    if(val >= (qur_size >>1)){
+		    	output += "\n" + key;
+		    	System.out.println("File named " + key + " probably exists.");
+		    }
+		    else System.out.println("File named " + key + " probably  doesn't exists.");
+	    }
+    	return output;
+    }
     public static void main(String [] args){
     	File f1 = new File("C:/Users/Vinay Bharadwaj/workspace/quorum/src/1.txt.txt");
     	File f2 = new File("C:/Users/Vinay Bharadwaj/workspace/quorum/src/2.txt.txt");
