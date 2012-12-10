@@ -83,8 +83,7 @@ public class messaging {
 						+ ".timestamp");
 				BufferedOutputStream bosTime = new BufferedOutputStream(fosTime);
 
-				readBuffer = comm.Decrypt((byte[]) recvTable
-						.get("timestamp"));
+				readBuffer = (byte[]) recvTable.get("timestamp");
 				bosTime.write(readBuffer, 0, readBuffer.length);
 
 				bosFile.flush();
@@ -130,7 +129,7 @@ public class messaging {
 			byte[] encryptedBuffer = comm.Encrypt(readBuffer);
 			sendTable.put("file", encryptedBuffer);
 
-			byte[] timeBuffer = comm.Encrypt(timestamp.getBytes());
+			byte[] timeBuffer = timestamp.getBytes();
 			sendTable.put("timestamp", timeBuffer);
 
 			Hashtable recvTable = new Hashtable();
