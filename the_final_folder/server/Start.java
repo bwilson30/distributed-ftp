@@ -71,6 +71,7 @@ public class Start {
 	    {	    	
 	    		synchronized(this)
 	    		{
+	    			try{
 	    			out = new ObjectOutputStream(socket.getOutputStream());
 	    			in = new ObjectInputStream(socket.getInputStream());
 	    			
@@ -215,7 +216,21 @@ public class Start {
 	    			socket = serverSocket.accept();
             		//out = new ObjectOutputStream(socket.getOutputStream());
             		//in = new ObjectInputStream(socket.getInputStream());
-		}}}
+		}
+	    		catch(Exception exc)
+	    		{
+	    			try {
+	    				System.out.println(exc.toString());
+	    				caSocket.close();
+	    				socket.close();
+	        			socket = serverSocket.accept();
+	    			} catch (IOException e) {
+	    				// TODO Auto-generated catch block
+	    				e.printStackTrace();
+	    			}
+	    			System.out.println(exc.toString());
+	    		}
+	    		}}}
 		catch(Exception ex)
 		{
 			try {
