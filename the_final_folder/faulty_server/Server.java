@@ -8,15 +8,24 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Hashtable;
+import java.util.Random;
 
 public class Server {
 
 	private static String group;
+	private static int faultCode;
 
 	public static Hashtable processRequest(Hashtable recvTable) {
 		String command = (String) recvTable.get("cmd");
 		group = readGroup((String) recvTable.get("group"));
 		Hashtable sendTable = new Hashtable();
+		
+		faultCode = generateFaultCode();
+		if (faultCode == 2) {
+			System.out.println("Byz Fault: Return success on failure");
+			sendTable.put("response", 1);
+			return sendTable;
+		}		
 
 		int cmd = 0;
 		if (command.equals("get")) {
@@ -75,6 +84,12 @@ public class Server {
 
 			byte[] readBuffer = new byte[fileSize];
 			bisFile.read(readBuffer, 0, fileSize);
+			if (faultCode == 4) {
+				System.out.println("Byz Fault: File corrupted on read/write");
+				for (int i = 0; i < fileSize; i++) {
+					readBuffer[i]++;
+				}
+			}
 			sendTable.put("file", readBuffer);
 
 			File timestamp = new File("time/" + localPath + ".timestamp");
@@ -86,8 +101,14 @@ public class Server {
 			bisTime.read(timeBuffer, 0, timeSize);
 			sendTable.put("timestamp", timeBuffer);
 
-			sendTable.put("response", fileSize);
-
+			if (faultCode == 3) {
+				System.out.println("Byz Fault: Return failure on success");
+				sendTable.put("response", -1);
+			}
+			else {
+				sendTable.put("response", 1);
+			}
+			
 			fisFile.close();
 			bisFile.close();
 			fisTime.close();
@@ -114,6 +135,12 @@ public class Server {
 			BufferedOutputStream bosFile = new BufferedOutputStream(fosFile);
 
 			byte[] fileBuffer = (byte[]) table.get("file");
+			if (faultCode == 4) {
+				System.out.println("Byz Fault: File corrupted on read/write");
+				for (int i = 0; i < fileBuffer.length; i++) {
+					fileBuffer[i]++;
+				}
+			}
 			bosFile.write(fileBuffer, 0, fileBuffer.length);
 
 			String timestamp = new String((byte[]) table.get("timestamp"));
@@ -128,7 +155,14 @@ public class Server {
 			out.flush();
 			out.close();
 
-			sendTable.put("response", 1);
+			if (faultCode == 3) {
+				System.out.println("Byz Fault: Return failure on success");
+				sendTable.put("response", -1);
+			}
+			else {
+				sendTable.put("response", 1);
+			}
+			
 		} catch (IOException e) {
 			System.out.println("Server encountered IOException");
 			sendTable.put("response", -1);
@@ -169,8 +203,22 @@ public class Server {
 				} while (nextByte != -1);
 
 				sendTable.put("length", i);
+				if (faultCode == 4) {
+					System.out.println("Byz Fault: File corrupted on read/write");
+					for (int j = 0; j < i; j++) {
+						lsBuffer[j]++;
+					}
+				}
 				sendTable.put("file", lsBuffer);
-				sendTable.put("response", 1);
+				
+				if (faultCode == 3) {
+					System.out.println("Byz Fault: Return failure on success");
+					sendTable.put("response", -1);
+				}
+				else {
+					sendTable.put("response", 1);
+				}
+				
 			} catch (IOException e) {
 				System.out.println("Server encountered IOException");
 				sendTable.put("response", -1);
@@ -187,13 +235,23 @@ public class Server {
 		localPath = group + localPath;
 
 		File localDir = new File("data/" + localPath);
+		File timeDir = new File("time/" + localPath);
 		if (localDir.isDirectory()) {
-			// Directory already exists. Reture "success"
+			// Directory already exists. Return "success"
 			sendTable.put("response", 1);
 		}
 		else {
 			if (localDir.mkdir()) {
-				sendTable.put("response", 1);
+				if (!timeDir.isDirectory()) {
+					timeDir.mkdir();
+				}
+				if (faultCode == 3) {
+					System.out.println("Byz Fault: Return failure on success");
+					sendTable.put("response", -1);
+				}
+				else {
+					sendTable.put("response", 1);
+				}
 			}
 			else {
 				System.out.println("Server encountered IOException");
@@ -211,6 +269,7 @@ public class Server {
 		localPath = group + localPath;
 		
 		File localDir = new File("data/" + localPath);
+		File timeDir = new File("time/" + localPath);
 		if (!localDir.isDirectory()) {
 			// Directory doesn't exist. Return failure
 			sendTable.put("response", -1);
@@ -219,7 +278,16 @@ public class Server {
 			File[] dirFiles = localDir.listFiles();
 			if (dirFiles.length == 0) {
 				if (localDir.delete()) {
-					sendTable.put("response", 1);
+					if (timeDir.isDirectory()) {
+						timeDir.delete();
+					}
+					if (faultCode == 3) {
+						System.out.println("Byz Fault: Return failure on success");
+						sendTable.put("response", -1);
+					}
+					else {
+						sendTable.put("response", 1);
+					}
 				}
 				else {
 					System.out.println("Server encountered IOException");
@@ -248,7 +316,13 @@ public class Server {
 				if (timestamp.isFile()) {
 					timestamp.delete();
 				}
-				sendTable.put("response", 1);
+				if (faultCode == 3) {
+					System.out.println("Byz Fault: Return failure on success");
+					sendTable.put("response", -1);
+				}
+				else {
+					sendTable.put("response", 1);
+				}
 			}
 			else {
 				System.out.println("Server encountered IOException");
@@ -275,7 +349,45 @@ public class Server {
 		if (!groupDir.isDirectory()) {
 			groupDir.mkdir();
 		}
+		File timeDir = new File("time/" + ret);
+		if (!timeDir.isDirectory()) {
+			timeDir.mkdir();
+		}
 
 		return ret;
 	}
+	
+	/* This function generates a random number 0-9 corresponding to a fault
+	 * 0) infinite loop
+	 * 1) create exception
+	 * 2) return success on error
+	 * 3) return failure on success
+	 * 4) Create faults during reading/writing data
+	 * 5-9) No fault
+	 * */
+	private static int generateFaultCode() {
+		Random randGen = new Random();
+		int rand = randGen.nextInt(10);
+		if (rand == 0) {
+			infiniteLoop();
+		}
+		if (rand == 1) {
+			createException();
+		}
+		return rand;
+	}
+	
+	private static void infiniteLoop() {
+		System.out.println("Byz Fault: Entering infinite loop");
+		while (true) {
+			
+		}
+	}
+	
+	private static void createException() {
+		System.out.println("Byz Fault: Creating exception to crash server");
+		throw new NullPointerException();
+	}
+	
+	
 }

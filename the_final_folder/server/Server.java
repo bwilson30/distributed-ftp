@@ -187,12 +187,16 @@ public class Server {
 		localPath = group + localPath;
 
 		File localDir = new File("data/" + localPath);
+		File timeDir = new File("time/" + localPath);
 		if (localDir.isDirectory()) {
-			// Directory already exists. Reture "success"
+			// Directory already exists. Return "success"
 			sendTable.put("response", 1);
 		}
 		else {
 			if (localDir.mkdir()) {
+				if (!timeDir.isDirectory()) {
+					timeDir.mkdir();
+				}
 				sendTable.put("response", 1);
 			}
 			else {
@@ -211,6 +215,7 @@ public class Server {
 		localPath = group + localPath;
 		
 		File localDir = new File("data/" + localPath);
+		File timeDir = new File("time/" + localPath);
 		if (!localDir.isDirectory()) {
 			// Directory doesn't exist. Return failure
 			sendTable.put("response", -1);
@@ -219,6 +224,9 @@ public class Server {
 			File[] dirFiles = localDir.listFiles();
 			if (dirFiles.length == 0) {
 				if (localDir.delete()) {
+					if (timeDir.isDirectory()) {
+						timeDir.delete();
+					}
 					sendTable.put("response", 1);
 				}
 				else {
