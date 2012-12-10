@@ -12,6 +12,7 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.net.SocketTimeoutException;
 import java.security.AlgorithmParameterGenerator;
 import java.security.AlgorithmParameters;
 import java.security.Certificate;
@@ -316,6 +317,11 @@ public class Encrypt {
 		}
 		return isConnected;
 		}
+		catch(SocketTimeoutException ste)
+		{
+			System.out.println("timeout...");
+			return isConnected;
+		}
 		catch(Exception ex)
 		{
 			return isConnected;
@@ -416,6 +422,11 @@ public class Encrypt {
 		}
 		    return null;
 		}
+		catch(SocketTimeoutException ste)
+		{
+			System.out.println("timeout...");
+			return null;
+		}
 		catch(Exception ex)
 		{
 			return null;
@@ -505,7 +516,8 @@ public class Encrypt {
 	{
     	RSAPublicKey rsaPublicKey = (RSAPublicKey)pub_Key;
     	
-    	Cipher encryptCipher = Cipher.getInstance("RSA", bcp);
+    	//Cipher encryptCipher = Cipher.getInstance("RSA", bcp);
+    	Cipher encryptCipher = Cipher.getInstance("RSA/NONE/NoPadding",bcp);
     	encryptCipher.init(Cipher.ENCRYPT_MODE, rsaPublicKey);
     	//byte[] messageCrypte = encryptCipher.doFinal(data);
     	byte[] messageCrypte = blockCipher(encryptCipher,data,Cipher.ENCRYPT_MODE);
@@ -516,8 +528,9 @@ public class Encrypt {
 	public byte[] Decrypt(byte [] data) throws Exception
 	{
 		RSAPrivateKey rsaPrivateKey = (RSAPrivateKey)priv_Key;
-
+		
 		Cipher decryptCipher = Cipher.getInstance("RSA", bcp);
+		//Cipher decryptCipher = Cipher.getInstance("RSA/NONE/NoPadding",bcp);
 		decryptCipher.init(Cipher.DECRYPT_MODE,rsaPrivateKey);
 		//byte[] bts = Hex.decodeHex(encrypted.toCharArray());
 
