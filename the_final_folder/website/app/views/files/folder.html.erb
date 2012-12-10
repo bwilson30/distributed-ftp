@@ -1,5 +1,11 @@
-Directory: <%= '/' + @the_current_directory %>
+<h1> Directory: <%= '/' + @the_current_directory %> </h1>
 </br>
-  <% @files_in_directory.each do |file| %>
-    <%= link_to(file,"/get?id=" + file) %>  </br>
-  <% end %>
+<% @files_in_directory.each do |file| %>
+	<%= link_to(file,"/get/"+ @domain_name + "?id=" + file) %>  </br>
+<% end %>
+<h1>File Upload</h1>
+<%= form_tag({:action => :put_file},:method => :put, :multipart => true) do %>
+  <%= file_field_tag 'upload' %>
+  <%= text_field_tag 'name' %>
+  <%= submit_tag     'Upload' %>
+<% end %>

@@ -25,7 +25,7 @@ public class filehash{
     public static String computeHash(File file) throws IOException {
             long size = file.length();
             long chunkSizeForFile = Math.min(HASH_CHUNK_SIZE, size);
-            
+            if(!file.exists()) return "";
             FileChannel fileChannel = new FileInputStream(file).getChannel();
             
             try {

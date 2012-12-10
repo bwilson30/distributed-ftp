@@ -183,9 +183,11 @@ public class client{
 					 					i										// ServerID
 					 				);
 		 }
+		 if(quorum.quorum_files_static(file_list, qur_size,lwd + "/" + argv[0]) >0) System.out.println("Writting to " + lwd + "/" + argv[0]);
+		 else System.out.println("SYSFL: Write output failure on get!");
 		 if(quorum.quorum_opcodes_static(opcode,qur_size) < 0) System.out.println("SYSFL: Systematic failure on get!");
-		 else System.out.println("SYSSUCCESS");
-		 quorum.quorum_files_static(file_list, qur_size,lwd + "/" + argv[0]);
+		 else System.out.println("SYSSUCCESS:");
+		 
 	}
    public void put(String[] argv){
 	   	 long opcode[] = new long[qur_size];
@@ -268,14 +270,14 @@ public class client{
 		QFILE[] file_list = new QFILE[qur_size];
 		String tdir = "";
 		if(argv.length > 0) tdir = argv[0];
-		System.out.println(">Attempting to ls into the directory " + rwd + "/" + tdir.toString());
+		System.out.println("> Attempting to ls into the directory " + rwd + "/" + tdir);
 		 for(int i = 0; i< qur_size; i++){
 			 File fi = new File(temp_folder +"/" + i +"_ls.txt");
 			 if(fi.exists()) fi.delete();
 			 if(argv.length  == 0)
 				 opcode[i] = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/");
 			 else if(argv.length  == 1)
-				 opcode[i] = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/" + tdir.toString());
+				 opcode[i] = servers[i].ls(temp_folder +"/" + i +"_ls.txt", rwd + "/" + tdir);
 			 else{ System.out.println("Incorrect number of inputs!");
 			 		return;
 			 }

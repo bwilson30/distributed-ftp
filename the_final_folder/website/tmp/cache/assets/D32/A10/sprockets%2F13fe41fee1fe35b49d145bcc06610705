@@ -1,7 +1,7 @@
 o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value":
 {"
 class"BundledAsset"logical_path"application.css"pathname"1$root/app/assets/stylesheets/application.css"content_type"text/css"
-mtime"2012-12-08T20:48:08-05:00"lengthiè"digest"%01634d003a42a6255e1cfbd14d1cd643"source"è/*
+mtime"2012-12-09T17:36:06-05:00"lengthiè"digest"%01634d003a42a6255e1cfbd14d1cd643"source"è/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -94,4 +94,4 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
-"required_assets_digest"%4e9c96a331745b0dfebdc2028054bf57"_version"%6776f581a4329e299531e1d52aa59832:@created_atf1355017922.787
+"required_assets_digest"%f4414da4295c45138d47f8af27d0cf59"_version"%6776f581a4329e299531e1d52aa59832:@created_atf1355092943.642

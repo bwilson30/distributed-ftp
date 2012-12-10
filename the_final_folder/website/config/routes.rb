@@ -1,10 +1,16 @@
 Website::Application.routes.draw do
+  resources :servers
+  resources :domains
   resources :users
+
   match '/signin'  => 'sessions#new'     , :via => :get
   match '/signin'  => 'sessions#create'  , :via => :post
   match '/signout' => 'sessions#destroy' , :via => :delete
-  match '/files'   => 'files#ls'	 , :via => :get
-  match '/get' => 'files#get_file'   , :via => :get
+  match '/files'   => 'files#show'	 , :via => :get
+  match '/files/:domain'   => 'files#ls'	 , :via => :get
+  match '/files/:domain'   => 'files#put_file'	 , :via => [:post, :put]
+  match '/get/:domain' => 'files#get_file'       , :via => :get
+  match '/download'	=> 'files#download_file' , :via => :get
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

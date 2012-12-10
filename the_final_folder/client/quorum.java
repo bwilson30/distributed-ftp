@@ -124,7 +124,7 @@ public class quorum{
 	
     public int quorum_files(QFILE [] files, int server_count, String dest_path){
     	if(!(server_count > 0)) return -1;
-
+    	System.out.println("Attempting to output to : " + dest_path);
     	int maxSimilarity = 1;
     	int i, count=0;
     	//long grTimestampsarry[] = new long[server_count];
@@ -180,7 +180,8 @@ public class quorum{
     	//files whose hashes are equal. If we don't have a majority, we return an error code.
     	try{
     	for(i=0; i<server_count; i++)
-    		if(grTimestamps[i] == 1) grTimestampsarry[i] = files[i].toString();//filehash.computeHash(files[i].getfile());
+    		if(grTimestamps[i] == 1) grTimestampsarry[i] = //files[i].toString();
+    		filehash.computeHash(files[i].getfile());
     		else grTimestampsarry[i] = "-1";
     	}
     	catch(Exception e){return -1;}
