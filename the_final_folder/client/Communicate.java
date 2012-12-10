@@ -86,7 +86,16 @@ public class Communicate {
 	
 	public static boolean Logout()
 	{
-		return encrypt.logout();
+		boolean success = encrypt.logout();
+		if(success)
+		{
+			cert = null;
+			fserverIp = null;
+			isConnected = false;
+			return true;
+		}
+		else
+			return false;
 	}
 	public static Hashtable sendMsg(Hashtable table, String ipAddress, int port)
 	{
