@@ -161,6 +161,7 @@ public class Encrypt {
         	   confFile = "groupB.p8";
         	   certFile = "groupB.crt";
         	   keystoreFile = "groupB.jks";
+        	   caClientAlias = "teamB";
         	   GetKeys(hash);
            }
            //cert = clientCert;
