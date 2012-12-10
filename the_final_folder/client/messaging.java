@@ -16,11 +16,12 @@ public class messaging {
 	private String m_ipAddress;
 	private int m_port;
 	private boolean m_clientAuth = false;
-
+    private Communicate comm;
 	public messaging(String ipAddress, int port_num) {
 		m_ipAddress = ipAddress;
 		m_port = port_num;
-		m_clientAuth = Communicate.checkAuthentication();
+		comm = new Communicate();
+		m_clientAuth = comm.checkAuthentication();
 
 	}
 
@@ -31,7 +32,7 @@ public class messaging {
 	public boolean clientLogin(String userhash, String caIPaddress) {
 		m_userhash = userhash;
 		System.out.println(userhash + " Attempting to login");
-		Boolean response = Communicate.Login(m_userhash, caIPaddress);
+		Boolean response = comm.Login(m_userhash, caIPaddress);
 		return response;
 	}
 	
@@ -40,20 +41,20 @@ public class messaging {
 	}
 	
 	public boolean isLogin() {
-		m_clientAuth = Communicate.checkAuthentication();
+		m_clientAuth = comm.checkAuthentication();
 		return m_clientAuth;
 	}
 	
 	public boolean clientLogout() {
-		if (Communicate.Logout()) {
+		if (comm.Logout()) {
 			m_userhash = "";
 			return true;
 		}
 		return false;
 	}
 	
-	public static boolean addUser(String userhash) {
-		return Communicate.addUser(userhash);
+	public boolean addUser(String userhash) {
+		return comm.addUser(userhash);
 	}
 
 	public int get(String localPath, String remotePath) {
@@ -61,7 +62,7 @@ public class messaging {
 		sendTable.put("cmd", "get");
 		sendTable.put("get", remotePath);
 		Hashtable recvTable = new Hashtable();
-		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
+		recvTable = comm.sendMsg(sendTable, m_ipAddress, m_port);
 
 		try {
 			int response = (Integer) recvTable.get("response");
@@ -74,7 +75,7 @@ public class messaging {
 				FileOutputStream fosFile = new FileOutputStream(localPath);
 				BufferedOutputStream bosFile = new BufferedOutputStream(fosFile);
 				System.out.println("Writing to: " + localPath);
-				fileBuffer = Communicate
+				fileBuffer = comm
 						.Decrypt((byte[]) recvTable.get("file"));
 				bosFile.write(fileBuffer, 0, fileBuffer.length);
 
@@ -82,7 +83,7 @@ public class messaging {
 						+ ".timestamp");
 				BufferedOutputStream bosTime = new BufferedOutputStream(fosTime);
 
-				readBuffer = Communicate.Decrypt((byte[]) recvTable
+				readBuffer = comm.Decrypt((byte[]) recvTable
 						.get("timestamp"));
 				bosTime.write(readBuffer, 0, readBuffer.length);
 
@@ -126,14 +127,14 @@ public class messaging {
 
 			byte[] readBuffer = new byte[fileSize];
 			bisFile.read(readBuffer, 0, fileSize);
-			byte[] encryptedBuffer = Communicate.Encrypt(readBuffer);
+			byte[] encryptedBuffer = comm.Encrypt(readBuffer);
 			sendTable.put("file", encryptedBuffer);
 
-			byte[] timeBuffer = Communicate.Encrypt(timestamp.getBytes());
+			byte[] timeBuffer = comm.Encrypt(timestamp.getBytes());
 			sendTable.put("timestamp", timeBuffer);
 
 			Hashtable recvTable = new Hashtable();
-			recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
+			recvTable = comm.sendMsg(sendTable, m_ipAddress, m_port);
 
 			fisFile.close();
 			bisFile.close();
@@ -157,7 +158,7 @@ public class messaging {
 		sendTable.put("ls", remotePath);
 
 		Hashtable recvTable = new Hashtable();
-		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
+		recvTable = comm.sendMsg(sendTable, m_ipAddress, m_port);
 
 		try {
 			int resp = (Integer) recvTable.get("response");
@@ -194,7 +195,7 @@ public class messaging {
 		sendTable.put("mkdir", remotePath);
 
 		Hashtable recvTable = new Hashtable();
-		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
+		recvTable = comm.sendMsg(sendTable, m_ipAddress, m_port);
 
 		try {
 			return (Integer) recvTable.get("response");
@@ -210,7 +211,7 @@ public class messaging {
 		sendTable.put("rmdir", remotePath);
 
 		Hashtable recvTable = new Hashtable();
-		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
+		recvTable = comm.sendMsg(sendTable, m_ipAddress, m_port);
 
 		try {
 			return (Integer) recvTable.get("response");
@@ -226,7 +227,7 @@ public class messaging {
 		sendTable.put("rm", remotePath);
 
 		Hashtable recvTable = new Hashtable();
-		recvTable = Communicate.sendMsg(sendTable, m_ipAddress, m_port);
+		recvTable = comm.sendMsg(sendTable, m_ipAddress, m_port);
 
 		try {
 			return (Integer) recvTable.get("response");

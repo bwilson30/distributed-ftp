@@ -92,7 +92,9 @@ public class client{
 		System.out.println("Incorrect number of inputs");
 	   	return;
 	   }
-	   for(int i= 0;i <qur_size;i++) messaging.addUser(generate_userhash(argv[0],argv[1]));
+	   if(servers.length ==0) return;
+	   //for(int i= 0;i <qur_size;i++)
+	   servers[0].addUser(generate_userhash(argv[0],argv[1]));
    }
    public static String generate_userhash(String username,String password){
 	   return username;
@@ -261,7 +263,7 @@ public class client{
 	}
 	void ls(String[] argv){
 		System.out.println("LS");
-		generate_random_connections();
+		//generate_random_connections();
 		int opcode[] = new int[qur_size];
 		QFILE[] file_list = new QFILE[qur_size];
 		String tdir = "";

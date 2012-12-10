@@ -1,25 +1,16 @@
 
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.security.MessageDigest;
+
 import java.security.cert.X509Certificate;
 import java.util.Hashtable;
 
-import javax.crypto.Cipher;
-import javax.crypto.CipherInputStream;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-import javax.crypto.spec.PBEParameterSpec;
 
 public class Communicate {
 
-	static X509Certificate cert = null;
-	static String fserverIp = null;
-	static boolean isConnected = false;
-	static Encrypt encrypt;
-	public static boolean checkAuthentication()
+	X509Certificate cert = null;
+	String fserverIp = null;
+	boolean isConnected = false;
+	Encrypt encrypt;
+	public boolean checkAuthentication()
 	{
 		if(cert != null)
 			return true;
@@ -27,7 +18,7 @@ public class Communicate {
 			return false;
 				
 	}
-	public static boolean Login(String hash)
+	public boolean Login(String hash)
 	{
 		if(hash != null && !hash.trim().equals(""))
 		{
@@ -38,15 +29,14 @@ public class Communicate {
 		else
 			return false;
 	}
-	
-	public static boolean addUser(String hash)
+	public boolean addUser(String hash)
 	{
 		if(encrypt != null)
 		   return encrypt.AddUser(hash);
 		else
 			return false;
 	}
-	public static byte[] Encrypt(byte[] data)
+	public byte[] Encrypt(byte[] data)
 	{
 		try{
         return encrypt.EncryptData(data);
@@ -57,7 +47,7 @@ public class Communicate {
 		}
 	}
 
-	public static byte[] Decrypt(byte [] data)
+	public byte[] Decrypt(byte [] data)
 	{
 		try{
         return encrypt.Decrypt(data);
@@ -68,7 +58,7 @@ public class Communicate {
 		}
 	}
 	
-	public static boolean Login(String hash, String caAddress)
+	public boolean Login(String hash, String caAddress)
 	{
 		if(isConnected)
 			return true;
@@ -84,7 +74,7 @@ public class Communicate {
 	}
 	
 	
-	public static boolean Logout()
+	public boolean Logout()
 	{
 		boolean success = encrypt.logout();
 		if(success)
@@ -97,7 +87,7 @@ public class Communicate {
 		else
 			return false;
 	}
-	public static Hashtable sendMsg(Hashtable table, String ipAddress, int port)
+	public Hashtable sendMsg(Hashtable table, String ipAddress, int port)
 	{
 		if(!isConnected)
 		{
@@ -108,7 +98,7 @@ public class Communicate {
 		if(fserverIp != null && !fserverIp.equals(ipAddress)){
 			{
 			    encrypt = new Encrypt();
-			    cert = new Encrypt().Login(null);
+			    cert = encrypt.Login(null);
 			    isConnected = encrypt.initiate(ipAddress, port);
 				fserverIp = ipAddress;
 			}

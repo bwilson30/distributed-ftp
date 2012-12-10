@@ -218,7 +218,7 @@ public class Start {
 	    		catch(Exception exc)
 	    		{
 	    			try {
-	    				System.out.println(exc.toString());
+	    				exc.printStackTrace();
 	    				caSocket = null;
 	    				socket.close();
 	        			socket = serverSocket.accept();

@@ -58,7 +58,6 @@ public class Encrypt {
 	private  String keystoreFile = "groupA.jks";
 	private String certFile = "groupA.crt";
 	private String confFile = "groupA.p8";
-	//private static String clientAlias = "groupA";
 	static private  String caClientAlias = "groupA";
 	static private  String clientPassword = "ece6102";
 	static private  X509Certificate clientCert;
@@ -196,45 +195,9 @@ public class Encrypt {
 	    boolean status = false;
 		diffiePriv = keypair.getPrivate();
 		diffiePub  = keypair.getPublic();
-		if(cert == null)
-		  { /*
-			socket = new Socket(serverIp,1001);
-	        out = new ObjectOutputStream(socket.getOutputStream());
-	        in = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
-	        table.put("authenticate", diffiePub.getEncoded());
-	        //if(clientCert != null)
-			    //table.put("cert", clientCert);
-			table.put("key", hash);
-			
-			
-			out.writeObject(table);
-			out.flush();
-			response = (Hashtable)in.readObject();
-			byte []key = response.get("authenticateResponse");
-            caSecret = InitiateProcess(key, diffiePriv, diffiePub);
-			Hashtable hsend = new Hashtable();
-			hsend.put("queryId", 1);
-			ecipher = Cipher.getInstance("DES");
-			ecipher.init(Cipher.ENCRYPT_MODE, caSecret);
-			so = new SealedObject(hsend, ecipher);
-			Hashtable request = new Hashtable();
-	        request.put("message", so);
-	        request.put("cert", clientCert);
-	        out.flush();
-	        out.writeObject(request);
-	        hsend = (Hashtable)in.readObject();
-	        dcipher.init(Cipher.DECRYPT_MODE, caSecret);
-	        so = (SealedObject)hsend.get("response");
-	        cert = (X509Certificate)so.getObject(dcipher);
-	        keyStore.setCertificateEntry(caClientAlias, cert);
-	        out.flush();
-	        return cert; */
-		  }
-		//else
-		{
-			return cert;
+		return cert;
 		}
-		}
+		
 		catch(Exception ex)
 		{
 			return null;
