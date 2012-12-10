@@ -53,6 +53,7 @@ public class client{
 			else if(cmdstr.equals("lcd")) cl.lcd(cmdargs);
 			else if(cmdstr.equals("logout")) cl.logout(cmdargs);
 			else if(cmdstr.equals("add_user")) cl.add_user(cmdargs);
+			else if(cmdstr.equals("set_ca")) cl.set_ca(cmdargs);
 			// Remote Commands
 			else if(cmdstr.equals("cd")) cl.cd(cmdargs);
 			else if(cmdstr.equals("ls")) cl.ls(cmdargs);
@@ -101,6 +102,7 @@ public class client{
 	   System.out.println("temp_folder= " + temp_folder);
 	   System.out.println("qur_size= " + qur_size);
 	   System.out.println("port_num= " + port_num);
+	   System.out.println("ca_server_ip= " + ca_server_ip);
 	   System.out.println("[server_list]");
 	   for(int i = 0; i < server_list.length; i++) System.out.println(server_list[i]);
 	   System.out.println("[server_list]");
@@ -248,6 +250,9 @@ public class client{
 		else System.out.println("Invalid path to a directory");	
 	}
 	// Remote Commands
+	public void set_ca(String[] argv){
+		if(argv.length == 1) ca_server_ip = argv[0];
+	}
 	public void cd(String[] argv){
 		boolean succ = true;
 		 for(int i = 0; i< qur_size; i++){
