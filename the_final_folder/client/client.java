@@ -162,6 +162,8 @@ public class client{
    public void get(String[] argv){
 		QFILE[] file_list = new QFILE[qur_size];
 		long opcode[] = new long[qur_size];
+		System.out.println("GET");
+		generate_random_connections();
 		// File not found is -1
 		// Incorrect command string sent -2
 		if(argv.length < 2) System.out.println("Not enough arguments");
@@ -177,16 +179,21 @@ public class client{
 					 					i										// ServerID
 					 				);
 		 }
-		 if(quorum.quorum_opcodes_static(opcode,qur_size) < 0) System.out.println("Systematic failure on get!");
+		 if(quorum.quorum_opcodes_static(opcode,qur_size) < 0) System.out.println("SYSFL: Systematic failure on get!");
+		 else System.out.println("SYSSUCCESS");
 		 quorum.quorum_files_static(file_list, qur_size,lwd + "/" + argv[0]);
 	}
    public void put(String[] argv){
+	   	 long opcode[] = new long[qur_size];
 		 //String local_path;
 		 if(argv.length != 2) return;
-                 for(int i = 0; i< qur_size; i++){
-                	 int opcode = servers[i].put(lwd + "/" +  argv[0], rwd + "/" + argv[1],"tempstamp"); //TODO: Add correct timestamp names
-                	 //if(opcode == -1) System.out.println("Failed to communicate with the server!");
-                 }
+		 System.out.println("PUT");
+	     generate_random_connections();
+         for(int i = 0; i< qur_size; i++){
+        	 opcode[i] = (long)servers[i].put(lwd + "/" +  argv[0], rwd + "/" + argv[1],"tempstamp"); //TODO: Add correct timestamp names
+         }
+         if(quorum.quorum_opcodes_static(opcode,qur_size) < 0) System.out.println("SYSFL: Systematic failure on put!");
+         else System.out.println("SYSSUCCESS");
 	}
 	// Local Commands
 	void help(String[] argv){	
@@ -248,6 +255,7 @@ public class client{
 		 }
 	}
 	void ls(String[] argv){
+		System.out.println("LS");
 		generate_random_connections();
 		int opcode[] = new int[qur_size];
 		QFILE[] file_list = new QFILE[qur_size];
@@ -270,8 +278,9 @@ public class client{
 	 				);
 		 }
 		 if(quorum.quorum_files_static(file_list, qur_size, temp_folder + "/ls.txt") == -1){
-			 System.out.println("Unable to sucessfully generate ls faultly servers!"); return;
+			 System.out.println("SYSFL: Unable to sucessfully generate ls faultly servers!"); return;
 		 }
+		 else System.out.println("SYSSUCCESS");
 		 File ls_file = new File(temp_folder + "/ls.txt");
 		 System.out.println("Printing remote folder:");
 		 FileInputStream inst = null;

@@ -1,30 +1,3 @@
-total 15597
-drwxr-xr-x+ 1 Vinay Bharadwaj None       0 Dec  6 20:44 ./
-drwxr-xr-x+ 1 Vinay Bharadwaj None       0 Dec  6 18:28 ../
-drwxr-xr-x+ 1 Vinay Bharadwaj None       0 Dec  6 18:28 .svn/
--rw-r--r--  1 Vinay Bharadwaj None  272000 Dec  4 20:26 chord_p2p.pdf
--rw-r--r--  1 Vinay Bharadwaj None     219 Dec  4 20:26 chord_p2p.pdf.timestamp
--rw-r--r--  1 Vinay Bharadwaj None   16000 Dec  4 20:26 cl.cl
--rw-r--r--  1 Vinay Bharadwaj None     219 Dec  4 20:26 cl.cl.timestamp
--rw-r--r--  1 Vinay Bharadwaj None 1349632 Dec  4 20:26 dt13.pdf
--rw-r--r--  1 Vinay Bharadwaj None     219 Dec  4 20:26 dt13.pdf.timestamp
--rw-r--r--  1 Vinay Bharadwaj None  248960 Dec  4 20:26 encrypt_put.pdf
--rw-r--r--  1 Vinay Bharadwaj None     219 Dec  4 20:26 encrypt_put.pdf.timestamp
--rw-r--r--  1 Vinay Bharadwaj None  887424 Dec  4 20:26 homer_odyssey.txt
--rw-r--r--  1 Vinay Bharadwaj None     219 Dec  4 20:26 homer_odyssey.txt.timestamp
--rw-r--r--  1 Vinay Bharadwaj None   95019 Dec  4 20:26 paxos-simple.pdf
--rw-r--r--  1 Vinay Bharadwaj None      10 Dec  4 20:26 paxos-simple.pdf.timestamp
--rw-r--r--  1 Vinay Bharadwaj None    7972 Dec  4 20:26 randomTest.poo
--rw-r--r--  1 Vinay Bharadwaj None     249 Dec  4 20:26 randomTest.poo.timestamp
--rw-r--r--  1 Vinay Bharadwaj None  248960 Dec  4 20:26 secret_share.pdf
--rw-r--r--  1 Vinay Bharadwaj None     219 Dec  4 20:26 secret_share.pdf.timestamp
--rwxr-xr-x  1 Vinay Bharadwaj None    1408 Dec  6 21:12 sk.sk*
--rwxr-xr-x  1 Vinay Bharadwaj None     128 Dec  6 21:12 sk.sk.timestamp*
--rw-r--r--  1 Vinay Bharadwaj None 8847616 Dec  4 20:26 snake.bmp
--rw-r--r--  1 Vinay Bharadwaj None     219 Dec  4 20:26 snake.bmp.timestamp
--rw-r--r--  1 Vinay Bharadwaj None  912640 Dec  4 20:26 snake.jpg
--rw-r--r--  1 Vinay Bharadwaj None     219 Dec  4 20:26 snake.jpg.timestamp
--rw-r--r--  1 Vinay Bharadwaj None 2414976 Dec  4 20:26 snake.png
--rw-r--r--  1 Vinay Bharadwaj None     219 Dec  4 20:26 snake.png.timestamp
--rw-r--r--  1 Vinay Bharadwaj None  620928 Dec  4 20:26 tropical.jpg
--rw-r--r--  1 Vinay Bharadwaj None     219 Dec  4 20:26 tropical.jpg.timestamp
+chord_p2p.pdf
+dt13.pdf
+homer_odyssey.txt
