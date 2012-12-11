@@ -1,0 +1,8 @@
+chord_test.pdf
+chord_test2.pdf
+heart.txt
+heart_test.pdf
+heart_test2.pdf
+homer_odyssey.txt
+make/
+testDir/
