@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 			redirect_to '/domains'
 		else
 			flash[:error] = 'Invalid username/password combination' # Not quite right!
-      			redirect_to '/index'
+      			redirect_to :root
 		end
 	end
 	def destroy

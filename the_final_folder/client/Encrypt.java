@@ -131,7 +131,7 @@ public class Encrypt {
 		          dcipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
 		          bcp = new BouncyCastleProvider();
 		          Security.addProvider(bcp);
-		          System.out.println(cert);
+		          //System.out.println(cert);
 	           }
 	           else
 	        	   continue;

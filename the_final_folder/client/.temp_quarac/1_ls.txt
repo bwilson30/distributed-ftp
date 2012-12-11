@@ -1,4 +1,1 @@
-chord_test.pdf
-heart_test.pdf
-scarlet_test.txt
-testDir/
+heart.pdf

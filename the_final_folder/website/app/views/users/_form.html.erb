@@ -18,6 +18,13 @@
   <div class="field">
     <%= f.password_field :password %><br />
   </div>
+  <div class="field">
+    <%= label_tag "Authenticating User" %><br />
+    <%= text_field_tag :auth_name %>
+  </div>
+  <div class="field">
+    <%= password_field_tag :auth_pass %><br />
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
