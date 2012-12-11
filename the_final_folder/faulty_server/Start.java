@@ -71,6 +71,7 @@ public class Start {
 	    {	    	
 	    		synchronized(this)
 	    		{
+	    			try{
 	    			out = new ObjectOutputStream(socket.getOutputStream());
 	    			in = new ObjectInputStream(socket.getInputStream());
 	    			
@@ -213,14 +214,26 @@ public class Start {
 	    			}
 	    			socket.close();
 	    			socket = serverSocket.accept();
-            		//out = new ObjectOutputStream(socket.getOutputStream());
-            		//in = new ObjectInputStream(socket.getInputStream());
-		}}}
+		}
+	    		catch(Exception exc)
+	    		{
+	    			try {
+	    				exc.printStackTrace();
+	    				caSocket = null;
+	    				socket.close();
+	        			socket = serverSocket.accept();
+	    			} catch (IOException e) {
+	    				// TODO Auto-generated catch block
+	    				e.printStackTrace();
+	    			}
+	    			System.out.println(exc.toString());
+	    		}
+	    		}}}
 		catch(Exception ex)
 		{
 			try {
-				System.out.println("CA server was unreachable");
-				caSocket.close();
+				System.out.println(ex.toString());
+				caSocket = null;
 				socket.close();
     			socket = serverSocket.accept();
 			} catch (IOException e) {
