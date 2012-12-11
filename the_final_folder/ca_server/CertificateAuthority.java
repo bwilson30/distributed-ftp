@@ -1,5 +1,7 @@
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.nio.charset.Charset;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.KeyStore;
@@ -29,10 +31,13 @@ import sun.security.x509.X500Name;
 import sun.security.x509.X509CertImpl;
 import sun.security.x509.X509CertInfo;
 
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+
 
 public class CertificateAuthority {
 
-	private static String keystoreFile = "keyStoreFile.bin";
+	private static String keystoreFile = "ca.jks";
 	private static String caAlias = "ca";
 	private static char[] caPassword = "ece6102".toCharArray();
 	private static FileInputStream input = null;
@@ -53,6 +58,39 @@ public class CertificateAuthority {
 	
 	/*public static X509Certificate ValidateCertificate(X509Certificate trust)
 	{
+	/*
+			if(input == null){
+			   input = new FileInputStream(keystoreFile);
+			   keyStore = KeyStore.getInstance("JKS");
+		       keyStore.load(input, caPassword);
+		       input.close();
+			}
+		    //if(keyStore.containsAlias(alias))
+		    //{
+			//GenerateClientCertificate(trust);
+		CertificateFactory cf = CertificateFactory.getInstance("X.509");
+	    List<Certificate> mylist = new ArrayList<Certificate>();
+	    //FileInputStream in = new FileInputStream(certpath);
+	    //Certificate c = cf.generateCertificate(in);
+	    //Certificate trust = keyStore.getCertificate(alias);
+	    mylist.add(trust);
+       
+	    CertPath cp = cf.generateCertPath(mylist);
+
+	    //Certificate trust = cf.generateCertificate(in);
+	    TrustAnchor anchor = new TrustAnchor((X509Certificate) trust, null);
+	    PKIXParameters params = new PKIXParameters(Collections.singleton(anchor));
+	    params.setRevocationEnabled(false);
+	    CertPathValidator cpv = CertPathValidator.getInstance("PKIX");
+	    PKIXCertPathValidatorResult result = (PKIXCertPathValidatorResult) cpv.validate(cp, params);
+	    
+	    if (trust instanceof X509Certificate) {
+            X509Certificate x509cert = (X509Certificate)trust;
+            return x509cert;
+        }
+	       
+		    	return null;
+		} 
 		try{
 			  if(keyStore == null){
 			  input = new FileInputStream(keystoreFile);
@@ -71,45 +109,21 @@ public class CertificateAuthority {
 	public static X509Certificate ValidateCertificate(X509Certificate trust)
 	{
 		try{
-			if(input == null){
-			   input = new FileInputStream(keystoreFile);
-			   keyStore = KeyStore.getInstance("JKS");
-		       keyStore.load(input, caPassword);
-		       input.close();
-			}
-		    //if(keyStore.containsAlias(alias))
-		    //{
-		CertificateFactory cf = CertificateFactory.getInstance("X.509");
-	    List<Certificate> mylist = new ArrayList<Certificate>();
-	    //FileInputStream in = new FileInputStream(certpath);
-	    //Certificate c = cf.generateCertificate(in);
-	    //Certificate trust = keyStore.getCertificate(alias);
-	    mylist.add(trust);
-        
-	    CertPath cp = cf.generateCertPath(mylist);
+			FileInputStream input = new FileInputStream(keystoreFile);
+		    KeyStore keyStore = KeyStore.getInstance("JKS");
+		    keyStore.load(input, caPassword);
+		    input.close();
 
-	    //Certificate trust = cf.generateCertificate(in);
-	    TrustAnchor anchor = new TrustAnchor((X509Certificate) trust, null);
-	    PKIXParameters params = new PKIXParameters(Collections.singleton(anchor));
-	    params.setRevocationEnabled(false);
-	    CertPathValidator cpv = CertPathValidator.getInstance("PKIX");
-	    PKIXCertPathValidatorResult result = (PKIXCertPathValidatorResult) cpv.validate(cp, params);
-	    
-	    if (trust instanceof X509Certificate) {
-            X509Certificate x509cert = (X509Certificate)trust;
-            return x509cert;
-        }
-	       
-		    	return null;
-		}
-		catch(CertPathValidatorException cpx)
-		{
-			return null;
+		    //PrivateKey caPrivateKey = (PrivateKey) keyStore.getKey(caAlias, caPassword);
+		    java.security.cert.Certificate caCert = keyStore.getCertificate(caAlias);
+		    trust.verify(caCert.getPublicKey());
+		    return trust;
 		}
         catch(Exception ex)
         {
         	return null;
         }
+        
 	}
 	/*
 	public static synchronized X509Certificate getCertificate(String alias)
@@ -169,6 +183,16 @@ public class CertificateAuthority {
 	    keyStore.setCertificateEntry(new String(cert.getPublicKey().getEncoded(), "UTF-8"), newCert);
 	    FileOutputStream output = new FileOutputStream(keystoreFile);
 	    keyStore.store(output, caPassword);
+	    output.close();
+	    
+	    FileInputStream inputt = new FileInputStream("groupB.jks");
+	    KeyStore keyStoree = KeyStore.getInstance("JKS");
+	    keyStoree.load(inputt, "ece6102".toCharArray());
+	    inputt.close();
+	    
+	    keyStoree.setCertificateEntry("teamB", newCert);
+	    FileOutputStream outputt = new FileOutputStream("groupB.jks");
+	    keyStoree.store(outputt, "ece6102".toCharArray());
 	    output.close();
 	    
 	    return newCert;

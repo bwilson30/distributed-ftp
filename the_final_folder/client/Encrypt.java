@@ -15,7 +15,6 @@ import java.net.SocketAddress;
 import java.net.SocketTimeoutException;
 import java.security.AlgorithmParameterGenerator;
 import java.security.AlgorithmParameters;
-import java.security.Certificate;
 import java.security.KeyFactory;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
@@ -30,10 +29,7 @@ import java.security.cert.X509Certificate;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.security.spec.InvalidParameterSpecException;
-import java.security.spec.KeySpec;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.RSAPrivateCrtKeySpec;
-import java.security.spec.RSAPrivateKeySpec;
+
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Hashtable;
 
@@ -50,16 +46,13 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.bouncycastle.util.encoders.Hex;
-
-import sun.misc.IOUtils;
 
 
 public class Encrypt {
-	private  String keystoreFile = "groupA.jks";
-	private String certFile = "groupA.crt";
-	private String confFile = "groupA.p8";
-	private  String caClientAlias = "groupA";
+	private int index = -1;
+	private String []keystoreFiles = {"groupA.jks", "groupB.jks","groupC.jks"};
+	private String []certFiles = {"groupA.crt", "groupB.crt","groupC.crt"};
+	private String []confFiles = {"groupA.p12", "groupB.p12","groupC.p12"};
 	private  String clientPassword = "ece6102";
 	private  X509Certificate clientCert;
 	private  Socket socket;
@@ -85,13 +78,14 @@ public class Encrypt {
 	public  PrivateKey privKey;
 	public  int sport;
 	public  BouncyCastleProvider bcp;
+	public String userhash;
 	
 	public boolean AddUser(String hash)
 	{
 		try
 		{
-			if(cert != null){
-		File keyFile = new File(keystoreFile);
+			if(cert != null && index > -1){
+		File keyFile = new File(keystoreFiles[index]);
 	    // Load the keystore contents
 	    FileInputStream in = new FileInputStream(keyFile);
 	    KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
@@ -104,7 +98,7 @@ public class Encrypt {
 	    keystore.setCertificateEntry(hash, cert);
 
 	    // Save the new keystore contents
-	    FileOutputStream out = new FileOutputStream(keystoreFile);
+	    FileOutputStream out = new FileOutputStream(keystoreFiles[index]);
 	    keystore.store(out, clientPassword.toCharArray());
 	    out.close();
 	    
@@ -122,19 +116,34 @@ public class Encrypt {
 	public void GetKeys(String hash) throws Exception
 	{
 		FileInputStream input = null;
-		//try{
+		userhash = hash;
+		for(int i=0;i != certFiles.length;i++)
 		{
-			InputStream inStream = new FileInputStream(certFile); 
+			input = new FileInputStream(keystoreFiles[i]);
+		       keyStore = KeyStore.getInstance("JKS");
+		       keyStore.load(input, clientPassword.toCharArray());
+		       input.close();
+			cert = (X509Certificate) keyStore.getCertificate(hash);
+	           
+	           if(cert != null)
+	           {
+	        	   index = i;
+		          dcipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
+		          bcp = new BouncyCastleProvider();
+		          Security.addProvider(bcp);
+		          System.out.println(cert);
+	           }
+	           else
+	        	   continue;
+	           
+			InputStream inStream = new FileInputStream(certFiles[i]); 
 			CertificateFactory cf = CertificateFactory.getInstance("X.509");
 			X509Certificate certi =(X509Certificate)cf.generateCertificate(inStream);
 			inStream.close();
 			pub_Key = (RSAPublicKey)certi.getPublicKey();
 			
 			
-			//Cipher cipher = createCipher(Cipher.DECRYPT_MODE);
-			//applyCipher("groupA.p8.encrypt", "groupA.p8.decrypt", cipher);
-			
-			File keyFile = new File(confFile);
+			File keyFile = new File(confFiles[i]);
 			DataInputStream in = new DataInputStream(new FileInputStream(keyFile));
 			byte [] fileBytes = new byte[(int) keyFile.length()];
 			in.readFully(fileBytes);
@@ -142,34 +151,21 @@ public class Encrypt {
 			//keyFile.delete();
 			
 			KeyFactory kf = KeyFactory.getInstance("RSA");
-			PKCS8EncodedKeySpec ks = new PKCS8EncodedKeySpec(fileBytes);
-			priv_Key = (RSAPrivateKey)kf.generatePrivate(ks);
+			//PKCS12EncodedKeySpec ks = new PKCS12EncodedKeySpec(fileBytes);
 			
-	       input = new FileInputStream(keystoreFile);
-	       keyStore = KeyStore.getInstance("JKS");
-	       keyStore.load(input, clientPassword.toCharArray());
-	       input.close();
+			KeyStore ksp = java.security.KeyStore.getInstance("PKCS12");
+			ksp.load(new java.io.FileInputStream(confFiles[i]),clientPassword.toCharArray());
+			priv_Key = (RSAPrivateKey)ksp.getKey(hash, clientPassword.toCharArray());
+			//priv_Key = (RSAPrivateKey)kf.generatePrivate(ks);
+			
 	       
-	       privKey = (PrivateKey) keyStore.getKey(caClientAlias, clientPassword.toCharArray());
 	       
-	       clientCert = (X509Certificate) keyStore.getCertificate(caClientAlias);
+	       privKey = (PrivateKey) keyStore.getKey(hash, clientPassword.toCharArray());
+	       
+	       clientCert = (X509Certificate) keyStore.getCertificate(hash);
 		   pubKey = clientCert.getPublicKey();
 		   //keyStore.setCertificateEntry("teamA", clientCert);
-           cert = (X509Certificate) keyStore.getCertificate(hash);
-           if(cert == null && !confFile.equals("groupB.p8"))
-           {
-        	   confFile = "groupB.p8";
-        	   certFile = "groupB.crt";
-        	   keystoreFile = "groupB.jks";
-        	   caClientAlias = "teamB";
-        	   GetKeys(hash);
-           }
-           //cert = clientCert;
-           
-	       dcipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
-	       bcp = new BouncyCastleProvider();
-	       Security.addProvider(bcp);
-	       //System.out.println(cert);
+           break;
 		}
 		
 		
@@ -330,8 +326,8 @@ public class Encrypt {
 	public boolean logout()
 	{
 		try{
-		if(keyStore.isCertificateEntry(caClientAlias))
-			keyStore.deleteEntry(caClientAlias);
+		if(keyStore.isCertificateEntry(userhash))
+			keyStore.deleteEntry(userhash);
 		Hashtable table = sendMsg(null);
 		if(table != null && Integer.parseInt(new String((String)table.get("responseCode"))) == 1)
 		{
@@ -458,7 +454,7 @@ public class Encrypt {
 		
        
 	    // Get the generated public and private keys
-		FileInputStream input = new FileInputStream(keystoreFile);
+		FileInputStream input = new FileInputStream(keystoreFiles[index]);
 	    KeyStore keyStore = KeyStore.getInstance("JKS");
 	    keyStore.load(input, clientPassword.toCharArray());
 

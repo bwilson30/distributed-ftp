@@ -24,7 +24,7 @@ import javax.crypto.spec.DESedeKeySpec;
 
 public class Start {
 
-	private static char[] serverPassword = "ece6102server".toCharArray();
+	private static char[] serverPassword = "ece6102".toCharArray();
 	private static String keystoreFile = "server.jks";
 	private static String serverAlias = "server";
 	private static String caIpAddress = null;
