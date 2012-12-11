@@ -72,6 +72,11 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
+		if (!checkPath(localPath)) {
+			System.out.println("Invalid Path. Quit trying to hack the server");
+			sendTable.put("response", -3);
+			return sendTable;
+		}
 
 		System.out.println("Server: Attempting to get. Remote path is ");
 
@@ -126,6 +131,11 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
+		if (!checkPath(localPath)) {
+			System.out.println("Invalid Path. Quit trying to hack the server");
+			sendTable.put("response", -3);
+			return sendTable;
+		}
 
 		System.out.println("Server: Attempting to put. Remote path is "
 				+ localPath);
@@ -176,6 +186,11 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
+		if (!checkPath(localPath)) {
+			System.out.println("Invalid Path. Quit trying to hack the server");
+			sendTable.put("response", -3);
+			return sendTable;
+		}
 
 		System.out.println("Attempting ls: Remote path is " + localPath);
 
@@ -233,6 +248,12 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
+		if (!checkPath(localPath)) {
+			System.out.println("Invalid Path. Quit trying to hack the server");
+			sendTable.put("response", -3);
+			return sendTable;
+		}
+		System.out.println("Attempting to make (mkdir) directory " + localPath);
 
 		File localDir = new File("data/" + localPath);
 		File timeDir = new File("time/" + localPath);
@@ -267,36 +288,36 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
-		
-		File localDir = new File("data/" + localPath);
-		File timeDir = new File("time/" + localPath);
-		if (!localDir.isDirectory()) {
-			// Directory doesn't exist. Return failure
-			sendTable.put("response", -1);
+		if (!checkPath(localPath)) {
+			System.out.println("Invalid Path. Quit trying to hack the server");
+			sendTable.put("response", -3);
+			return sendTable;
 		}
-		else {
-			File[] dirFiles = localDir.listFiles();
-			if (dirFiles.length == 0) {
-				if (localDir.delete()) {
-					if (timeDir.isDirectory()) {
-						timeDir.delete();
-					}
-					if (faultCode == 3) {
-						System.out.println("Byz Fault: Return failure on success");
-						sendTable.put("response", -1);
-					}
-					else {
-						sendTable.put("response", 1);
-					}
-				}
-				else {
-					System.out.println("Server encountered IOException");
+		
+		File requestPath = new File("data/" + localPath);
+		File rootPath = new File("data/" + group);
+		String requestStr = requestPath.getAbsolutePath();
+		String rootStr = rootPath.getAbsolutePath();
+		
+		if (requestStr.equals(rootStr)) {
+			System.out.println("Unable to remove group directory");
+			sendTable.put("response", -1);
+		} else {
+			System.out.println("Attempting to remove (rmdir) directory "
+					+ localPath);
+
+			if (rmdirRecursive("data/" + localPath)
+					&& rmdirRecursive("time/" + localPath)) {
+				if (faultCode == 3) {
+					System.out.println("Byz Fault: Return failure on success");
 					sendTable.put("response", -1);
 				}
-			}
-			else {
-				// Non empty dir. Return failure
-				sendTable.put("response", -2);
+				else {
+					sendTable.put("response", 1);
+				}
+			} else {
+				System.out.println("Server unable to complete rmdir request");
+				sendTable.put("response", -1);
 			}
 		}
 
@@ -308,6 +329,12 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
+		if (!checkPath(localPath)) {
+			System.out.println("Invalid Path. Quit trying to hack the server");
+			sendTable.put("response", -3);
+			return sendTable;
+		}
+		System.out.println("Attempting to remove (rm) file " + localPath);
 
 		File localFile = new File("data/" + localPath);
 		File timestamp = new File("time/" + localPath + ".timestamp");
@@ -367,7 +394,7 @@ public class Server {
 	 * */
 	private static int generateFaultCode() {
 		Random randGen = new Random();
-		int rand = randGen.nextInt(10);
+		int rand = randGen.nextInt(5);
 		System.out.println("Fault Code is: " + rand);
 		if (rand == 0) {
 			infiniteLoop();
@@ -390,5 +417,57 @@ public class Server {
 		throw new NullPointerException();
 	}
 	
+	private static boolean rmdirRecursive(String dirPath) {
+		File directory = new File(dirPath);
+		if (directory.isDirectory()) {
+			File[] dirFiles = directory.listFiles();
+			if (dirFiles.length == 0) {
+				return directory.delete();
+			} else {
+				for (int i = 0; i < dirFiles.length; i++) {
+					if (dirFiles[i].isFile()) {
+						if (!dirFiles[i].delete()) {
+							System.out
+									.println("Server encountered file that cannot be removed.");
+						}
+					} else {
+						if (!rmdirRecursive(dirFiles[i].toString())) {
+							System.out
+									.println("Server encountered file or dir that cannot be removed.");
+						}
+					}
+				}
+				return directory.delete();
+			}
+		} else {
+			if (directory.isFile()) {
+				return directory.delete();
+			}
+		}
+		return false;
+	}
+	
+	private static boolean checkPath(String requestedPath) {
+		File requestPath = new File("data/" + requestedPath);
+		File rootPath = new File("data/" + group);
+		
+		String requestStr = requestPath.getAbsolutePath();
+		String rootStr = rootPath.getAbsolutePath();
+		
+		if (rootStr.equals(requestStr)) {
+			return true;
+		}
+		else if (requestStr.contains(rootStr)) {
+			if (!requestStr.contains("../")) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+	}	
 	
 }
