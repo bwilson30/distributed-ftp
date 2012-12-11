@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @domain.name %> <br />
+  <% @domain.servers.each do |serv| %>
+	<%= serv.ip%> <br />
+  <% end %>
+
+</p>
+
+<%= link_to 'Destroy', @domain, :method => :delete, :data => { :confirm => 'Are you sure?' } %>|
+<%= link_to 'Edit', edit_domain_path(@domain) %> |
+<%= link_to 'Back', domains_path %>

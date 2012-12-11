@@ -58,6 +58,7 @@ public class messaging {
 	}
 
 	public int get(String localPath, String remotePath) {
+		System.out.println("> get  "+ remotePath + " ip: " + m_ipAddress );
 		Hashtable sendTable = new Hashtable();
 		sendTable.put("cmd", "get");
 		sendTable.put("get", remotePath);

@@ -180,6 +180,9 @@ public class client{
 			 System.out.println("Grabbing file from a server");
 			 File fi = new File(temp_folder +"/temp_file_" + i);
 			 if(fi.exists()) fi.delete();
+			 fi = new File(temp_folder +"/temp_file_" + i + ".timestamp");
+			 if(fi.exists()) fi.delete();
+			 fi = null;
 			 opcode[i] = (long) servers[i].get(temp_folder +"/temp_file_" + i, rwd + "/" + argv[1]);
 			 file_list[i] = new QFILE(new File(temp_folder +"/temp_file_" + i),	// Temp file directory
 					 				  new File(temp_folder +"/temp_file_" + i + ".timestamp"),	// timestamp

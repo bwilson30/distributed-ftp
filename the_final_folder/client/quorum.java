@@ -42,13 +42,15 @@ class QFILE{
     public int getServerID(){
     	return this.serverID;
     }
-    public String toString(){return toString(fileptr.getPath());}
-    public static String toString(String path){
+    public String toString(){return toString(fileptr);}
+    public static String toString(File in){
     	FileInputStream stream = null;
     	MappedByteBuffer bb = null;
 	    try{
 	    	try {
-	    		stream = new FileInputStream(new File(path));
+	    		if(in == null || !in.isFile() || !in.canRead())
+	    			return "";
+	    		stream = new FileInputStream(in);
 	    	    FileChannel fc = stream.getChannel();
 	    	    bb = fc.map(FileChannel.MapMode.READ_ONLY, 0, fc.size());
 	    	    /* Instead of using default, pass in a decoder. */
@@ -63,13 +65,14 @@ class QFILE{
 	    return Charset.defaultCharset().decode(bb).toString();	  
     }
     
+
     public QFILE(File fileptr, File tfile, int sID){
     	this.fileptr = fileptr;
     	Long num = (long)0;
     	if(tfile != null){
     		try{ 
-	    		String tstr = toString(tfile.getAbsolutePath());
-	    		num  = Long.parseLong(tstr);
+	    		String tstr = toString(tfile);
+	    		if(tstr != null && !tstr.isEmpty()) num  = Long.parseLong(tstr);
 	    	} catch(Exception e){System.err.println(e.toString()); num = (long)0;}	
     	}
     	fileTStamp = new tStamp(num);
@@ -102,28 +105,26 @@ public class quorum{
 	
 	//Use this static methods to directly call quorum::quorum_opcodes_static() to quorum opcodes.
 	public static long quorum_opcodes_static(long [] opcodes, int num_opcodes){
-		int opcode_similarity [] = new int[num_opcodes];
-		int i, j, max_sim_opcodes=0;
-		for(i=0; i<num_opcodes; i++) opcode_similarity[i] = 0;
-		for(i=0; i<num_opcodes; i++)
-			for(j=0; j<num_opcodes; j++)
-			{
-				if( i!=j && opcodes[i] == opcodes[j]) opcode_similarity[i]++;
-			}
-		
-		for(i=0; i<num_opcodes; i++){
-			if(opcode_similarity[i] > max_sim_opcodes) max_sim_opcodes = opcode_similarity[i];
+		Hashtable<Long,Integer> entries = new Hashtable<Long,Integer>();
+    	for(int i = 0; i < num_opcodes; i++){
+    			Long ele = opcodes[i];
+    			if(entries.containsKey(ele)) entries.put(ele, (Integer) entries.get(ele) + 1);
+    			else 						 entries.put(ele,1);
 		}
-		
-		if(max_sim_opcodes +1 < (int)Math.floor(num_opcodes/2) + 1){System.out.println("Insufficient server agreement: "+max_sim_opcodes); return -1;}
-		for(i=0; i<num_opcodes; i++){	// If there are 2 maxes favor success
-			if(opcode_similarity[i] == max_sim_opcodes && opcode_similarity[i] >= 0) return opcodes[i];
-		}
-		for(i=0; i<num_opcodes; i++){
-			if(opcode_similarity[i] == max_sim_opcodes) return opcodes[i];
-		}
-		System.out.println("Uable to find valid opcode");
-		return -1;
+    	int max_count = 1;
+    	int max_index = 0;
+    	long max_val = -1;
+    	for(int i = 0; i < num_opcodes; i++){
+    		Long ele = opcodes[i];
+    		int count = entries.get(ele);
+    		if(count > max_count || (max_val < ele && count == max_count)){
+    			max_count = count;
+    			max_index = i;
+    			max_val   = ele;
+    		}
+    	}
+		if(max_count <= ((num_opcodes >> 1 )- 1)){ System.out.println("Uable to find valid opcode"); return -1;}
+		return opcodes[max_index];
 	}
 	
     public quorum(){}
@@ -148,14 +149,14 @@ public class quorum{
     	catch(Exception e){System.err.println(e.toString()); return -1;}
     	Hashtable<String,Integer> entries = new Hashtable<String,Integer>();
     	for(int i = 0; i < server_count ;i++){
-    		String ele = file_data[i];
+    		String ele = file_data[i] + timeStamps[i];
   			if(entries.containsKey(ele)) entries.put(ele, (Integer) entries.get(ele) + 1);
 			else 						 entries.put(ele,1);	
     		
     	}
     	selected_file = -1;
     	for(int i = 0; i < server_count ;i++){
-    		String ele = file_data[i];
+    		String ele = file_data[i] + timeStamps[i];
     		int occurances = entries.get(ele);
     		System.out.println("File "+ i + " generated hash " + file_data[i] +": Has [" + occurances +"] copies");
     		System.out.println("\tTIMESTAMP: " + timeStamps[i]);
@@ -164,7 +165,7 @@ public class quorum{
     				selected_file = i;
     	}
     	if(selected_file < 0) {System.err.println("No consensus! Not writing output file."); return -1;}
-    	else System.out.println("File#" +selected_file + " MAX SIMILARITY = " + entries.get(file_data[selected_file]));
+    	else System.out.println("File#" +selected_file + " MAX SIMILARITY = " + entries.get(file_data[selected_file] + timeStamps[selected_file]));
     	
     	if(copy_to_output(files[selected_file],dest_path) < 0){ 
     		System.err.println("Unable to print selected_file to " + dest_path);
