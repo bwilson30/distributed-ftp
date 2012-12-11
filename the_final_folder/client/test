@@ -2,12 +2,12 @@
 #./test | perl -ne 'print if $_ =~ /(SPAWN|LOGIN|WILCO|LOGOUT|SYS|LS|GET|PUT)/'
 #log_user 0
 for { set i 1 } {$i <= 100} { incr i } {
-	echo "SPAWN"
+
 	spawn java -jar client.jar
 	expect "quarac>"
 	send "login\n"
 	expect "Domain:"
-	send "localhost\n"
+	send "ece_linux\n"
 	expect "Username:"
 	send "teamA\n"
 	expect "Password"
