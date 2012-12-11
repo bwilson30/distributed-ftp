@@ -1,0 +1,12 @@
+
+**** Build of configuration Debug for project Quorum ****
+
+make all 
+Building file: ../src/Quorum.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Quorum.d" -MT"src/Quorum.d" -o "src/Quorum.o" "../src/Quorum.cpp"
+../src/Quorum.cpp:13:17: fatal error: jni.h: No such file or directory
+compilation terminated.
+make: *** [src/Quorum.o] Error 1
+
+**** Build Finished ****

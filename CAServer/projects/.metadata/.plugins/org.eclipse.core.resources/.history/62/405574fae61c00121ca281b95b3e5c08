@@ -1,0 +1,7 @@
+import java.io.Serializable;
+import java.util.Hashtable;
+
+
+public class Hash<K,U> extends Hashtable implements Serializable {
+
+}

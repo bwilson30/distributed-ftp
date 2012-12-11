@@ -1,0 +1,190 @@
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.KeyStore;
+import java.security.Principal;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.SecureRandom;
+import java.security.Signature;
+import java.security.cert.CertPath;
+import java.security.cert.CertPathValidator;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateFactory;
+import java.security.cert.PKIXCertPathValidatorResult;
+import java.security.cert.PKIXParameters;
+import java.security.cert.TrustAnchor;
+import java.security.cert.X509Certificate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
+
+import sun.security.x509.*;//X509CertInfo;
+
+public class SDFSCertificate {
+	
+	private static String caAlias = "ROOT_ALIAS";
+	//private static String certToSignAlias = "cert";
+	private static char[] caPassword = "ece6238".toCharArray();
+	private static String keystoreFile = "../keyStoreFile.bin";
+	private static char[] password = new char[]{'a','b','c','d','e','f','g','h'};
+	//private static char[] password = new char[]{'e','c','e','6','2','3','8'};
+	private static PrivateKey caPrivateKey;
+	private static PublicKey caPublicKey;
+	private static Signature dsa;
+	public static X509Certificate ValidateCertificate(String certpath) throws Exception
+	{
+		CertificateFactory cf = CertificateFactory.getInstance("X.509");
+	    List mylist = new ArrayList();
+	    FileInputStream in = new FileInputStream(certpath);
+	    FileInputStream input;// = new FileInputStream("../sa.der");
+	    Certificate c = cf.generateCertificate(in);
+	    mylist.add(c);
+        
+	    input = new FileInputStream(certpath);
+	    FileInputStream certRootFile = new FileInputStream(keystoreFile);
+	    KeyStore ks = KeyStore.getInstance("JKS");
+		 
+		 
+		 //KeyStore ks = KeyStore.getInstance("PKCS12");
+		 char[] password = "ece6238".toCharArray();
+
+		 //ks.load(ksis, password);
+		 ks.load(certRootFile, password);
+		 Certificate certRoot = ks.getCertificate("ROOT_ALIAS");
+	    
+		 c.verify(certRoot.getPublicKey());
+		 
+		 CertPath cp = cf.generateCertPath(mylist);
+
+	    //Certificate trust = cf.generateCertificate(input);
+	   /* TrustAnchor anchor = new TrustAnchor((X509Certificate) c, null);
+	    PKIXParameters params = new PKIXParameters(Collections.singleton(anchor));
+	    params.setRevocationEnabled(false);
+	    CertPathValidator cpv = CertPathValidator.getInstance("PKIX");
+	    PKIXCertPathValidatorResult result = (PKIXCertPathValidatorResult) cpv.validate(cp, params);
+	    */
+	    if (c instanceof X509Certificate) {
+            X509Certificate x509cert = (X509Certificate)c;
+            return x509cert;
+        }
+
+	   return null;
+	}
+	public static void LoadCACertificate() throws Exception
+	{
+		 FileOutputStream ksos = new FileOutputStream(keystoreFile);
+         
+		 // The certificate files, to be added to keystore
+		 FileInputStream certRootFile = new FileInputStream("../ca.crt");
+		 FileInputStream certFile1 = new FileInputStream("../sa.crt");
+		 FileInputStream certFile2 = new FileInputStream("../sb.crt");
+		 FileInputStream certFile3 = new FileInputStream("../sds.crt");
+
+		 CertificateFactory cf = CertificateFactory.getInstance("X.509");
+       
+		 // Read the 3 certificates into memory
+		 Certificate certRoot = cf.generateCertificate(certRootFile);
+		 Certificate cert1 = cf.generateCertificate(certFile1);
+		 Certificate cert2 = cf.generateCertificate(certFile2);
+		 Certificate cert3 = cf.generateCertificate(certFile3);
+         
+		 KeyStore ks = KeyStore.getInstance("JKS");
+		 
+		 
+		 //KeyStore ks = KeyStore.getInstance("PKCS12");
+		 char[] password = "ece6238".toCharArray();
+
+		 //ks.load(ksis, password);
+		 ks.load(null, password);
+
+		 // Add certificates to keystore
+		 ks.setCertificateEntry("ROOT_ALIAS", certRoot);
+		 ks.setCertificateEntry("C1_ALIAS", cert1);
+		 ks.setCertificateEntry("C2_ALIAS", cert2);
+		 ks.setCertificateEntry("C3_ALIAS", cert3);
+		 
+		 
+		 // Write modified keystore to file system
+		 ks.store(ksos, password);
+
+		 ksos.close();
+
+	}
+	
+	public static synchronized X509CertImpl GenerateClientCertificate(String certToSignAlias, char[] certPassword)
+	{
+        try{
+	    FileInputStream input = new FileInputStream(keystoreFile);
+	    KeyStore keyStore = KeyStore.getInstance("JKS");
+	    keyStore.load(input, caPassword);
+	    input.close();
+
+	    PrivateKey caPrivateKey = (PrivateKey) keyStore.getKey(caAlias, caPassword);
+	    java.security.cert.Certificate caCert = keyStore.getCertificate(caAlias);
+
+            
+
+	    byte[] encoded = caCert.getEncoded();
+	    X509CertImpl caCertImpl = new X509CertImpl(encoded);
+
+	    X509CertInfo caCertInfo = (X509CertInfo) caCertImpl.get(X509CertImpl.NAME + "."
+	        + X509CertImpl.INFO);
+
+	    X500Name issuer = (X500Name) caCertInfo.get(X509CertInfo.SUBJECT + "."
+	        + CertificateIssuerName.DN_NAME);
+
+	    java.security.cert.Certificate cert = keyStore.getCertificate(certToSignAlias);
+	    //PrivateKey privateKey = (PrivateKey) keyStore.getKey(certToSignAlias, certPassword);
+	    
+	    
+	    encoded = cert.getEncoded();
+	    X509CertImpl certImpl = new X509CertImpl(encoded);
+	    X509CertInfo certInfo = (X509CertInfo) certImpl
+	        .get(X509CertImpl.NAME + "." + X509CertImpl.INFO);
+
+	    Date firstDate = new Date();
+	    Date lastDate = new Date(firstDate.getTime() + 3 * 24 * 60 * 60 * 1000L);
+	    CertificateValidity interval = new CertificateValidity(firstDate, lastDate);
+ 
+	    certInfo.set(X509CertInfo.VALIDITY, interval);
+
+	    certInfo.set(X509CertInfo.SERIAL_NUMBER, new CertificateSerialNumber(
+	        (int) (firstDate.getTime() / 1000)));
+
+	    certInfo.set(X509CertInfo.ISSUER + "." + CertificateSubjectName.DN_NAME, issuer);
+
+	    certInfo.set("ChildKey", certToSignAlias);
+	    
+	    AlgorithmId algorithm = new AlgorithmId(AlgorithmId.md5WithRSAEncryption_oid);
+	    certInfo.set(CertificateAlgorithmId.NAME + "." + CertificateAlgorithmId.ALGORITHM, algorithm);
+	    X509CertImpl newCert = new X509CertImpl(certInfo);
+        
+	    newCert.sign(caPrivateKey, "MD5WithRSA");
+	    
+	   
+
+	    //keyStore.setKeyEntry(certToSignAlias, privateKey, certPassword,new java.security.cert.Certificate[] { newCert });
+
+	    FileOutputStream output = new FileOutputStream(keystoreFile);
+	    keyStore.store(output, caPassword);
+	    output.close();
+	    //socket.getOutputStream().write(newCert.getEncoded());
+	    return newCert;
+        }
+        catch(Exception evt)
+        {
+        	System.err.println("Can't create client certificate: "+evt.getMessage());
+        	return null;
+        }
+	}
+    
+	
+	
+	
+}

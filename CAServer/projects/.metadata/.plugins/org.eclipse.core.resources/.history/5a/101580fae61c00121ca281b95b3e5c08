@@ -1,0 +1,403 @@
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.KeyStore;
+import java.security.MessageDigest;
+import java.security.Principal;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+
+import java.security.cert.X509Certificate;
+import java.security.spec.EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Calendar;
+import java.util.Hashtable;
+import java.util.Properties;
+import java.util.jar.Attributes;
+
+
+import javax.crypto.Cipher;
+import javax.crypto.SealedObject;
+
+import javax.crypto.SecretKey;
+import javax.crypto.spec.DESKeySpec;
+import javax.naming.directory.BasicAttributes;
+
+import sun.security.x509.*;//X509CertImpl;
+
+
+
+public class Server{
+
+	static ServerSocket serverSocket;
+	static Socket socket;
+	static BufferedReader readerIn;
+	PrintWriter writeOut;
+	FileOutputStream ksos = null;
+	FileInputStream ksis = null;
+	private PublicKey publicKey;
+	private PrivateKey privateKey;
+	private static String caAlias = "MYROOT_ALIAS";
+	private static char[] caPassword = "ece6238".toCharArray();
+	private static String keystoreFile = "../keyStoreFile.bin";
+	private static Hashtable<String, SecretKey> privatekeys = new Hashtable<String,SecretKey>();
+	private static String fileAtrribute = "store";
+	java.security.cert.Certificate sdsCert;
+	public void GetKeys() throws Exception
+	{
+		FileInputStream input = new FileInputStream(keystoreFile);
+	    KeyStore keyStore = KeyStore.getInstance("JKS");
+	    keyStore.load(input, caPassword);
+	    input.close();
+
+	    //caPrivateKey = (PrivateKey) keyStore.getKey(caAlias, caPassword);
+	    //java.security.cert.Certificate caCert = keyStore.getCertificate(caAlias);
+	    sdsCert = keyStore.getCertificate("C3_ALIAS");
+	    publicKey = sdsCert.getPublicKey();
+	    FileInputStream certSDS = new FileInputStream("../sds.p12");
+	    KeyStore ksOne = KeyStore.getInstance("PKCS12");
+		 ksOne.load(certSDS, "1ayobami".toCharArray());
+		 privateKey = (PrivateKey)ksOne.getKey("1", "1ayobami".toCharArray());
+		 
+        // Get public key
+        //caPublicKey = caCert.getPublicKey();
+	}
+	public void Connect()
+	{
+		try{
+			serverSocket = new ServerSocket(1001,20);
+		
+			GetKeys();    
+			ksos = new FileOutputStream("keystoreAuthenticateFile");
+			KeyStore ks = KeyStore.getInstance("JCEKS");
+			//char[] password = "ece6238".toCharArray();
+			FileInputStream file = new FileInputStream("../sds.jceks");
+			ks.load(file, "ece6238".toCharArray());
+			boolean execute = false;
+			ObjectOutputStream out = null;
+  		  ObjectInputStream object = null;
+  		socket = serverSocket.accept();
+		    while(true)
+		    {
+		    	
+		    	
+		    	if(socket != null)
+		    	{
+		    		synchronized(this)
+		    		{
+		    			out = new ObjectOutputStream(socket.getOutputStream());
+		    			object = new ObjectInputStream(socket.getInputStream());
+		    		  try{
+		    			  Hashtable request = new Hashtable();
+		    			  request = (Hashtable)object.readObject();
+		    			  //object.close();
+		    			  String cert = new String((byte[])request.get("cert"));
+		    			  X509Certificate x509cert = SDFSCertificate.ValidateCertificate(cert);
+		    			  String issuerDn = null;
+		    			  if(x509cert != null)
+	    			      {
+			                     Principal principal = x509cert.getSubjectDN();
+			                     String subjectDn = principal.getName();
+
+			                    // Get issuer
+			                     principal = x509cert.getIssuerDN();
+			                     issuerDn = principal.getName();
+			                     x509cert.getPublicKey(); 
+	    			        
+	    			      
+		    			  if(request.containsKey("authenticate"))
+		    			  {
+		    				  
+		    				  //X509CertImpl cert = SDFSCertificate.GenerateClientCertificate(alias, "ece6238".toCharArray());
+		    				  KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DH");
+		    				    keyGen.initialize(Skip.sDHParameterSpec);
+		    				    KeyPair   keypair = keyGen.genKeyPair();
+
+		    				    // Get the generated public and private keys
+		    				    PrivateKey privateKey = keypair.getPrivate();
+		    				    PublicKey publicKey = keypair.getPublic();
+		    				    
+		    			      SecretKey key = DiffieHellmanTwo.InitiateProcess((byte[])request.get("authenticate"),publicKey,privateKey);
+		    			      //Cipher ecipher = Cipher.getInstance("DES");
+		    			      //ecipher.init(Cipher.ENCRYPT_MODE, key);
+		    			      //byte[] enc = ecipher.doFinal(cert.getEncoded());
+		    			      ks.setKeyEntry(issuerDn, key, "ece6238".toCharArray(),null);
+		    			      privatekeys.put(cert, key);
+		    			      
+		    			         ks.store(ksos, "ece6238".toCharArray());	
+		    			         Hashtable<String, byte[]> table = new Hashtable<String,byte[]>();
+		    			         table.put("authenticateResponse", publicKey.getEncoded());
+		    			         table.put("cert", "../sds.crt".getBytes("UTF-8"));
+		    			         out.writeObject(table);
+		    			         out.flush();
+		    			         //out.reset();
+		    			         //out.close();
+		    			         //object.reset();
+		    			         //object.close();
+		    			         continue;
+		    			         
+  			        		// Get subject
+		    			      
+		    			  } 
+		    			  else
+		    			  {
+		    				 
+	    				  if(request.containsKey("message"))
+	    				  {
+	    					  //Cipher dcipher = Cipher.getInstance("DES");
+	    					  FileInputStream input = new FileInputStream(keystoreFile);
+			          	      KeyStore keyStore = KeyStore.getInstance("JCEKS");
+			          	      keyStore.load(input, caPassword);
+			          	      input.close();
+	    					  
+	    					  Cipher dcipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
+	    					  //SecretKey key = (SecretKey)keyStore.getKey(issuerDn, caPassword);
+	    					  SecretKey key = privatekeys.get(cert);
+	    					  
+	    			          dcipher.init(Cipher.DECRYPT_MODE, key);
+
+	    			          SealedObject so = (SealedObject)request.get("message"); 
+	    			          Hashtable process = new Hashtable();
+	    			          process = (Hashtable)so.getObject(dcipher);
+    			                 
+    			          	     
+    			          	      
+    			          	      Cipher ecipher = Cipher.getInstance("DES");
+  		    			          ecipher.init(Cipher.ENCRYPT_MODE, key);
+
+	    			        	  if(process.containsKey("terminate") && execute)
+	    			    		  {
+	    			        		  keyStore.deleteEntry(issuerDn);
+	    			    			 execute = false;
+	    			    			 String logoutSuccess = "1";
+	    			    			 byte[] enc = ecipher.doFinal(logoutSuccess.getBytes("UTF-8"));
+	    			    			 out.write(enc);
+	    			    		  }
+	    			        	  else
+	    			        	  if(process.containsKey("queryId"))
+	    			        	  {
+	    			        		  String filename = new String((byte[])process.get("filename"));
+	    			        		  int requestId = Integer.parseInt(new String((byte[])process.get("queryId")));
+	    			        		  Hashtable table = new Hashtable();
+	    			        		  switch(requestId)
+	    			                  {
+	    			                  case 1: 
+	    			                  //OutputStream fileOut = new FileOutputStream(new File(filename));
+	    			                  
+	    			                	  MessageDigest complete = MessageDigest.getInstance("MD5");
+	    			                	  byte []data = (byte [])process.get("data");
+	    			                	byte encoder[] = complete.digest(data); 
+	    			                	//ecipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
+	    		    			         // ecipher.init(Cipher.ENCRYPT_MODE, sdsCert.getPublicKey());
+	    			                	//byte []hash = ecipher.doFinal(encoder);
+	    			                	//DESKeySpec x509KeySpec = new DESKeySpec(hash);
+			                		    //KeyFactory keyFact = KeyFactory.getInstance("DH");
+			                		    //KeyFactory keyFact = KeyFactory.getInstance("DES");
+			                		    //PrivateKey pKey = keyFact.generatePrivate(x509KeySpec);
+	    			                	
+	    			                	//ecipher.init(Cipher.ENCRYPT_MODE, pKey);
+	    			                	
+	    			                   BufferedOutputStream fileOut = new BufferedOutputStream(new FileOutputStream(filename));
+	    			                   
+	    			                   input.close();
+	    			                   
+	    			                  fileOut.write((byte [])process.get("data"));
+	    			                   //fileOut.write(hash);
+	    			                  
+	    			                  fileOut.flush();
+	    			                  fileOut.close();
+	    			                  //File file = new File(filename);
+	    			                  Properties props = new Properties();  
+	    			                  props.put(filename, cert);//setProperty("key", "value");  
+	    			                  Hashtable delegates = new Hashtable();
+	    			                  props.put("delegates", delegates);
+	    			                  File fileprops = new File(filename+".properties");
+	    			                  ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fileprops));
+
+	    			                  oos.writeObject(props);
+	    			                  oos.close();
+	    			                  //props.store(new FileOutputStream(fileprops), filename+" properties"); 
+	    			                  //SealedObject enc = new SealedObject("1", ecipher);
+	    			                  
+	    			                  
+	    			                  //table.put("response", enc);
+	    			                  table.put("responseId", "1");
+		    			    		  out.writeObject(table);
+	    			                  break;
+	    			                  case 2: 
+	    			                	  props = new Properties(); 
+	    			                	  File fileReq = new File(filename);
+	    			                	  if(fileReq.exists())
+	    			                	  {
+	    			                		  ObjectInputStream fileIn = new ObjectInputStream(new FileInputStream(filename+".properties"));
+	    			                		  //props.load(new FileInputStream(new File(filename+".properties")));
+	    			                		  props = (Properties)fileIn.readObject();
+	    			                		  String certificate = (String)props.get(filename);
+	    			                		  X509Certificate certVal = SDFSCertificate.ValidateCertificate(certificate);
+	    			                		  X509Certificate certValDel = SDFSCertificate.ValidateCertificate(cert);
+	    			                		  if(certVal != null)
+	    			                	    	 {
+	    			                			  boolean valid = false;
+	    			                			   if(certVal.equals(certValDel))
+	    			                			   {
+	    			                	    		  valid = true;
+	  	    					            	    }
+	    			                			   
+	  	    					            	   else
+	  	    					            	   {
+	  	    					            	    	Hashtable delegate = (Hashtable)props.get("delegates");
+	  	    					            	    	if(delegate.get(certVal) != null)
+	  	    					            	    	{
+	  	    					            	    		Calendar dur = (Calendar)delegate.get(certVal);
+	  	    					            	    		if(dur.before(Calendar.getInstance()))
+	  	    					            	    		{
+	  	    					            	    			valid = false;
+	  	    					            	    		}
+	  	    					            	    		else
+	  	    					            	    			valid = true;
+	  	    					            	    	}
+	  	    					            	    }
+	    			                			   if(valid)
+	    			                			   {
+	    			                				   InputStream is = new FileInputStream(filename);
+		  	    					            	   data = new byte[(int)fileReq.length()];
+		  	    					            	   int offset = 0;
+		  	    					            	    int numRead = 0;
+		  	    					            	    while (offset < data.length
+		  	    					            	           && (numRead=is.read(data, offset, data.length-offset)) >= 0) {
+		  	    					            	        offset += numRead; 
+		  	    					            	    }
+		  	    					            	      is.close();
+		  	    					            	    SealedObject enc = new SealedObject("1", ecipher);
+			    					            	    enc = new SealedObject(data, ecipher);
+			    					            	    table.put("response", enc);
+			    					            	    table.put("responseId","2");
+			    					            	    out.writeObject(table);
+	    			                			   
+		  	    					            	    
+	    			                	    	 }
+	    			                			   else
+	    			                			   {
+			    					            	    table.put("responseId","99");
+			    					            	    out.writeObject(table);
+	    			                			   }
+	    			                	    	 }
+	    					               
+	    					            	    
+	    					            	   
+	    			                		  //props.load(new FileInputStream(new File(filename+".properties")));
+	    			                		  //byte[] dec = (byte [])props.get(filename);
+	    			                		  //dcipher = Cipher.getInstance("DES/ECB/PKCS5Padding");
+	    			                		  //x509KeySpec = new DESKeySpec(dec);
+	    			                		    //KeyFactory keyFact = KeyFactory.getInstance("DH");
+	    			                		    //keyFact = KeyFactory.getInstance("DES");
+	    			                		    //PrivateKey publicKey = keyFact.generatePrivate(x509KeySpec);
+	    			                		    
+	    			                		  //dcipher.init(Cipher.DECRYPT_MODE, publicKey);
+
+	    			    			          //dcipher.
+	    			                		  
+	    			                	  }
+	    			                	  else
+	    			                	  {
+	    			                		  table.put("responseId","99");
+	    					            	    out.writeObject(table);
+	    			                	  }
+	    			                	  break;
+
+	    			                  case 3:
+	    			                	  Properties property = new Properties();
+	    			                	  File fileOn = new File(filename);
+	    			                	  String del = (String)process.get("party");
+	    			                	  if(fileOn.exists())
+	    			                	  {
+	    			                		  
+	    			                	     //property.load(new FileInputStream(new File(filename+".properties")));
+	    			                		  ObjectInputStream fileIn = new ObjectInputStream(new FileInputStream(filename+".properties"));
+	    			                		  //props.load(new FileInputStream(new File(filename+".properties")));
+	    			                		  property = (Properties)fileIn.readObject();
+	    			                	     String certificate = (String)property.get(filename);
+	    			                	     Calendar calDur = (Calendar)process.get("duration");
+	    			                	     Hashtable delegate = (Hashtable)property.get("delegates");
+	    			                	     if(certificate.equalsIgnoreCase(cert))
+	    			                	     {
+	    			                	    	 X509Certificate certVal = SDFSCertificate.ValidateCertificate(del);
+	    			                	    	 if(certVal != null)
+	    			                	    	 {
+	    			                	    		 delegate.put(certVal,calDur);
+	    			                	    		 table.put("responseId", "1");
+	    				    			    		  out.writeObject(table);
+	    			                	    	 }
+	    			                	    	 else
+	    			                	    	 {
+	    			                	    		 table.put("responseId", "99");
+	    				    			    		  out.writeObject(table);
+	    			                	    	 }
+	    			                	     }
+	    			                	  }
+	    			                	  break;
+	    			                  }
+	    			                  execute = false; 
+	    			        	  }
+			    			         continue;
+	    			        	  
+	    			          }
+	    			          
+	    				  }}
+	    			  }
+		    		  
+		    		  catch(Exception evt)
+		    		  {
+		    			  System.out.println(evt.getMessage());
+		    		  }
+		    		}
+		    	}
+		    }
+		}
+		catch(Exception evt)
+		{
+			System.out.println(evt.getMessage());
+			try {
+				socket.close();
+				serverSocket.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				//socket.close();
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	public static void main(String args[])
+	{
+		try{
+		SDFSCertificate.LoadCACertificate();
+		new Server().Connect();
+		}
+		catch(Exception evt)
+		{
+			System.err.println("CA Server is unable to start: "+evt.getMessage());
+		}
+	}
+	
+	
+}

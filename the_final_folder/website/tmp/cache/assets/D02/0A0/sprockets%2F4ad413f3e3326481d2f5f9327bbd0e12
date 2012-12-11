@@ -1,0 +1,8 @@
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value"u{"
+class"BundledAsset"logical_path"users.js"pathname"1$root/app/assets/javascripts/users.js.coffee"content_type"application/javascript"
+mtime"2012-12-07T13:19:47-05:00"lengthi%"digest"%35808336faa183d454c8d0ecc009f333"source"%(function() {
+
+
+
+}).call(this);
+"required_assets_digest"%45dfac2fa90dab32b85581b5a12c8e1c"_version"%6776f581a4329e299531e1d52aa59832:@created_atf1354904449.507

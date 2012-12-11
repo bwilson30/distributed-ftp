@@ -1,0 +1,27 @@
+Ecryption requirments:
+Client Side:
+initialize(ip_addr,port,username,user_password,ca_server_ip?)
+getIPAddress() {return ip_addr from init};
+char* encrypt(const char* data,size);
+	// If encryption is not possible return an error code
+Server Side:
+encryption_class_ptr Encryption.lookup(ip_addr,port) // This locals the authentication information for a given packet 
+initialize(ip_addr,port,username,user_password,ca_server_ip?)
+getIPAddress() {return ip_addr from init};
+char* encrypt(const char* data,size);
+        // If encryption is not possible return an error code
+class Encrypt_Client{
+	Encrypt_Client(char[] ip_address_of_File_Server,char[] ip_address_CA_Server);
+	boolean sendMessage(char* array, int sizeof_array);
+	char[] receiveMessage(){
+		//What is going on
+	}
+}
+
+class Encrypt{	// This is the class that exists on the server
+	
+	Encrypt(char[] ca_of_client);
+	char[] ca_of_client;	// client ip address
+	void ch_encrypt(char* array,int array_size);
+	void ch_decrypt(char* array, int array_size);
+}

@@ -1,0 +1,39 @@
+package Server;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.security.KeyStore;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.util.Hashtable;
+
+import javax.crypto.SecretKey;
+
+public class Start {
+
+	private static char[] serverPassword = "ece6102".toCharArray();
+	private static String keystoreFile = "../keyStoreFile.bin";
+	private static String serverAlias = "server";
+	private static PublicKey pubKey;
+	private static PrivateKey privKey;
+	private static Hashtable<String, SecretKey> privatekeys = new Hashtable<String,SecretKey>();
+	
+	private static ServerSocket serverSocket;
+	private static Socket socket;
+	private static FileOutputStream ksos = null;
+	
+	public void GetKeys() throws Exception
+	{
+		FileInputStream input = new FileInputStream(keystoreFile);
+	    KeyStore keyStore = KeyStore.getInstance("JKS");
+	    //KeyStore ks = KeyStore.getInstance("JCEKS");
+	    keyStore.load(input, serverPassword);
+	    input.close();
+	    privKey = (PrivateKey) keyStore.getKey(serverAlias, serverPassword);
+	    java.security.cert.Certificate serverCert = keyStore.getCertificate(serverAlias);
+	    pubKey = serverCert.getPublicKey();
+	}
+	
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="lib" path="G:/ftp server apache/ftpserver-1.0.5/apache-ftpserver-1.0.5/common/lib/aopalliance-1.0.jar"/>
+	<classpathentry kind="lib" path="G:/ftp server apache/ftpserver-1.0.5/apache-ftpserver-1.0.5/common/lib/ftplet-api-1.0.5.jar"/>
+	<classpathentry kind="lib" path="G:/ftp server apache/ftpserver-1.0.5/apache-ftpserver-1.0.5/common/lib/ftpserver-core-1.0.5.jar"/>
+	<classpathentry kind="lib" path="G:/ftp server apache/ftpserver-1.0.5/apache-ftpserver-1.0.5/common/lib/jcl-over-slf4j-1.5.2.jar"/>
+	<classpathentry kind="lib" path="G:/ftp server apache/ftpserver-1.0.5/apache-ftpserver-1.0.5/common/lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="G:/ftp server apache/ftpserver-1.0.5/apache-ftpserver-1.0.5/common/lib/mina-core-2.0.0-RC1.jar"/>
+	<classpathentry kind="lib" path="G:/ftp server apache/ftpserver-1.0.5/apache-ftpserver-1.0.5/common/lib/slf4j-api-1.5.2.jar"/>
+	<classpathentry kind="lib" path="G:/ftp server apache/ftpserver-1.0.5/apache-ftpserver-1.0.5/common/lib/slf4j-log4j12-1.5.2.jar"/>
+	<classpathentry kind="lib" path="G:/ftp server apache/ftpserver-1.0.5/apache-ftpserver-1.0.5/common/lib/spring-beans-2.5.5.jar"/>
+	<classpathentry kind="lib" path="G:/ftp server apache/ftpserver-1.0.5/apache-ftpserver-1.0.5/common/lib/spring-context-2.5.5.jar"/>
+	<classpathentry kind="lib" path="G:/ftp server apache/ftpserver-1.0.5/apache-ftpserver-1.0.5/common/lib/spring-core-2.5.5.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

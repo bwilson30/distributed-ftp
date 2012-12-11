@@ -1,0 +1,29 @@
+<h1> Directory: <%=  @the_current_directory %> </h1>
+</br>
+<table>
+<tr><td>
+<%= link_to("../","/files/"+ @domain_name + "?cd=up") %>  </br>
+</td>
+<td></td>
+<% @files_in_directory.each do |file| %>
+<tr><td>
+		<%= link_to(file,"/get/"+ @domain_name + "?id=" + file ) unless file.include? '/' %>  
+		<%= link_to(file,"/files/"+ @domain_name + "?cd=down&id=" + file ) if file.include? '/' %>
+</td><td>
+		<%= form_tag "/files/" + @domain_name + "?id=" + file, :method => :delete do %> 
+			<% submit_tag "Remove"%>
+		<% end %>
+</td></tr>
+<% end %>
+</table>
+<h1>File Upload</h1>
+<%= form_tag({:action => :put_file},:method => :put, :multipart => true) do %>
+  <%= file_field_tag 'upload' %>
+  <%= text_field_tag 'name' %>
+  <%= submit_tag     'Upload' %>
+<% end %>
+<h1>Make Directory</h1>
+<%= form_tag({:action => :put_file},:method => :put) do %>
+  <%= text_field_tag 'folder' %>
+  <%= submit_tag     'mkdir' %>
+<% end %>
