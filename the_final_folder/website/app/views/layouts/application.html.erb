@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Website</title>
+  <title>Constantine</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<h1>
 <% @user = User.find_by_remember_token(cookies[:remember_token]) %>
 <% unless @user.nil? %>
-<%= @user.name %>
-<%= form_tag "/signout", :method => :delete do %>
-<% submit_tag "Sign out"%>
-<% end %>
+<table>
+<tr>
+<td><%= @user.name %></td>
+<td>
+	<%= form_tag "/signout", :method => :delete do %>
+		<% submit_tag "Sign out"%>
+	<% end %>
+</td>
+</tr>
+</table>
 <% else %>
 <%= link_to 'signin',"/signin"%>
 <% end %>
+</h1>
 <div class="main">
 <%= yield %>
 <div class="main">

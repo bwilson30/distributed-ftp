@@ -1,4 +1,2 @@
-homer_odyssey.txt
-project4.pdf
+heart_of_darkness.txt
 proposal.pdf
-testDir/

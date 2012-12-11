@@ -6,6 +6,7 @@ unless defined?(Client) == 'constant' && Client.class == Class
 end
 class FilesController < ApplicationController
 	#include SessionHelper
+	include FilesHelper
 	def show
 		redirect_to '/domains'
 	end
@@ -23,40 +24,13 @@ class FilesController < ApplicationController
 			return
 		end
 		@domain_name = domain.name
-		target_directory = cookies[:directory];		
-		if target_directory.nil? || target_directory == 'null' || target_directory.empty?
-			target_directory = "/" 
-		else
-			target_directory = "/" + target_directory
-		end
-		puts "================== Initializing Client: #{user.name} :: #{target_directory.inspect} =========================="
-		server_list = []
-		domain.servers.each do |serv|
-			server_list.push serv.ip
-		end
-		if $client.nil?
-			$client = Client.new(1,10001) and puts "created client" 
-		end
-		$client.set_domain(server_list);
-		puts "================== Attempting login =========================="
-		$client.login(user.name,user.password);
-		$client.rwd = target_directory;
-		puts "================== Setting Domain login =========================="
-		$client.temp_folder= "data/temp"
-		$client.config([])
+		target_directory = '/' + cookies[:directory];		
+		#	if target_directory.nil? || target_directory == 'null' || target_directory.empty?
+		setup_client(domain,user,target_directory)
 		puts "================== Attempting To LS Into Directory: #{target_directory} =========================="
 		out = $client.ls([])
-		if($client.qur_size == 1)
-			outdir = Dir.pwd + "/data/temp/0_ls.txt"	
-			fi = File.new(outdir, "r")
-			@files_in_directory = []
-			while (line = fi.gets)
-			      @files_in_directory.push "#{line}"
-			end
-		else
-			@files_in_directory = []
-			@files_in_directory = out.split() unless out.nil? 
-		end
+		@files_in_directory = []
+		@files_in_directory = out.split() unless out.nil? 
 		@the_current_directory = target_directory
 		render 'folder'
 	end
@@ -65,22 +39,14 @@ class FilesController < ApplicationController
 		user = User.find_by_remember_token(cookies[:remember_token]);
                 redirect_to '/signin' and return if user.nil?
 		@target_file = cookies[:directory] + '/' + params[:id]
-		server_list = []
-		domain.servers.each do |serv|
-			server_list.push serv.ip
-		end
-		puts "====================== " +  @target_file
-		if $client.nil?
+		puts "====================== Getting file : #{@target_file} ========"
+		target_directory = '/' + cookies[:directory];		
+		setup_client(domain,user,target_directory)
+		if user.nil?
 			redirect_to '/files' and return
 		else
 			render :format => :html,:template => 'files/download'
 		end
-		$client.set_domain(server_list)
-		puts "================== Attempting login =========================="
-		$client.login(user.name,user.password);
-		$client.config([])
-		$client.temp_folder= "data/temp"
-		$client.rwd = "/" + cookies[:directory]
 		$client.get([ "data/output/" + params[:id], params[:id] ])
 		return
 	end
@@ -93,29 +59,43 @@ class FilesController < ApplicationController
 		end
 	end
 	def put_file
+		folder_name = params[:folder]
 		up_file = params[:upload]
 		name = params[:name]
 		domain = Domain.find_by_name params[:domain]
 		user = User.find_by_remember_token(cookies[:remember_token])
-		puts "================ Writing file to local directory ====================="
-		path = File.join("data/upload", name)
-		File.open(path, "wb") { |f| f.write(up_file.read) }
-		if $client.nil?
+		if user.nil?
 			redirect_to '/files' and return
 		else
 			redirect_to '/files/' + domain.name
 		end
-		server_list = []
-		domain.servers.each do |serv|
-			server_list.push serv.ip
+		target_directory = '/' + cookies[:directory]		
+		setup_client(domain,user,target_directory)
+		unless up_file.nil?
+			puts "================ Writing file to local directory ====================="
+			path = File.join("data/upload", name)
+			File.open(path, "wb") { |f| f.write(up_file.read) }
+			$client.put([ path, name ])
+		else
+			puts "================ Creating folder ====================="
+			$client.mkdir([ folder_name ])
 		end
-		$client.set_domain(server_list)
-		puts "================== Attempting login =========================="
-		$client.login(user.name,user.password);
-		$client.config([])
-		$client.temp_folder= "data/upload"
-		$client.rwd = "/" + cookies[:directory]
-		$client.put([ path, name ])
 		
+	end
+	def delete
+		name = params[:id]
+		domain = Domain.find_by_name params[:domain]
+		user = User.find_by_remember_token(cookies[:remember_token])
+                redirect_to '/signin' and return if user.nil?
+		target_directory = '/' + cookies[:directory];		
+		setup_client(domain,user,target_directory)
+		if name.include? '/'
+			puts "====================== Removing Directory : #{@target_file} ========"
+			$client.rmdir([name])
+		else
+			puts "====================== Removing file : #{@target_file} ========"
+			$client.rm([name])
+		end
+		redirect_to '/files/' + domain.name
 	end
 end

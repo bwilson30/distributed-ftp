@@ -9,6 +9,7 @@ Website::Application.routes.draw do
   match '/files'   => 'files#show'	 , :via => :get
   match '/files/:domain'   => 'files#ls'	 , :via => :get
   match '/files/:domain'   => 'files#put_file'	 , :via => [:post, :put]
+  match '/files/:domain'   => 'files#delete'	 , :via => :delete
   match '/get/:domain' => 'files#get_file'       , :via => :get
   match '/download'	=> 'files#download_file' , :via => :get
   # The priority is based upon order of creation:

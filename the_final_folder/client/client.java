@@ -47,6 +47,7 @@ public class client{
 			else if(cmdstr.equals("put")) cl.put(cmdargs);
 			else if(cmdstr.equals("rm")) cl.rm(cmdargs);
 			else if(cmdstr.equals("mkdir")) cl.mkdir(cmdargs);
+			else if(cmdstr.equals("rmdir")) cl.rmdir(cmdargs);
 			// Local Commands
 			else if(cmdstr.equals("config")) cl.config(cmdargs);
 			else if(cmdstr.equals("help")) cl.help(cmdargs);
@@ -215,7 +216,26 @@ public class client{
 	    if(quorum.quorum_opcodes_static(opcode,qur_size) < 0) System.out.println("SYSFL: Systematic failure on rm!");
 	    else System.out.println("SYSSUCCESS");
 	}
-	public void mkdir(String[] argv){}
+	public void mkdir(String[] argv){
+		long opcode[] = new long[qur_size];
+		if(argv.length != 1) return;
+		System.out.println("MKDIR");
+	    for(int i = 0; i< qur_size; i++){
+	   	 opcode[i] = (long)servers[i].mkdir( rwd + "/" + argv[0]);
+	    }
+	    if(quorum.quorum_opcodes_static(opcode,qur_size) < 0) System.out.println("SYSFL: Systematic failure on rm!");
+	    else System.out.println("SYSSUCCESS");
+	}
+	public void rmdir(String[] argv){
+		long opcode[] = new long[qur_size];
+		if(argv.length != 1) return;
+		System.out.println("RMDIR");
+	    for(int i = 0; i< qur_size; i++){
+	   	 opcode[i] = (long)servers[i].rmdir( rwd + "/" + argv[0]);
+	    }
+	    if(quorum.quorum_opcodes_static(opcode,qur_size) < 0) System.out.println("SYSFL: Systematic failure on rm!");
+	    else System.out.println("SYSSUCCESS");
+	}
    // Local Commands
 	void help(String[] argv){	
 		System.out.println(	 "This program allows for read and write to a remote file repository.");

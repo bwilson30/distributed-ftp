@@ -26611,3 +26611,1731 @@ Served asset /files.js - 304 Not Modified (0ms)
 
 Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 16:46:28 -0500 2012
 Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:22:50 -0500 2012
+Connecting to database specified by database.yml
+Processing by FilesController#show as HTML
+Redirected to http://localhost:3000/domains
+Completed 302 Found in 9ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/domains" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:22:53 -0500 2012
+Processing by DomainsController#index as HTML
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" [0m
+  Rendered domains/index.html.erb within layouts/application (25.0ms)
+  [1m[35mUser Load (7.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 711ms (Views: 550.0ms | ActiveRecord: 63.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:22:54 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (16ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:22:54 -0500 2012
+Served asset /files.css - 304 Not Modified (42ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:22:54 -0500 2012
+Served asset /domains.css - 304 Not Modified (20ms)
+
+
+Started GET "/assets/application.js" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:22:54 -0500 2012
+Served asset /application.js - 404 Not Found (35ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/application.js"):
+  actionpack (3.2.9) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.9) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.9) lib/rails/rack/logger.rb:16:in `call'
+  activesupport (3.2.9) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.9) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.9) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.9) lib/rails/engine.rb:479:in `call'
+  railties (3.2.9) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.9) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  org/jruby/RubyProc.java:270:in `call'
+  org/jruby/RubyProc.java:224:in `call'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (3.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:22:54 -0500 2012
+Served asset /application.css - 304 Not Modified (153ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:22:55 -0500 2012
+Served asset /sessions.css - 304 Not Modified (12ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:22:55 -0500 2012
+Served asset /users.css - 304 Not Modified (29ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:22:55 -0500 2012
+Served asset /servers.css - 304 Not Modified (52ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:24:17 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (5.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (8.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (29.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 19882ms (Views: 95.0ms | ActiveRecord: 31.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:24:37 -0500 2012
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:24:37 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:24:37 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:24:37 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:24:37 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:24:37 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:24:37 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/domains" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:22 -0500 2012
+Processing by DomainsController#index as HTML
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" [0m
+  Rendered domains/index.html.erb within layouts/application (3.0ms)
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 74ms (Views: 62.0ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:22 -0500 2012
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:22 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:22 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:22 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:22 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:22 -0500 2012
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:22 -0500 2012
+Served asset /servers.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/background.png" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:22 -0500 2012
+Served asset /background.png - 404 Not Found (36ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/background.png"):
+  actionpack (3.2.9) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.9) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.9) lib/rails/rack/logger.rb:16:in `call'
+  activesupport (3.2.9) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.9) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.9) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.9) lib/rails/engine.rb:479:in `call'
+  railties (3.2.9) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.9) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  org/jruby/RubyProc.java:270:in `call'
+  org/jruby/RubyProc.java:224:in `call'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (3.0ms)
+
+
+Started GET "/domains/1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:24 -0500 2012
+Processing by DomainsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."id" = 1 LIMIT 1[0m
+  [1m[35mServer Load (9.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered domains/show.html.erb within layouts/application (32.0ms)
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 113ms (Views: 88.0ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:24 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:24 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:24 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:24 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:24 -0500 2012
+Served asset /domains.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:24 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:24 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/servers" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:28 -0500 2012
+Processing by ServersController#index as HTML
+  [1m[35mServer Load (6.0ms)[0m  SELECT "servers".* FROM "servers" 
+  Rendered servers/index.html.erb within layouts/application (77.0ms)
+  [1m[36mUser Load (7.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 137ms (Views: 117.0ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:28 -0500 2012
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:28 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:28 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:28 -0500 2012
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:28 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:28 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:28 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/background.png" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:28 -0500 2012
+Served asset /background.png - 404 Not Found (34ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/background.png"):
+  actionpack (3.2.9) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.9) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.9) lib/rails/rack/logger.rb:16:in `call'
+  activesupport (3.2.9) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.9) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.9) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.9) lib/rails/engine.rb:479:in `call'
+  railties (3.2.9) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.9) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  org/jruby/RubyProc.java:270:in `call'
+  org/jruby/RubyProc.java:224:in `call'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (3.0ms)
+
+
+Started GET "/servers/3/edit" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:33 -0500 2012
+Processing by ServersController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mServer Load (5.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."id" = 3 LIMIT 1
+  Rendered servers/_form.html.erb (55.0ms)
+  Rendered servers/edit.html.erb within layouts/application (84.0ms)
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 134ms (Views: 115.0ms | ActiveRecord: 10.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:33 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:33 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:33 -0500 2012
+Served asset /files.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:33 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:33 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:34 -0500 2012
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:34 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started PUT "/servers/3" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:36 -0500 2012
+Processing by ServersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tuOih9jcQ5x7NxOZkdc34LBBL7ZgsbkxPR/H1i0xsH4=", "server"=>{"ip"=>"192.168.217.143", "domain_name"=>"localhost"}, "commit"=>"Update Server", "id"=>"3"}
+  [1m[35mServer Load (4.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."id" = 3 LIMIT 1
+  [1m[36m (8.0ms)[0m  [1mUPDATE "servers" SET "ip" = '192.168.217.143', "updated_at" = '2012-12-10 22:27:36.973000' WHERE "servers"."id" = 3[0m
+Redirected to http://localhost:3000/servers/3
+Completed 302 Found in 64ms (ActiveRecord: 12.0ms)
+
+
+Started GET "/servers/3" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:37 -0500 2012
+Processing by ServersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mServer Load (5.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."id" = 3 LIMIT 1
+  Rendered servers/show.html.erb within layouts/application (8.0ms)
+  [1m[36mUser Load (7.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 80ms (Views: 59.0ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:37 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:37 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:37 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:37 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:37 -0500 2012
+Served asset /users.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:37 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:37 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/servers" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:39 -0500 2012
+Processing by ServersController#index as HTML
+  [1m[35mServer Load (5.0ms)[0m  SELECT "servers".* FROM "servers" 
+  Rendered servers/index.html.erb within layouts/application (26.0ms)
+  [1m[36mUser Load (7.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 91ms (Views: 71.0ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:40 -0500 2012
+Served asset /application.css - 304 Not Modified (7ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:40 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:40 -0500 2012
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:40 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:40 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:40 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:40 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/servers/6/edit" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:42 -0500 2012
+Processing by ServersController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mServer Load (4.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."id" = 6 LIMIT 1
+  Rendered servers/_form.html.erb (23.0ms)
+  Rendered servers/edit.html.erb within layouts/application (40.0ms)
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 79ms (Views: 64.0ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:42 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:42 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:42 -0500 2012
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:42 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:42 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:42 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:42 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started PUT "/servers/6" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:46 -0500 2012
+Processing by ServersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tuOih9jcQ5x7NxOZkdc34LBBL7ZgsbkxPR/H1i0xsH4=", "server"=>{"ip"=>"192.168.217.144", "domain_name"=>"localhost"}, "commit"=>"Update Server", "id"=>"6"}
+  [1m[35mServer Load (4.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."id" = 6 LIMIT 1
+  [1m[36m (4.0ms)[0m  [1mUPDATE "servers" SET "ip" = '192.168.217.144', "updated_at" = '2012-12-10 22:27:46.440000' WHERE "servers"."id" = 6[0m
+Redirected to http://localhost:3000/servers/6
+Completed 302 Found in 141ms (ActiveRecord: 8.0ms)
+
+
+Started GET "/servers/6" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:46 -0500 2012
+Processing by ServersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mServer Load (5.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."id" = 6 LIMIT 1
+  Rendered servers/show.html.erb within layouts/application (7.0ms)
+  [1m[36mUser Load (6.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 93ms (Views: 68.0ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:46 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:46 -0500 2012
+Served asset /files.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:46 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:46 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:46 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:46 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:46 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/servers" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:48 -0500 2012
+Processing by ServersController#index as HTML
+  [1m[35mServer Load (6.0ms)[0m  SELECT "servers".* FROM "servers" 
+  Rendered servers/index.html.erb within layouts/application (44.0ms)
+  [1m[36mUser Load (6.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 91ms (Views: 70.0ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:48 -0500 2012
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:48 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:48 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:48 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:48 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:48 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:48 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/domains" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:53 -0500 2012
+Processing by DomainsController#index as HTML
+  [1m[35mDomain Load (2.0ms)[0m  SELECT "domains".* FROM "domains" 
+  Rendered domains/index.html.erb within layouts/application (5.0ms)
+  [1m[36mUser Load (6.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 48ms (Views: 36.0ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:53 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:53 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:53 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:53 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:53 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:53 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:53 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/background.png" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:27:53 -0500 2012
+Served asset /background.png - 404 Not Found (22ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/background.png"):
+  actionpack (3.2.9) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.9) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.9) lib/rails/rack/logger.rb:16:in `call'
+  activesupport (3.2.9) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.9) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.9) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.9) lib/rails/engine.rb:479:in `call'
+  railties (3.2.9) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.9) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  org/jruby/RubyProc.java:270:in `call'
+  org/jruby/RubyProc.java:224:in `call'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:28:23 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (3.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (6.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (18.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 15003ms (Views: 50.0ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:28:38 -0500 2012
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:28:38 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:28:38 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:28:38 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:28:38 -0500 2012
+Served asset /servers.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:28:38 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:28:38 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:28:52 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (6.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (6.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (4.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 11383ms (Views: 118.0ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:29:03 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:29:03 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:29:03 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:29:03 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:29:03 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:29:03 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:29:03 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost?cd=up" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:30:58 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"cd"=>"up", "domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Redirected to http://localhost:3000/files/localhost
+Completed 302 Found in 35ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:30:58 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (6.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (7.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 8006ms (Views: 37.0ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:06 -0500 2012
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:06 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:06 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:06 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:06 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:06 -0500 2012
+Served asset /domains.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:06 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost?cd=down&id=testDir/" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:21 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"cd"=>"down", "id"=>"testDir/", "domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Redirected to http://localhost:3000/files/localhost
+Completed 302 Found in 25ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:21 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (3.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (6.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (5.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (7.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 11024ms (Views: 42.0ms | ActiveRecord: 14.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:32 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:32 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:32 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:32 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:32 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:32 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:32 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/get/localhost?id=fish.pdf" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:31:43 -0500 2012
+Processing by FilesController#get_file as HTML
+  Parameters: {"id"=>"fish.pdf", "domain"=>"localhost"}
+  [1m[35mDomain Load (3.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (6.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/download.html.erb within layouts/application (2.0ms)
+  [1m[36mCACHE (1.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 500 Internal Server Error in 1853ms
+
+NativeException (java.lang.NumberFormatException: For input string: "���O��B�Og�<#e�I��X)�(�x�_r�X]8���0�b��/D�~�N8���Rl|AcRo����ǫjL���Ē�MJu�n���:<M"#�KD(#4B(�ᡠȋ7S)A�#O����N��VϿ0%�)�?g��� )�Jڗ�%�8�y�2�e��2��5��CW��ɭgM�{*�ȑNhY��� `�>�M�کLil*�c�?��JxK��r�r��C}a�4�X��@�}��2��*�wM�j�o$�'��"):
+  app/controllers/files_controller.rb:84:in `get_file'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (18.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (45.0ms)
+
+
+Started GET "/" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:38:36 -0500 2012
+Connecting to database specified by database.yml
+Processing by FilesController#show as HTML
+Redirected to http://localhost:3000/domains
+Completed 302 Found in 22ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/domains" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:38:40 -0500 2012
+Processing by DomainsController#index as HTML
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" [0m
+  Rendered domains/index.html.erb within layouts/application (57.0ms)
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 948ms (Views: 668.0ms | ActiveRecord: 62.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:38:41 -0500 2012
+Served asset /application.css - 304 Not Modified (149ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:38:41 -0500 2012
+Served asset /sessions.css - 304 Not Modified (15ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:38:41 -0500 2012
+Served asset /files.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:38:41 -0500 2012
+Served asset /users.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:38:41 -0500 2012
+Served asset /domains.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:38:41 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (19ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:38:41 -0500 2012
+Served asset /servers.css - 304 Not Modified (22ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:38:44 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (5.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (8.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (39.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 18548ms (Views: 116.0ms | ActiveRecord: 31.0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:03 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:03 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:03 -0500 2012
+Served asset /files.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:03 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:03 -0500 2012
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:03 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:03 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/servers" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:46 -0500 2012
+Processing by ServersController#index as HTML
+  [1m[36mServer Load (7.0ms)[0m  [1mSELECT "servers".* FROM "servers" [0m
+  Rendered servers/index.html.erb within layouts/application (117.0ms)
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 207ms (Views: 184.0ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:46 -0500 2012
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:46 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:46 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:46 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:46 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:46 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:46 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/servers/4/edit" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:49 -0500 2012
+Processing by ServersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mServer Load (5.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."id" = 4 LIMIT 1[0m
+  Rendered servers/_form.html.erb (63.0ms)
+  Rendered servers/edit.html.erb within layouts/application (87.0ms)
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 166ms (Views: 150.0ms | ActiveRecord: 10.0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:49 -0500 2012
+Served asset /files.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:49 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:49 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:49 -0500 2012
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:49 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:49 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:49 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started PUT "/servers/4" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:54 -0500 2012
+Processing by ServersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tuOih9jcQ5x7NxOZkdc34LBBL7ZgsbkxPR/H1i0xsH4=", "server"=>{"ip"=>"192.168.217.140", "domain_name"=>"localhost"}, "commit"=>"Update Server", "id"=>"4"}
+  [1m[36mServer Load (4.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."id" = 4 LIMIT 1[0m
+  [1m[35m (7.0ms)[0m  UPDATE "servers" SET "ip" = '192.168.217.140', "updated_at" = '2012-12-10 22:39:54.364000' WHERE "servers"."id" = 4
+Redirected to http://localhost:3000/servers/4
+Completed 302 Found in 60ms (ActiveRecord: 11.0ms)
+
+
+Started GET "/servers/4" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:54 -0500 2012
+Processing by ServersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mServer Load (6.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."id" = 4 LIMIT 1[0m
+  Rendered servers/show.html.erb within layouts/application (8.0ms)
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 63ms (Views: 45.0ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:54 -0500 2012
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:54 -0500 2012
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:54 -0500 2012
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:54 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:54 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:54 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:54 -0500 2012
+Served asset /servers.css - 304 Not Modified (1ms)
+
+
+Started GET "/files" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:58 -0500 2012
+Processing by FilesController#show as HTML
+Redirected to http://localhost:3000/domains
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/domains" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:58 -0500 2012
+Processing by DomainsController#index as HTML
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" [0m
+  Rendered domains/index.html.erb within layouts/application (11.0ms)
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 77ms (Views: 49.0ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:58 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:58 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:58 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:58 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:58 -0500 2012
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:59 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:59 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/background.png" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:39:59 -0500 2012
+Served asset /background.png - 404 Not Found (46ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/background.png"):
+  actionpack (3.2.9) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.9) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.9) lib/rails/rack/logger.rb:16:in `call'
+  activesupport (3.2.9) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.9) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.1) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.1) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.9) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.1) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.9) lib/action_dispatch/middleware/static.rb:62:in `call'
+  railties (3.2.9) lib/rails/engine.rb:479:in `call'
+  railties (3.2.9) lib/rails/application.rb:223:in `call'
+  rack (1.4.1) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.9) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.1) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /Users/preator/.rvm/rubies/jruby-1.6.7.2/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  org/jruby/RubyProc.java:270:in `call'
+  org/jruby/RubyProc.java:224:in `call'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:00 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (7.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (5.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 11148ms (Views: 54.0ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:11 -0500 2012
+Served asset /application.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:11 -0500 2012
+Served asset /domains.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:11 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:11 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:11 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:11 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:12 -0500 2012
+Served asset /servers.css - 304 Not Modified (9ms)
+
+
+Started GET "/get/localhost?id=fish.pdf" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:17 -0500 2012
+Processing by FilesController#get_file as HTML
+  Parameters: {"id"=>"fish.pdf", "domain"=>"localhost"}
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (7.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (8.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/download.html.erb within layouts/application (2.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 13088ms (Views: 77.0ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:30 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:30 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:30 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:30 -0500 2012
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:30 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:30 -0500 2012
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:30 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/download?id=testDir//fish.pdf" for 0:0:0:0:0:0:0:1 at Mon Dec 10 17:40:40 -0500 2012
+Processing by FilesController#download_file as HTML
+  Parameters: {"id"=>"testDir//fish.pdf"}
+Sent file /Users/preator/Documents/School/distributed_systems/project/svn/distributed-ftp/trunk/the_final_folder/website/data/output/fish.pdf (4.0ms)
+Completed 200 OK in 12ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:10:41 -0500 2012
+Connecting to database specified by database.yml
+Processing by FilesController#show as HTML
+Redirected to http://localhost:3000/domains
+Completed 302 Found in 9ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/domains" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:10:44 -0500 2012
+Processing by DomainsController#index as HTML
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" [0m
+  Rendered domains/index.html.erb within layouts/application (16.0ms)
+  [1m[35mUser Load (7.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 663ms (Views: 508.0ms | ActiveRecord: 63.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:10:45 -0500 2012
+Served asset /application.css - 304 Not Modified (151ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:10:45 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (10ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:10:45 -0500 2012
+Served asset /sessions.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:10:45 -0500 2012
+Served asset /users.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:10:45 -0500 2012
+Served asset /files.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:10:45 -0500 2012
+Served asset /domains.css - 304 Not Modified (19ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:10:45 -0500 2012
+Served asset /servers.css - 304 Not Modified (20ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:10:47 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 500 Internal Server Error in 81ms
+
+NoMethodError (undefined method `setup_client' for #<FilesController:0x8fcda14>):
+  app/controllers/files_controller.rb:28:in `ls'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_trace.erb (11.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (8.0ms)
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (41.0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:08 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (6.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (9.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (34.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 11726ms (Views: 85.0ms | ActiveRecord: 56.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:20 -0500 2012
+Served asset /application.css - 304 Not Modified (18ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:20 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:20 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:20 -0500 2012
+Served asset /servers.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:20 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:20 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:20 -0500 2012
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/files/localhost?cd=up" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:26 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"cd"=>"up", "domain"=>"localhost"}
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (6.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Redirected to http://localhost:3000/files/localhost
+Completed 302 Found in 29ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:26 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (6.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (29.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 11062ms (Views: 98.0ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:37 -0500 2012
+Served asset /application.css - 304 Not Modified (15ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:37 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:37 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:37 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:37 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:37 -0500 2012
+Served asset /sessions.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:11:37 -0500 2012
+Served asset /servers.css - 304 Not Modified (1ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:18:55 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (6.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (6.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (8.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (36.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 11396ms (Views: 104.0ms | ActiveRecord: 67.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:19:07 -0500 2012
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:19:07 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:19:07 -0500 2012
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:19:07 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:19:07 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:19:07 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:19:07 -0500 2012
+Served asset /servers.css - 304 Not Modified (1ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:22:57 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (6.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (47.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 10987ms (Views: 73.0ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:23:08 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:23:08 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:23:08 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:23:08 -0500 2012
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:23:08 -0500 2012
+Served asset /files.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:23:08 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:23:08 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:00 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (6.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (36.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 11027ms (Views: 95.0ms | ActiveRecord: 15.0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:11 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:11 -0500 2012
+Served asset /files.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:11 -0500 2012
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:11 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:11 -0500 2012
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:11 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:12 -0500 2012
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:22 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (9.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (55.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 26623ms (Views: 83.0ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:49 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:49 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:49 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:49 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:49 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:49 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:25:49 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:29:29 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (6.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (99.0ms)
+Completed 500 Internal Server Error in 18016ms
+
+ActionController::RoutingError (No route matches {:action=>"mkdir", :controller=>"files"}):
+  app/views/files/folder.html.erb:26:in `_app_views_files_folder_html_erb__388341124_2100'
+  app/controllers/files_controller.rb:35:in `ls'
+
+
+  Rendered /Users/preator/.rvm/gems/jruby-1.6.7.2@rails/gems/actionpack-3.2.9/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (4.0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:30:57 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (8.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (32.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 16618ms (Views: 101.0ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:31:14 -0500 2012
+Served asset /domains.css - 304 Not Modified (9ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:31:14 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:31:14 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:31:14 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:31:14 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:31:14 -0500 2012
+Served asset /users.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:31:14 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:36:36 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (9.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (27.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 16914ms (Views: 73.0ms | ActiveRecord: 50.0ms)
+
+
+Started GET "/assets/files.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:36:53 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:36:53 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:36:53 -0500 2012
+Served asset /application.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/users.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:36:53 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:36:53 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:36:53 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:36:53 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started DELETE "/files/localhost?id=proposal.pdf" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:37:08 -0500 2012
+Processing by FilesController#delete as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tuOih9jcQ5x7NxOZkdc34LBBL7ZgsbkxPR/H1i0xsH4=", "commit"=>"Remove", "id"=>"proposal.pdf", "domain"=>"localhost"}
+  [1m[35mDomain Load (4.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (5.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (6.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+Redirected to http://localhost:3000/files/localhost
+Completed 302 Found in 17894ms (ActiveRecord: 15.0ms)
+
+
+Started GET "/files/localhost" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:37:26 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (3.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (4.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (5.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (8.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 26448ms (Views: 37.0ms | ActiveRecord: 12.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:37:53 -0500 2012
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 18:37:53 -0500 2012
+Served asset /domains.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 18:37:53 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 18:37:53 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 18:37:53 -0500 2012
+Served asset /sessions.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/servers.css?body=1" for 0:0:0:0:0:0:0:1 at Mon Dec 10 18:37:53 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 18:37:53 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 18:41:14 -0500 2012
+Connecting to database specified by database.yml
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (5.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (7.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (81.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 19122ms (Views: 440.0ms | ActiveRecord: 79.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 18:41:36 -0500 2012
+Served asset /application.css - 304 Not Modified (167ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 18:41:36 -0500 2012
+Served asset /domains.css - 304 Not Modified (15ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 18:41:36 -0500 2012
+Served asset /users.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 18:41:36 -0500 2012
+Served asset /files.css - 304 Not Modified (16ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 18:41:36 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (13ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 18:41:36 -0500 2012
+Served asset /sessions.css - 304 Not Modified (20ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 18:41:36 -0500 2012
+Served asset /servers.css - 304 Not Modified (19ms)
+
+
+Started GET "/files/localhost?cd=down&id=testDir/" for 127.0.0.1 at Mon Dec 10 18:46:39 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"cd"=>"down", "id"=>"testDir/", "domain"=>"localhost"}
+  [1m[36mDomain Load (6.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (8.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Redirected to http://localhost:3000/files/localhost
+Completed 302 Found in 59ms (ActiveRecord: 14.0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 18:46:39 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[36mDomain Load (5.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (7.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+  [1m[36mServer Load (7.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+  Rendered files/folder.html.erb within layouts/application (16.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Completed 200 OK in 18004ms (Views: 67.0ms | ActiveRecord: 19.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 18:46:57 -0500 2012
+Served asset /application.css - 304 Not Modified (28ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 18:46:57 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 18:46:57 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 18:46:57 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 18:46:57 -0500 2012
+Served asset /files.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 18:46:57 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 18:46:57 -0500 2012
+Served asset /servers.css - 304 Not Modified (0ms)
+
+
+Started PUT "/files/localhost" for 127.0.0.1 at Mon Dec 10 18:49:35 -0500 2012
+Processing by FilesController#put_file as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"tuOih9jcQ5x7NxOZkdc34LBBL7ZgsbkxPR/H1i0xsH4=", "upload"=>#<ActionDispatch::Http::UploadedFile:0x42a587bc @original_filename="proposal.pdf", @headers="Content-Disposition: form-data; name=\"upload\"; filename=\"proposal.pdf\"\r\nContent-Type: application/pdf\r\n", @tempfile=#<File:/var/folders/5t/qmqbmywj18zcdc1jtj0z053m0000gn/T/RackMultipart.10666.56053>, @content_type="application/pdf">, "name"=>"proposal.pdf", "commit"=>"Upload", "domain"=>"localhost"}
+  [1m[36mDomain Load (4.0ms)[0m  [1mSELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1[0m
+  [1m[35mUser Load (5.0ms)[0m  SELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1
+Redirected to http://localhost:3000/files/localhost
+  [1m[36mServer Load (9.0ms)[0m  [1mSELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1[0m
+Completed 302 Found in 19030ms (ActiveRecord: 57.0ms)
+
+
+Started GET "/files/localhost" for 127.0.0.1 at Mon Dec 10 18:49:54 -0500 2012
+Processing by FilesController#ls as HTML
+  Parameters: {"domain"=>"localhost"}
+  [1m[35mDomain Load (5.0ms)[0m  SELECT "domains".* FROM "domains" WHERE "domains"."name" = 'localhost' LIMIT 1
+  [1m[36mUser Load (6.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+  [1m[35mServer Load (8.0ms)[0m  SELECT "servers".* FROM "servers" WHERE "servers"."domain_id" = 1
+  Rendered files/folder.html.erb within layouts/application (25.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."remember_token" = 'teamA' LIMIT 1[0m
+Completed 200 OK in 17889ms (Views: 98.0ms | ActiveRecord: 19.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Mon Dec 10 18:50:12 -0500 2012
+Served asset /application.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/domains.css?body=1" for 127.0.0.1 at Mon Dec 10 18:50:13 -0500 2012
+Served asset /domains.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Mon Dec 10 18:50:13 -0500 2012
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at Mon Dec 10 18:50:13 -0500 2012
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at Mon Dec 10 18:50:13 -0500 2012
+Served asset /users.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/servers.css?body=1" for 127.0.0.1 at Mon Dec 10 18:50:13 -0500 2012
+Served asset /servers.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/files.css?body=1" for 127.0.0.1 at Mon Dec 10 18:50:13 -0500 2012
+Served asset /files.css - 304 Not Modified (1ms)

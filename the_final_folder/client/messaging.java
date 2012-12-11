@@ -189,10 +189,10 @@ public class messaging {
 	}
 
 	public int mkdir(String remotePath) {
+		System.out.println("> mkdir at " + m_ipAddress + " on "+ remotePath);
 		Hashtable sendTable = new Hashtable();
 		sendTable.put("cmd", "mkdir");
 		sendTable.put("mkdir", remotePath);
-
 		Hashtable recvTable = new Hashtable();
 		recvTable = comm.sendMsg(sendTable, m_ipAddress, m_port);
 
@@ -205,6 +205,7 @@ public class messaging {
 	}
 
 	public int rmdir(String remotePath) {
+		System.out.println("> rmdir on " + m_ipAddress + " on "+ remotePath);
 		Hashtable sendTable = new Hashtable();
 		sendTable.put("cmd", "rmdir");
 		sendTable.put("rmdir", remotePath);
@@ -221,10 +222,10 @@ public class messaging {
 	}
 
 	public int rm(String remotePath) {
+		System.out.println("> rm at " + m_ipAddress + " on "+ remotePath);
 		Hashtable sendTable = new Hashtable();
 		sendTable.put("cmd", "rm");
 		sendTable.put("rm", remotePath);
-
 		Hashtable recvTable = new Hashtable();
 		recvTable = comm.sendMsg(sendTable, m_ipAddress, m_port);
 
