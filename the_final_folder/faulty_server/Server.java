@@ -364,13 +364,9 @@ public class Server {
 	}
 
 	private static String readGroup(String CAgroup) {
-		int commaIndex = CAgroup.indexOf(",");
+		int CNIndex = CAgroup.indexOf("O=Group");
 		String ret;
-		if (commaIndex > 10) {
-			ret = "group" + CAgroup.substring(9, commaIndex - 1);
-		} else {
-			ret = "group" + CAgroup.charAt(9);
-		}
+		ret = "group" + CAgroup.charAt(CNIndex + 8);
 
 		File groupDir = new File("data/" + ret);
 		if (!groupDir.isDirectory()) {
