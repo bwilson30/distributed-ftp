@@ -148,8 +148,7 @@ public class Server {
 		File localDir = new File("data/" + localPath);
 		if (!localDir.isDirectory()) {
 			sendTable.put("response", -1);
-		} 
-		else {
+		} else {
 			Runtime runtime = Runtime.getRuntime();
 			Process p;
 			try {
@@ -192,15 +191,13 @@ public class Server {
 		if (localDir.isDirectory()) {
 			// Directory already exists. Return "success"
 			sendTable.put("response", 1);
-		}
-		else {
+		} else {
 			if (localDir.mkdir()) {
 				if (!timeDir.isDirectory()) {
 					timeDir.mkdir();
 				}
 				sendTable.put("response", 1);
-			}
-			else {
+			} else {
 				System.out.println("Server encountered IOException");
 				sendTable.put("response", -1);
 			}
@@ -214,31 +211,25 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
-		System.out.println("Attempting to remove (rmdir) directory " + localPath);
+
+		File requestPath = new File("data/" + localPath);
+		File rootPath = new File("data/" + group);
+		String requestStr = requestPath.getAbsolutePath();
+		String rootStr = rootPath.getAbsolutePath();
 		
-		File localDir = new File("data/" + localPath);
-		File timeDir = new File("time/" + localPath);
-		if (!localDir.isDirectory()) {
-			// Directory doesn't exist. Return failure
+		if (requestStr.equals(rootStr)) {
+			System.out.println("Unable to remove group directory");
 			sendTable.put("response", -1);
-		}
-		else {
-			File[] dirFiles = localDir.listFiles();
-			if (dirFiles.length == 0) {
-				if (localDir.delete()) {
-					if (timeDir.isDirectory()) {
-						timeDir.delete();
-					}
-					sendTable.put("response", 1);
-				}
-				else {
-					System.out.println("Server encountered IOException");
-					sendTable.put("response", -1);
-				}
-			}
-			else {
-				// Non empty dir. Return failure
-				sendTable.put("response", -2);
+		} else {
+			System.out.println("Attempting to remove (rmdir) directory "
+					+ localPath);
+
+			if (rmdirRecursive("data/" + localPath)
+					&& rmdirRecursive("time/" + localPath)) {
+				sendTable.put("response", 1);
+			} else {
+				System.out.println("Server unable to complete rmdir request");
+				sendTable.put("response", -1);
 			}
 		}
 
@@ -260,13 +251,11 @@ public class Server {
 					timestamp.delete();
 				}
 				sendTable.put("response", 1);
-			}
-			else {
+			} else {
 				System.out.println("Server encountered IOException");
 				sendTable.put("response", -1);
 			}
-		}
-		else {
+		} else {
 			sendTable.put("response", -1);
 		}
 
@@ -292,5 +281,35 @@ public class Server {
 		}
 
 		return ret;
+	}
+
+	private static boolean rmdirRecursive(String dirPath) {
+		File directory = new File(dirPath);
+		if (directory.isDirectory()) {
+			File[] dirFiles = directory.listFiles();
+			if (dirFiles.length == 0) {
+				return directory.delete();
+			} else {
+				for (int i = 0; i < dirFiles.length; i++) {
+					if (dirFiles[i].isFile()) {
+						if (!dirFiles[i].delete()) {
+							System.out
+									.println("Server encountered file that cannot be removed.");
+						}
+					} else {
+						if (!rmdirRecursive(dirFiles[i].toString())) {
+							System.out
+									.println("Server encountered file or dir that cannot be removed.");
+						}
+					}
+				}
+				return directory.delete();
+			}
+		} else {
+			if (directory.isFile()) {
+				return directory.delete();
+			}
+		}
+		return false;
 	}
 }
