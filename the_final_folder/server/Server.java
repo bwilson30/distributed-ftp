@@ -63,6 +63,11 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
+		if (!checkPath(localPath)) {
+			System.out.println("Invalid Path. Quit trying to hack the server");
+			sendTable.put("response", -3);
+			return sendTable;
+		}
 
 		System.out.println("Server: Attempting to get. Remote path is ");
 
@@ -105,6 +110,11 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
+		if (!checkPath(localPath)) {
+			System.out.println("Invalid Path. Quit trying to hack the server");
+			sendTable.put("response", -3);
+			return sendTable;
+		}
 
 		System.out.println("Server: Attempting to put. Remote path is "
 				+ localPath);
@@ -142,6 +152,11 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
+		if (!checkPath(localPath)) {
+			System.out.println("Invalid Path. Quit trying to hack the server");
+			sendTable.put("response", -3);
+			return sendTable;
+		}
 
 		System.out.println("Attempting ls: Remote path is " + localPath);
 
@@ -184,6 +199,11 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
+		if (!checkPath(localPath)) {
+			System.out.println("Invalid Path. Quit trying to hack the server");
+			sendTable.put("response", -3);
+			return sendTable;
+		}
 		System.out.println("Attempting to make (mkdir) directory " + localPath);
 
 		File localDir = new File("data/" + localPath);
@@ -211,6 +231,11 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
+		if (!checkPath(localPath)) {
+			System.out.println("Invalid Path. Quit trying to hack the server");
+			sendTable.put("response", -3);
+			return sendTable;
+		}
 
 		File requestPath = new File("data/" + localPath);
 		File rootPath = new File("data/" + group);
@@ -241,6 +266,11 @@ public class Server {
 		Hashtable sendTable = new Hashtable();
 
 		localPath = group + localPath;
+		if (!checkPath(localPath)) {
+			System.out.println("Invalid Path. Quit trying to hack the server");
+			sendTable.put("response", -3);
+			return sendTable;
+		}
 		System.out.println("Attempting to remove (rm) file " + localPath);
 
 		File localFile = new File("data/" + localPath);
@@ -311,5 +341,28 @@ public class Server {
 			}
 		}
 		return false;
+	}
+	
+	private static boolean checkPath(String requestedPath) {
+		File requestPath = new File("data/" + requestedPath);
+		File rootPath = new File("data/" + group);
+		
+		String requestStr = requestPath.getAbsolutePath();
+		String rootStr = rootPath.getAbsolutePath();
+		
+		if (rootStr.equals(requestStr)) {
+			return true;
+		}
+		else if (requestStr.contains(rootStr)) {
+			if (!requestStr.contains("../")) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
 	}
 }
